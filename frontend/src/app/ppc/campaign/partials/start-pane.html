@@ -1,0 +1,299 @@
+<div ng-controller="SingleCampaignStartController">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-lg-6">
+              <h3 class="panel-title">
+                <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                &nbsp;&nbsp;Campaign Statistics
+              </h3>
+            </div>
+            <div class="col-lg-3 text-right">
+              <span class="date-range-picker-label">
+                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <span>Date Range:</span>
+              </span>
+            </div>
+            <div class="col-lg-3">
+              <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions">
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2>{{currency_sign}}{{upprofit/currency_rate_USD*currency_rate| number : 2}}</h2> Profit
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2>{{upimpressions | number : 0}}</h2> Impressions
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item green">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2>{{currency_sign}}{{uprevenue/currency_rate_USD*currency_rate | number : 2}}</h2> Gross Revenue
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2>{{uporders | number : 0}}</h2> Orders
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item blue">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2> {{upacos | number : 1}}</h2> AcoS (%)
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl" style="min-width:100%;">
+                    <h2> {{upclicks | number : 0}} / {{upctr | number:2}}%</h2> Clicks / CTR%
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item red">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2>{{currency_sign}}{{upcost/currency_rate_USD*currency_rate | number : 2}}</h2> Ad Spend
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2> {{upcr | number : 2}}</h2> Conversion (%)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Charts
+            <a href="#" data-toggle="popover" title="Charts" data-content="You can click on each component to add or subtract it from the chart.">
+              <i class="fa fa-info-circle"></i>
+            </a>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <nvd3 options="options" data="data"></nvd3>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-lg-4">
+              <h3 class="panel-title">
+                <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                &nbsp;&nbsp;SKU Optimization
+                <a href="#" data-toggle="popover" title="SKU Optimization" data-content="If a SKU is highlighted in red, its ACoS is above your set ACoS Profit Zone. Consider pausing that SKU.">
+                  <i class="fa fa-info-circle"></i>
+                </a>
+              </h3>
+            </div>
+            <div class="col-lg-5 filterlist text-right">
+              <a data-target="#stopcampaigns18" class="btn btn-info" data-toggle="collapse">
+                Filter Results
+              </a>
+              <div id="stopcampaigns18" class="collapse">
+                <div class="rowfilter">
+                  <label>Select saved model:</label>
+                  <select class="sel1" data-ng-model="model18.select">
+                    <option ng-repeat="opt in modeloptions18" value="{{opt.id}}">
+                      {{opt.name}}
+                    </option>
+                  </select>
+                  <button ng-click="modelload(18,model18.select);" class="btn btn-load" data-toggle="collapse">
+                    Load
+                  </button>
+                </div>
+                <div class="rowfilter">
+                  <label>Gross Revenue:</label>
+                  <input id="model18.revenuefrom" data-ng-model="model18.revenuefrom">
+                  <span>to</span>
+                  <input id="model18.revenueto" data-ng-model="model18.revenueto">
+                </div>
+                <div class="rowfilter">
+                  <label>Ad Spend:</label>
+                  <input id="model18.adspendfrom" data-ng-model="model18.adspendfrom">
+                  <span>to</span>
+                  <input id="model18.adspendto" data-ng-model="model18.adspendto">
+                </div>
+                <div class="rowfilter">
+                  <label>AcOs:</label>
+                  <input data-ng-model="model18.acosfrom">
+                  <span>to</span>
+                  <input data-ng-model="model18.acosto">
+                </div>
+                <div class="rowfilter">
+                  <label>Impressions:</label>
+                  <input data-ng-model="model18.impressionsfrom">
+                  <span>to</span>
+                  <input data-ng-model="model18.impressionsto">
+                </div>
+                <div class="rowfilter">
+                  <label>Clicks:</label>
+                  <input data-ng-model="model18.clicksfrom">
+                  <span>to</span>
+                  <input data-ng-model="model18.clicksto">
+                  <br>
+                </div>
+                <div class="rowfilter">
+                  <label>CTR%:</label>
+                  <input data-ng-model="model18.ctrfrom">
+                  <span>to</span>
+                  <input data-ng-model="model18.ctrto">
+                </div>
+                <div class="rowfilter">
+                  <label>Ave Cost Per Click:</label>
+                  <input data-ng-model="model18.avecpcfrom">
+                  <span>to</span>
+                  <input data-ng-model="model18.avecpcto">
+                </div>
+                <div class="rowfilter">
+                  <label>Orders:</label>
+                  <input data-ng-model="model18.ordersFrom">
+                  <span>to</span>
+                  <input data-ng-model="model18.ordersTo">
+                </div>
+                <div class="rowfilter">
+                  <label>Conversion %:</label>
+                  <input data-ng-model="model18.conversionRateFrom">
+                  <span>to</span>
+                  <input data-ng-model="model18.conversionRateTo">
+                </div>
+                <div class="rowfilter">
+                  <label>Select match type:</label>
+                  <select class="sel2" data-ng-model="model18.match1">
+                    <option value="BROAD">BROAD</option>
+                    <option value="PHRASE">PHRASE</option>
+                    <option value="EXACT">EXACT</option>
+                  </select>
+                </div>
+                <div class="rowfilter">
+                  <label>Model name:</label>
+                  <input data-ng-model="model18.name">
+                </div>
+                <div class="rowfilter text-right">
+                  <button ng-click="modelsave(18,model18);" class="btn btn-save">Save</button>
+                  <button ng-click="modelclear(18);" class="btn btn-clear">Clear</button>
+                </div>
+                <div class="rowfilter text-right">
+                  <button ng-click="ApplyModel(18,model18);" class="js-close-filter">Apply</button>
+                  <button class="js-close-filter">Close</button>
+                </div>
+                </div>
+              <span class="date-range-picker-label">
+                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <span>Date Range:</span>
+              </span>
+            </div>
+            <div class="col-lg-3">
+              <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions">
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <ul class="nav nav-tabs nav-tabs2">
+            <li ng-class="{active: currentAdGroup == null}"><a data-ng-click="adgroup(null)">All</a></li>
+            <li ng-repeat="adg in unique" ng-class="{active: currentAdGroup == adg.AdGroup}"><a data-ng-click="adgroup(adg.AdGroup)">{{adg.AdGroup}}</a></li>
+          </ul>
+          <style type="text/css">
+            .red {
+              background-color: red;
+            }
+
+            .black {
+              background-color: white;
+            }
+          </style>
+          <table datatable="ng" dt-options="dtOptions_start" dt-instance="dtInstanceCallbackStart" class="row-border hover" width="100%">
+            <thead>
+              <tr>
+                <th>SKU</th>
+                <th>ACoS</th>
+                <th>AD Spend</th>
+                <th>Impressions</th>
+                <th>Clicks</th>
+                <th>CTR</th>
+                <th>Ave CPC</th>
+                <th>Orders</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="keyword in belowacos | filter:search">
+                <td ng-class='{red : keyword.ACoS>saveacos||keyword.ACoS==0, black: keyword.ACoS<=saveacos&&keyword.ACoS!=0}'>{{ keyword.SKU}}</td>
+                <td ng-class='{red : keyword.ACoS>saveacos||keyword.ACoS==0, black: keyword.ACoS<=saveacos&&keyword.ACoS!=0}'>{{ keyword.ACoS | number :2 }}</td>
+                <td ng-class='{red : keyword.ACoS>saveacos||keyword.ACoS==0, black: keyword.ACoS<=saveacos&&keyword.ACoS!=0}'>
+                  {{currency_sign}}{{ keyword.Cost/currency_rate_USD*currency_rate | number :2 }}
+                </td>
+                <td ng-class='{red : keyword.ACoS>saveacos||keyword.ACoS==0, black: keyword.ACoS<=saveacos&&keyword.ACoS!=0}'>{{ keyword.Impressions | number :0 }}</td>
+                <td ng-class='{red : keyword.ACoS>saveacos||keyword.ACoS==0, black: keyword.ACoS<=saveacos&&keyword.ACoS!=0}'>{{ keyword.Clicks | number :0 }}</td>
+                <td ng-class='{red : keyword.ACoS>saveacos||keyword.ACoS==0, black: keyword.ACoS<=saveacos&&keyword.ACoS!=0}'>
+                  {{ keyword.CTR * 100 | number :2 }}
+                </td>
+                <td ng-class='{red : keyword.ACoS>saveacos||keyword.ACoS==0, black: keyword.ACoS<=saveacos&&keyword.ACoS!=0}' title="{{ keyword.AvCPC | number :10 }}">{{ keyword.AvCPC | number :2 }}</td>
+                <td ng-class='{red : keyword.ACoS>saveacos||keyword.ACoS==0, black: keyword.ACoS<=saveacos&&keyword.ACoS!=0}'>{{ keyword.Orders | number :0 }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <td>Total:</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a href="#" data-toggle="popover" title="ACoS Profit Zone"
+                              data-content="ACoS is defined as the Average Cost of Sale. The ACoS profit zone is the maximum ACoS percentage that is still profitable for you product.">
+              <i class="fa fa-info-circle"></i>
+            </a>
+            &nbsp;&nbsp;ACoS profit zone
+          </h3>
+        </div>
+        <div class="panel-body panel-body2">
+          <div class="row">
+            <div class="col-lg-3">ACoS profit zone, %</div>
+            <div class="col-lg-6" align="right">
+              <input type="text" data-ng-model="saveacos" class="form-control" />
+            </div>
+            <div class="col-lg-3" align="left">
+              <button class="btn-primary" data-ng-click="save_acos()">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- campaign log panel -->
+    <div class="col-lg-6" data-ng-include="'/frontend/ppc/campaign/campaign-log.html'">
+    </div>
+  </div>
+<div>

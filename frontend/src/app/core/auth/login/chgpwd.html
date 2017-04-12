@@ -1,0 +1,33 @@
+<div class="form-login">
+    <form name="chgForm" method="post" novalidate="novalidate" align="center">
+        <h2 class="title">Change your password</h2>
+		<br>
+		<br>
+        <div class="form-group"
+             data-show-errors align="center"
+        >
+            <input type="text" readonly="readonly" name="email" style="width:70%" class="register_input" placeholder="your email address" autofocus autocomplete="off" required="required"
+                data-focus-on="username"
+                data-ng-model="email"
+            />
+        </div>
+
+        <div class="form-group"
+            data-show-errors align="center"
+        >
+            <input type="password" name="password1" style="width:70%" class="register_input" placeholder="new password" required="required"
+                data-ng-model="password1"
+            />
+        </div>
+        <div class="form-group"
+            data-show-errors align="center"
+        >
+            <input type="password" name="password2" style="width:70%" class="register_input" placeholder="confirm password" required="required" data-ng-model="password2"
+            />
+        </div>
+		<br>
+        <button class="signup"
+            data-ng-click="confirm()"
+        >Confirm</button>
+    </form>
+</div>

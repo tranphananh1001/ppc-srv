@@ -1,0 +1,62 @@
+<div class="modal-header">
+  <h3>{{message}}</h3>
+</div>
+<div class="modal-body">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-lg-6">
+          <h3 class="panel-title">
+            Duplicate keywords
+            <a href="#" data-toggle="popover" title="Top keywords"
+               data-content="Products highlighted in yellow indicates that a profit experiment is underway. Products highlighted in Green indicates that a profit experiment has been completed and a winner has been determined. Click on that product<span>to</span>view results.">
+               <i class="fa fa-info-circle"></i>
+            </a>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table datatable="ng" dt-options="dtOptions10" class="row-border hover" width="100%">
+        <thead>
+          <tr>
+            <th>Campaign</th>
+            <th>Ad Group</th>
+            <th>Match Type</th>
+            <th>Profit</th>
+            <th>Revenue</th>
+            <th>AD Spend</th>
+            <th>AcoS,%</th>
+            <th>Impressions</th>
+            <th>Clicks</th>
+            <th>Ave CPC</th>
+            <th>Orders</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="keyword in searchbykeyword" width="100%">
+            <td>
+              <a href="#" ng-click="">
+                {{keyword.Campaign}}
+              </a>
+            </td>
+            <th>{{keyword.ADGroup | adgrouping }}</th>
+            <td>{{ keyword.Match1 }}</td>
+            <td>{{currency_sign}}{{ keyword.Profit/currency_rate_USD*currency_rate | number :0 }}</td>
+            <td>{{currency_sign}}{{ keyword.Revenue/currency_rate_USD*currency_rate | number :0 }}</td>
+            <td>{{currency_sign}}{{ keyword.Cost/currency_rate_USD*currency_rate | number :0 }}</td>
+            <td>{{ keyword.Cost/keyword.Revenue*100 | number :1 }}</td>
+            <td>{{ keyword.Impressions | number :0 }}</td>
+            <td>{{ keyword.Clicks | number :0 }}</td>
+            <td title="{{ keyword.AvCPC | number :10 }}">{{ keyword.AvCPC | number :2 }}</td>
+            <td>{{ keyword.Orders | number :0 }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="ok()">OK</button>
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

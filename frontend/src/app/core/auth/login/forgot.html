@@ -1,0 +1,20 @@
+<div class="form-login">
+    <form name="forgotForm" method="post" novalidate="novalidate" align="center" style="width:70%;margin-left:50px;">
+        <h2 class="title">verify your email</h2>
+
+        <div class="form-group"
+             data-show-errors
+        >
+		<br>
+		<br>
+            <input type="text" name="email" class="register_input" placeholder="your email address" autofocus autocomplete="off" required="required"
+                data-focus-on="email"
+                data-ng-model="email"
+            />
+        </div>
+		<br>
+        <button class="signup"
+            data-ng-click="sendmail()"
+        >Send Mail</button>
+    </form>
+</div>

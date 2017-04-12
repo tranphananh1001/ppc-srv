@@ -1,0 +1,357 @@
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <div class="row">
+            <div class="col-lg-6">
+              <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;Campaigns Statistics
+            </div>
+            <div class="col-lg-3 text-right">
+              <span class="date-range-picker-label">
+                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <span>Date Range:</span>
+              </span>
+            </div>
+            <div class="col-lg-3">
+              <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions">
+            </div>
+          </div>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{upprofit/currency_rate_USD*currency_rate| number : 2}}</h2> Profit
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2> {{upimpressions | number : 0}}</h2> Impressions
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item green">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{uprevenue/currency_rate_USD*currency_rate | number : 2}}</h2> Gross Revenue
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2>{{upctr | number : 2}}</h2> CTR (%)
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item blue">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2> {{upacos | number : 1}}</h2> AcoS (%)
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2> {{upclicks | number : 0}}</h2> Clicks
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item red">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{upcost/currency_rate_USD*currency_rate | number : 2}}</h2> Ad Spend
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2> {{upcr | number : 2}}</h2> CR (%)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;A/B
+          Split Testing
+        </h3>
+      </div>
+      <div class="panel-body">
+        <label>Test name</label>
+        <input data-ng-show="!show.sav" type="text" ng-model="abtests.name" class="form-control" rows="1">
+        <h3 data-ng-show="show.sav">{{abtests.name}}</h3>
+        <div data-ng-show="!show.sav"><label>Test time frame</label>
+          <div class="row">
+            <div class="col-lg-2"><input type="radio" ng-model="abtests.before_timeframe" value="14" ng-checked="true"> 14 days
+            </div>
+            <div class="col-lg-2"><input type="radio" ng-model="abtests.before_timeframe" value="21"> 21 days
+            </div>
+            <div class="col-lg-2"><input type="radio" ng-model="abtests.before_timeframe" value="28"> 28 days
+            </div>
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-lg-3"><input type="radio" ng-model="abtests.before_timeframe" value="0"> custom
+                </div>
+                <div class="col-lg-9" align="left"><input type="text" ng-model="abtests.before_timeframe1"> days
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;Testing
+          Time Frame
+        </h3></div>
+
+      <div class="panel-body">
+        <h1 ng-if="abtests.before_timeframe<0">Test completed</h1>
+        <h1 ng-if="abtests.before_timeframe>=0">Days left: {{abtests.before_timeframe}}</h1>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6" data-ng-show="show.sav">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;Statistics A
+          <!-- (last {{abtests.before_timeframe1}} days) -->
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{before_upprofit/currency_rate_USD*currency_rate| number : 2}}</h2> Profit
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2> {{before_upimpressions | number : 0}}</h2> Impressions
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item green">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{before_uprevenue/currency_rate_USD*currency_rate | number : 2}}</h2> Gross Revenue
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2>{{before_upctr | number : 2}}</h2> CTR (%)
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item blue">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2> {{before_upacos | number : 1}}</h2> AcoS (%)
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2> {{before_upclicks | number : 0}}</h2> Clicks
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item red">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{before_upcost/currency_rate_USD*currency_rate | number : 2}}</h2> Ad Spend
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2> {{before_upcr | number : 2}}</h2> CR (%)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6" data-ng-show="show.sav">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;Statistics B
+
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{after_upprofit/currency_rate_USD*currency_rate| number : 2}}</h2> Profit
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2> {{after_upimpressions | number : 0}}</h2> Impressions
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item green">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{after_uprevenue/currency_rate_USD*currency_rate | number : 2}}</h2> Gross Revenue
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2>{{after_upctr | number : 2}}</h2> CTR (%)
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item blue">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2> {{after_upacos | number : 1}}</h2> AcoS (%)
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2> {{after_upclicks | number : 0}}</h2> Clicks
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item red">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{after_upcost/currency_rate_USD*currency_rate | number : 2}}</h2> Ad Spend
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2> {{after_conversion | number : 2}}</h2> CR (%)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;A
+          values</h3>
+      </div>
+      <div class="panel-body">
+        <h3></h3>
+        <div>
+          <select name="category-group" id="categoryGroup" class="form-control" ng-model="itemSelected" ng-change="onCategoryChange(itemSelected)" ng-options="category.name for category in categories">
+
+          </select>
+          <textarea data-ng-show="show.row1" ng-model="abtests.a_adding_keywords" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.a_adding_keywords&&show.sav">{{abtests.a_adding_keywords}}</span><br data-ng-show="abtests.a_adding_keywords&&show.sav">
+
+          <textarea data-ng-show="show.row2" ng-model="abtests.a_negative_exact" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.a_negative_exact&&show.sav"> {{abtests.a_negative_exact}}</span><br data-ng-show="abtests.a_negative_exact&&show.sav">
+
+          <textarea data-ng-show="show.row3" ng-model="abtests.a_negative_phrase" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.a_negative_phrase&&show.sav"> {{abtests.a_negative_phrase}}</span><br data-ng-show="abtests.a_negative_phrase&&show.sav">
+
+          <textarea data-ng-show="show.row4" ng-model="abtests.a_paused_keywords" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.a_paused_keywords&&show.sav"> {{abtests.a_paused_keywords}}</span><br data-ng-show="abtests.a_paused_keywords&&show.sav">
+
+          <textarea data-ng-show="show.row5" ng-model="abtests.a_adjusted_keyword" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.a_adjusted_keyword&&show.sav"> {{abtests.a_adjusted_keyword}}</span><br data-ng-show="abtests.a_adjusted_keyword&&show.sav">
+
+          <textarea data-ng-show="show.row6" ng-model="abtests.a_adjusted_daily" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.a_adjusted_daily&&show.sav"> {{abtests.a_adjusted_daily}}</span><br data-ng-show="abtests.a_adjusted_daily&&show.sav">
+
+          <textarea data-ng-show="show.row7" ng-model="abtests.a_adjusted_campaign" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.a_adjusted_campaign&&show.sav"> {{abtests.a_adjusted_campaign}}</span><br data-ng-show="abtests.a_adjusted_campaign&&show.sav">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;B
+          values</h3>
+      </div>
+      <div class="panel-body">
+        <h3></h3>
+        <div>
+          <select data-ng-show="!show.sav" name="category-group" id="categoryGroup" class="form-control" ng-model="itemSelected" ng-change="onCategoryChange(itemSelected)" ng-options="category.name for category in categories">
+
+          </select>
+          <textarea data-ng-show="show.row1" ng-model="abtests.b_adding_keywords" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.b_adding_keywords&&show.sav">{{abtests.b_adding_keywords}}</span><br data-ng-show="abtests.b_adding_keywords&&show.sav">
+
+          <textarea data-ng-show="show.row2" ng-model="abtests.b_negative_exact" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.b_negative_exact&&show.sav"> {{abtests.b_negative_exact}}</span><br data-ng-show="abtests.b_negative_exact&&show.sav">
+
+          <textarea data-ng-show="show.row3" ng-model="abtests.b_negative_phrase" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.b_negative_phrase&&show.sav"> {{abtests.b_negative_phrase}}</span><br data-ng-show="abtests.b_negative_phrase&&show.sav">
+
+          <textarea data-ng-show="show.row4" ng-model="abtests.b_paused_keywords" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.b_paused_keywords&&show.sav"> {{abtests.b_paused_keywords}}</span><br data-ng-show="abtests.b_paused_keywords&&show.sav">
+
+          <textarea data-ng-show="show.row5" ng-model="abtests.b_adjusted_keyword" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.b_adjusted_keyword&&show.sav"> {{abtests.b_adjusted_keyword}}</span><br data-ng-show="abtests.b_adjusted_keyword&&show.sav">
+
+          <textarea data-ng-show="show.row6" ng-model="abtests.b_adjusted_daily" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.b_adjusted_daily&&show.sav"> {{abtests.b_adjusted_daily}}</span><br data-ng-show="abtests.b_adjusted_daily&&show.sav">
+
+          <textarea data-ng-show="show.row7" ng-model="abtests.b_adjusted_campaign" class="form-control" rows="2"></textarea>
+          <span data-ng-show="abtests.b_adjusted_campaign&&show.sav"> {{abtests.b_adjusted_campaign}}</span><br data-ng-show="abtests.b_adjusted_campaign&&show.sav">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h3></h3>
+<button data-ng-show="!show.sav" class="btn btn-large btn-info" data-ng-click="save_test()">Save
+</button>
+<a data-toggle="tab" class="btn btn-load btn-info" data-ng-click="reload_test()" href="#mtab5">Back</a>

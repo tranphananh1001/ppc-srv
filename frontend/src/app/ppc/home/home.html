@@ -1,0 +1,432 @@
+<h3></h3>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-lg-6">
+            <h3 class="panel-title">
+              PPC Statistics
+            </h3>
+          </div>
+          <div class="col-lg-3 text-right">
+            <a href="http://quickstartppcguide.pagedemo.co" target="_blank" class="btn btn-start-here">
+              New To Entourage? Start Here
+            </a>
+            <span class="date-range-picker-label">
+              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+              <span>Date Range:</span>
+            </span>
+          </div>
+          <div class="col-lg-3">
+            <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions">
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{upprofit/currency_rate_USD*currency_rate | number : 2}}</h2>
+                  Profit
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2> {{upimpressions | number : 0}}</h2>
+                  Impressions
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+          <div class="cifri-item green">
+            <div class="warp-top">
+              <div class="vartacalmidl">
+                <h2>{{currency_sign}}{{uprevenue/currency_rate_USD*currency_rate | number : 2}}</h2>
+                Gross Revenue
+              </div>
+            </div>
+            <div class="warp-but">
+              <div class="vartacalmidl">
+                <h2>{{uporders | number : 0}}</h2>
+                Orders
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item blue">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2> {{upacos | number : 1}}</h2>
+                  AcoS (%)
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl" style="min-width:100%;">
+                  <h2> {{upclicks | number : 0}} / {{upctr | number:2}}%</h2>
+                  Clicks / CTR%
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item red">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{upcost/currency_rate_USD*currency_rate | number : 2}}</h2>
+                  Ad Spend
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2>{{upcr | number : 2}}</h2>
+                  Conversion (%)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div  class="row">
+          <div class="col-lg-9" align="center">
+          </div>
+          <div class="col-lg-3" align="left">
+            There is a 24-48 hour delay in data reporting.  By default, we display data that is at least 7 days old to ensure accuracy.
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-lg-6">
+            <h3 class="panel-title">Charts
+              <a href="#" data-toggle="popover" title="Charts"
+                data-content="You can click on each component to add or subtract it from the chart. You can also view your organic profit vs PPC profit. Change the date range to see data from a specific time period. ">
+                <i class="fa fa-info-circle"></i>
+              </a>
+            </h3>
+          </div>
+          <div class="col-lg-3 text-right">
+            <span class="date-range-picker-label">
+              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+              <span>Date Range:</span>
+            </span>
+          </div>
+          <div class="col-lg-3">
+            <input date-range-picker class="form-control date-picker" type="text"
+              ng-model="datePicker.date" options="dateRangeOptions"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="col-lg-5">
+    <div align="center" class="panel panel-default">
+      <div class="row">
+        <div class="col-lg-4">
+          <div id="funnel">
+            <h3 class="panel-title">True ACos
+              <a href="#" data-toggle="popover" title="True ACos"
+                data-content="True ACoS is the sum of PPC revenue and organic revenue divided by AD Spend. This allows you see the bigger picture in terms of how much you are spending on PPC relative to overall revenue.  You can also see the beneficial affect that your PPC is having on organic sales by tracking this number.">
+                <i class="fa fa-info-circle"></i>
+              </a>
+            </h3>
+            <br>
+            <span style="color:blue;font-size:large;">{{trueAcos/(upcost/currency_rate_USD*currency_rate) | number:2}}%</span>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <nvd3 options="optionsPieChart" data="dataPieChart"></nvd3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-7">
+    <div class="panel-body">
+      <nvd3 options="optionsLineChart" data="dataLineChart"></nvd3>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-lg-6">
+        <h3 class="panel-title">
+          Top selling products
+          <a href="#" data-toggle="popover" title="Top Selling Products"
+                      data-content="Products highlighted in yellow indicates that an a/b split test is underway. Products highlighted in Green indicates that an a/b split test has been completed and a winner has been determined. Click on that product to view results.">
+            <i class="fa fa-info-circle"></i>
+          </a>
+        </h3>
+      </div>
+      <div class="col-lg-3 filterlist" align="right">
+        <a href="#topcampaigns1" class="btn-filter" data-toggle="collapse">Filter Results</span></a>
+        <div id="topcampaigns1" class="collapse">
+          <div class="rowfilter">
+            <label>Select saved model:</label>  <select  class="sel1" data-ng-model="filterModelSKU.select"><option ng-repeat="opt in filterModelsSKUs" value="{{opt.id}}">{{opt.name}}</option></select>
+            <button ng-click="loadFilterModel(filterModelSKU.select, MODEL_NO_HOME_SKUS);" class="btn btn-load" data-toggle="collapse">Load</button>
+          </div>
+          <div class="rowfilter">
+            <label>Profit:</label>  <input id="filterModelSKU.profitfrom" data-ng-model="filterModelSKU.profitfrom"><span>to</span><input id="filterModelSKU.profitto" data-ng-model="filterModelSKU.profitto">
+          </div>
+          <div class="rowfilter">
+            <label>Gross Revenue:</label>  <input id="filterModelSKU.revenuefrom" data-ng-model="filterModelSKU.revenuefrom"><span>to</span><input id="filterModelSKU.revenueto" data-ng-model="filterModelSKU.revenueto">
+          </div>
+          <div class="rowfilter">
+            <label>Ad Spend:</label>  <input id="filterModelSKU.adspendfrom" data-ng-model="filterModelSKU.adspendfrom"><span>to</span><input id="filterModelSKU.adspendto" data-ng-model="filterModelSKU.adspendto">
+          </div>
+          <div class="rowfilter">
+            <label>AcOs:</label>  <input data-ng-model="filterModelSKU.acosfrom"><span>to</span><input data-ng-model="filterModelSKU.acosto">
+          </div>
+          <div class="rowfilter">
+            <label>Impressions:</label>  <input data-ng-model="filterModelSKU.impressionsfrom"><span>to</span><input data-ng-model="filterModelSKU.impressionsto">
+          </div>
+          <div class="rowfilter">
+            <label>Clicks:</label>  <input data-ng-model="filterModelSKU.clicksfrom"><span>to</span><input data-ng-model="filterModelSKU.clicksto"><br>
+          </div>
+          <div class="rowfilter">
+            <label>CTR%:</label>  <input data-ng-model="filterModelSKU.ctrfrom"><span>to</span><input data-ng-model="filterModelSKU.ctrto">
+          </div>
+          <div class="rowfilter">
+            <label>Ave Cost Per Click:</label>  <input data-ng-model="filterModelSKU.avecpcfrom"><span>to</span><input data-ng-model="filterModelSKU.avecpcto"><br>
+          </div>
+          <div class="rowfilter"><label>Orders:</label> <input data-ng-model="filterModelSKU.ordersFrom"><span>to</span><input data-ng-model="filterModelSKU.ordersTo"></div>
+          <div class="rowfilter"><label>Conversion %:</label> <input data-ng-model="filterModelSKU.conversionRateFrom"><span>to</span><input data-ng-model="filterModelSKU.conversionRateTo"></div>
+          <div class="rowfilter">
+            <label>Select match type:</label><select  class="sel2" data-ng-model="filterModelSKU.match1"><option value="ANY">ANY</option><option value="BROAD">BROAD</option><option value="PHRASE">PHRASE</option><option value="EXACT">EXACT</option></select>
+          </div>
+          <div class="rowfilter">
+            <label>Model name:</label>  <input data-ng-model="filterModelSKU.name"  class="inp2">
+          </div>
+          <div class="rowfilter" align="right">
+             <button ng-click="saveFilterModel(filterModelSKU, MODEL_NO_HOME_SKUS)" class="btn btn-save">Save</button> <button ng-click="clearFilterModel(filterModelSKU)" class="btn btn-clear">Clear</button>
+          </div>
+          <div class="rowfilter" align="right">
+            <button ng-click="loadSKUData()" class="js-close-filter">Apply</button>
+            <button class="js-close-filter">Close</button>
+          </div>
+        </div>
+        <span class="date-range-picker-label">
+          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+          <span>Date Range:</span>
+        </span>
+      </div>
+      <div class="col-lg-3">
+        <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions"/>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <table datatable="ng" dt-options="dtOptionsSKUs" dt-instance="dtInstanceCallbackSKU" class="row-border hover">
+      <thead>
+      <tr>
+        <th>SKU</th>
+        <th>Profit</th>
+        <th>Product</th>
+        <th>Revenue</th>
+        <th>AD Spend</th>
+        <th>AcoS,%</th>
+        <th>Impressions</th>
+        <th>Clicks</th>
+        <th>Orders</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="item in topSKU">
+        <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'><a data-ui-sref="ppc.product({id: item.id})">{{ item.SKU }}</a></td>
+        <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+          {{currency_sign}}{{ item.Revenue*item.Profit-item.Cost/currency_rate_USD*currency_rate | number :2}}
+        </td>
+        <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'><a data-ui-sref="ppc.product({id: item.id})">{{ item.Product }}</a></td>
+        <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+          {{currency_sign}}{{ item.Revenue/currency_rate_USD*currency_rate | number :2 }}
+        </td>
+        <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+          {{currency_sign}}{{ item.Cost/currency_rate_USD*currency_rate | number :2 }}
+        </td>
+        <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}' >{{ item.Cost/item.Revenue*100 | number :1 }}</td>
+        <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}' >{{ item.Impressions | number :0 }}</td>
+        <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}' >{{ item.Clicks | number :0 }}</td>
+        <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>{{
+          item.Orders | number :0 }}
+        </td>
+      </tr>
+      </tbody>
+    <tfoot>
+    <td>Total:</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    </tfoot>
+    </table>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-lg-6">
+        <h3 class="panel-title">Top campaigns
+          <a href="#" data-toggle="popover" title="Top Campaigns"
+                      data-content="Campaigns highlighted in yellow indicates that an a/b split test is underway. Products highlighted in Green indicates that an a/b split test has been completed and a winner has been determined. Click on that campaign to view results."><i class="fa fa-info-circle"></i></a>
+        </h3>
+      </div>
+      <div class="col-lg-3 filterlist" align="right">
+        <a href="#topcampaigns" class="btn-filter" data-toggle="collapse">Filter Results</span></a>
+        <div id="topcampaigns" class="collapse">
+          <div class="rowfilter">
+            <label>Select saved model:</label>  <select class="sel1"  data-ng-model="filterModelCampaign.select"><option ng-repeat="opt in filterModelsCampaigns" value="{{opt.id}}">{{opt.name}}</option></select>
+          <button ng-click="loadFilterModel(filterModelCampaign.select, MODEL_NO_HOME_CAMPAIGNS);" class="btn btn-load" data-toggle="collapse">Load</button> <br>
+          </div>
+          <div class="rowfilter">
+            <label>Profit:</label>  <input id="filterModelCampaign.profitfrom" data-ng-model="filterModelCampaign.profitfrom"><span>to</span><input id="filterModelCampaign.profitto" data-ng-model="filterModelCampaign.profitto"><br>
+          </div>
+          <div class="rowfilter">
+            <label>Gross Revenue:</label>  <input id="filterModelCampaign.revenuefrom" data-ng-model="filterModelCampaign.revenuefrom"><span>to</span><input id="filterModelCampaign.revenueto" data-ng-model="filterModelCampaign.revenueto"><br>
+          </div>
+          <div class="rowfilter">
+            <label>Ad Spend:</label>  <input id="filterModelCampaign.adspendfrom" data-ng-model="filterModelCampaign.adspendfrom"><span>to</span><input id="filterModelCampaign.adspendto" data-ng-model="filterModelCampaign.adspendto"><br>
+          </div>
+          <div class="rowfilter">
+            <label>AcOs:</label>   <input data-ng-model="filterModelCampaign.acosfrom"><span>to</span><input data-ng-model="filterModelCampaign.acosto"><br>
+          </div>
+          <div class="rowfilter">
+            <label>Impressions:</label>  <input data-ng-model="filterModelCampaign.impressionsfrom"><span>to</span><input data-ng-model="filterModelCampaign.impressionsto"><br>
+          </div>
+          <div class="rowfilter">
+            <label>Clicks:</label>  <input data-ng-model="filterModelCampaign.clicksfrom"><span>to</span><input data-ng-model="filterModelCampaign.clicksto"><br>
+          </div>
+          <div class="rowfilter">
+            <label>CTR%:</label>
+            <input data-ng-model="filterModelCampaign.ctrfrom">
+            <span>to</span>
+            <input data-ng-model="filterModelCampaign.ctrto">
+            <br>
+          </div>
+          <div class="rowfilter">
+            <label>Ave Cost Per Click:</label>
+            <input data-ng-model="filterModelCampaign.avecpcfrom">
+            <span>to</span>
+            <input data-ng-model="filterModelCampaign.avecpcto">
+            <br>
+          </div>
+          <div class="rowfilter">
+            <label>Orders:</label>
+            <input data-ng-model="filterModelCampaign.ordersFrom">
+            <span>to</span>
+            <input data-ng-model="filterModelCampaign.ordersTo">
+          </div>
+          <div class="rowfilter"><label>Conversion %:</label> <input data-ng-model="filterModelCampaign.conversionRateFrom"><span>to</span><input data-ng-model="filterModelCampaign.conversionRateTo"></div>
+          <div class="rowfilter">
+            <label>Select match type:</label>  <select class="sel2" data-ng-model="filterModelCampaign.match1"><option value="ANY">ANY</option><option value="BROAD">BROAD</option><option value="PHRASE">PHRASE</option><option value="EXACT">  EXACT</option></select>
+          </div>
+          <div class="rowfilter">
+            <label>Model name:</label> <input data-ng-model="filterModelCampaign.name" class="inp2">
+          </div>
+          <div class="rowfilter" align="right">
+            <button ng-click="saveFilterModel(filterModelCampaign, MODEL_NO_HOME_CAMPAIGNS)" class="btn btn-save">Save</button> <button ng-click="clearFilterModel(filterModelCampaign);" class="btn btn-clear">Clear</button>
+          </div>
+          <div class="rowfilter" align="right">
+            <button ng-click="loadCampaignData()" class="js-close-filter">Apply</button>
+            <button class="js-close-filter">Close</button>
+          </div>
+        </div>
+        <span class="date-range-picker-label">
+          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+          <span>Date Range:</span>
+        </span>
+      </div>
+      <div class="col-lg-3">
+        <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions"/>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <table datatable="ng" dt-options="dtOptionsCampaigns" dt-instance="dtInstanceCallbackCampaign" class="row-border hover">
+      <thead>
+        <tr>
+          <th>Campaigns</th>
+          <th>Profit</th>
+          <th>Revenue</th>
+          <th>AD Spend</th>
+          <th>AcoS,%</th>
+          <th>Impressions</th>
+          <th>Clicks</th>
+          <th>Ave CPC</th>
+          <th>Orders</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in topCampaigns">
+          <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+            <a data-ui-sref="ppc.campaigns({id: item.CampaignId, campaign: item.Campaign})">{{ item.Campaign }}</a>
+          </td>
+          <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+            {{currency_sign}}{{ item.Profit/currency_rate_USD*currency_rate | number :2}}
+          </td>
+          <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>{{currency_sign}}{{ item.Revenue/currency_rate_USD*currency_rate | number :2 }}</td>
+          <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>{{currency_sign}}{{ item.Cost/currency_rate_USD*currency_rate | number :2 }}</td>
+          <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>{{ item.Cost/item.Revenue*100 | number :1 }}</td>
+          <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>{{ item.Impressions | number :0 }}</td>
+          <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>{{ item.Clicks | number :0 }}</td>
+          <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>{{ item.AvCPC | number :2 }}</td>
+          <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>{{ item.Orders | number :0 }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <td>Total:</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<style type="text/css">
+  .green {
+    background-color: lightgreen;
+  }
+
+  .black {
+    background-color: white;
+  }
+
+  .yellow {
+    background-color: lightgoldenrodyellow;
+  }
+</style>
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+    $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+          $(this).popover('hide');
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
+    t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
+  })(window, document, '_gscq','script','//widgets.getsitecontrol.com/78474/script.js');
+</script>

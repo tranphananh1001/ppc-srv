@@ -1,0 +1,72 @@
+<div data-ng-show="campaigns">
+  <h3></h3>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title" style="color:red;">
+        {{textNotice}}
+      </h3>
+    </div>
+    <h1>Campaign: {{campaignName}}</h1>
+    <div class="panel-body">
+      <table datatable="ng" dt-options="dtOptions" dt-instance="dtInstanceCallbackCampaign" class="row-border hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>Ad Group</th>
+            <th>Status</th>
+            <th>Default bid</th>
+            <th>Keywords</th>
+            <th>Ads</th>
+            <th>Impr</th>
+            <th>Clicks</th>
+            <th>CTR</th>
+            <th>Spend</th>
+            <th>CPC</th>
+            <th>Orders</th>
+            <th>Sales</th> 
+            <th>ACoS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in campaigns">
+            <td></td>
+            <td></td>
+            <td>
+              <a ng-click="goKeyword(item)">{{ item["Ad Group Name"] }}</a>
+            </td>
+            <td></td>
+            <td></td>
+            <td>{{item.Keywords}}</td>
+            <td></td>
+            <td>{{ item.Impr | number }}</td>
+            <td>{{ item.Clicks }}</td>
+            <td>{{ ((item.CTR)*100).toFixed(2) }}%</td>
+            <td>{{ item.Spend }}</td>
+            <td>{{ item.CPC | currency }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+    $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+          $(this).popover('hide');
+        }
+      });
+    });
+  });
+</script>

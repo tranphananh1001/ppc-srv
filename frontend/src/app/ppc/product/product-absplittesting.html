@@ -1,0 +1,78 @@
+<div data-ng-controller="productAbSplitTestingController">
+  <div ng-show="!PAGE_ADD_SHOW">
+    <div class="text-box">
+      <div class="pull-right">
+        <a href="#" rel="modal:open" class="moreinfo" title="A/B Split Testing info"
+           data-content="<p><strong>The A/B testing module allows you to see the direct impact that changes to your Amazon listings have on your PPC campaigns.</strong> Lets say you make a change to your listing ( ex: a title, bullet point, or image change) on Amazon. This module will allow you to see how that listing change impacted your PPC conversions, impressions and profit.</p>
+
+      <p>Modifications to your listing such as image changes, title change, price change, bullet point change, summary change, back end keyword change, coupon changes can all be tested so that a winner can be found.
+
+      <p>Please note: you will have to manually make the changes to your Amazon listing on seller central.</p>
+      <ol>
+        <li>Click on add. </li>
+        <li>Create a name for you test, for example: Product A Title Change test. </li>
+        <li>Select the test time frame, we recommend a minimum of two weeks for a more accurate test. </li>
+        <li>Select the type of test you will be creating. As you can see… you can test a variety of changes to your listing. Let’s choose title for example. </li>
+        <ul>
+        <li>The A value will be the title that was used in the past. </li>
+        <li>The B value will be the title that you are testing out in the future. </li>
+        </ul>
+        <li>Click save</li>
+        <li>The data under A will be from the past 14 days, 21 days, or 28 days, depending on the length of the test you selected. </li>
+        <li>Now go ahead and make the change within your Amazon listing. </li>
+      </ol>
+
+      <p>Check back here routinely to see if a winner has been determined.</p>">
+          Instructions
+          <i class="fa fa-info-circle"></i>
+        </a>
+      </div>
+      <img src="/images/split.jpg" alt=""  style="margin-top:15px;"/>
+      <br>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Products information</h3>
+      </div>
+      <div class="panel-body panel-body2">
+        <div class="row">
+          <div class="col-lg-2">
+            <img  style="width: 70%;" ng-src="{{product.image_sm}}">
+          </div>
+          <div class="col-lg-10">
+              {{product["product-name"]}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="btn btn-load" ng-click="add_test()" style="margin-bottom: 30px; padding: 12px; min-width: 120px;">
+      Add
+    </a>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">A/B Split Testings</h3>
+      </div>
+      <div class="panel-body">
+        <table datatable="ng" dt-options="dtOptions" dt-instance="dtInstance" class="row-border hover" width="100%">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date started</th>
+            <th>Date finished</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="product in abtest" width="100%">
+            <td ng-class='{green : product.GREEN, yellow: product.YELLOW&&!product.GREEN,  black: product.clicked}'><a ng-click="test_show(product.id)">{{ product.name }}</a></td>
+            <td ng-class='{green : product.GREEN, yellow: product.YELLOW&&!product.GREEN,  black: product.clicked}'>{{product.from_date | asDate | date:'shortDate'}}</td>
+            <td ng-class='{green : product.GREEN, yellow: product.YELLOW&&!product.GREEN,  black: product.clicked}'>{{product.to_date | asDate | date:'shortDate'}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div ng-show="PAGE_ADD_SHOW" ng-include="'/frontend/ppc/product/product-absplittesting-add.html'">
+  </div>
+</div>

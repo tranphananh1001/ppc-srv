@@ -1,0 +1,279 @@
+<div data-ng-controller="productStartController">
+  <div class="text-box">
+    <div class="pull-right">
+      <br>
+      <a style="margin-top:15px;" href="#" rel="modal:open" class="moreinfo" title="Start info" data-content="<ul><li>Profit margins can be set for each product below. For most accurate results, we highly suggest updating each product with the proper margins. If you don’t have a profit margin set for a product, we will designate a universal profit margin of 30%. This universal profit margin can be adjusted in the settings tab based on your preferences.</li>
+  <li>Use these charts to track important information about the profitability and visibility of your product over time.</li>
+  <li>You can click on each component to add (+) or subtract (-) it from the chart.</li>
+  <li>You can also see all of the campaigns that this product is in ordered by most profitable campaign first. Applying filter options allows you to dig deeper into results for your product.</li>
+  </ul> ">
+        Instructions <i class="fa fa-info-circle"></i>
+      </a>
+    </div>
+    <img src="/images/listing.png" style="margin-top:15px;"/>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-lg-6">
+              <h3 class="panel-title">
+                PPC Product Statistics
+              </h3>
+            </div>
+            <div class="col-lg-3 text-right">
+              <span class="date-range-picker-label">
+                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <span>Date Range:</span>
+              </span>
+            </div>
+            <div class="col-lg-3">
+              <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions"/>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2>{{currency_sign}}{{upprofit/currency_rate_USD*currency_rate| number : 0}}</h2>
+                    Profit
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2> {{upimpressions | number : 0}}</h2>
+                    Impressions
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item green">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2>{{currency_sign}}{{uprevenue/currency_rate_USD*currency_rate | number : 0}}</h2>
+                    Gross Revenue
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2>{{uporders | number : 0}}</h2>
+                    Orders
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item blue">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2> {{upacos | number : 1}}</h2>
+                      AcoS (%)
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl" style="min-width:100%;">
+                    <h2> {{upclicks | number : 0}} / {{upctr | number:2}}%</h2>
+                    Clicks / CTR%
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item red">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2>{{currency_sign}}{{upcost/currency_rate_USD*currency_rate | number : 2}}</h2>
+                    Ad Spend
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2> {{upcr | number : 2}}</h2>
+                      Conversion (%)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-lg-6">
+              <h3 class="panel-title">
+                Charts
+                <a href="#" data-toggle="popover" title="Charts" data-content="You can click on each component<span>to</span>add or subtract it from the chart. Profit margins can be set for each product below. If you don’t have a profit margin set for a product, we will designate a universal profit margin of  30%. This universal profit margin can be adjusted in the settings tab. Use these charts<span>to</span>track important information about the profitability and visibility of your product over time.">
+                  <i class="fa fa-info-circle"></i>
+                </a>
+              </h3>
+            </div>
+            <div class="col-lg-3 text-right">
+              <span class="date-range-picker-label">
+                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <span>Date Range:</span>
+              </span>
+            </div>
+            <div class="col-lg-3">
+              <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions"/>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="cahrt-bg">
+          <nvd3 options="optionsLineChart" data="dataLineChart"></nvd3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Products information</h3>
+        </div>
+        <div class="panel-body panel-body2">
+          <div class="row">
+            <div class="col-lg-2">
+              <img style="width: 70%;" ng-src="{{product.image_sm}}">
+            </div>
+            <div class="col-lg-10">
+              <h3>{{product["product-name"]}}</h3>
+              <p style="white-space: pre-line" ng-bind-html="product.product_description"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Negative Exact</h3>
+            </div>
+            <div class="panel-body panel-body2">
+              <textarea ng-model="negExactList" class="form-control" rows="10"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Negative Phrase</h3>
+            </div>
+            <div class="panel-body panel-body2">
+              <textarea ng-model="negPhraseList" class="form-control" rows="10"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Profit margins (All Fields Required)</h3>
+            </div>
+            <div class="panel-body panel-body2">
+              <form name="loginForm" method="post">
+                <table class="table">
+                  <tr>
+                    <th style="vertical-align: middle;">Cost per unit</th>
+                    <td><input type="text" class="form-control" required="required" data-ng-model="product.cost_per_unit" /></td>
+                    <th>Total shipping costs</th>
+                    <td><input type="text" class="form-control" required="required" data-ng-model="product.total_shipping_costs" /></td>
+                  </tr>
+                  <tr>
+                    <th>Additional per unit costs</th>
+                    <td><input type="text" class="form-control" required="required" data-ng-model="product.additional_per_unit_costs" /></td>
+                    <th>Amazon FBA fees</th>
+                    <td><input type="text" class="form-control" required="required" data-ng-model="product.amazon_FBA_fees" /></td>
+                  </tr>
+                  <tr>
+                    <th>Average selling price</th>
+                    <td><input type="text" class="form-control" required="required" data-ng-model="product.average_selling_price" /></td>
+                    <th>Profit margins</th>
+                    <td><input type="text" class="form-control" data-ng-value="product.average_selling_price-product.amazon_FBA_fees-product.additional_per_unit_costs-product.total_shipping_costs-product.cost_per_unit" /></td>
+                  </tr>
+                  <tr>
+                    <th>Profit margins %</th>
+                    <td><input type="text" class="form-control" data-ng-value="(product.average_selling_price-product.amazon_FBA_fees-product.additional_per_unit_costs-product.total_shipping_costs-product.cost_per_unit)/product.average_selling_price*100 + '%'" /></td>
+                    <td colspan="2" align="right"><button class="btn btn-load" data-ng-disabled="!loginForm.$valid" data-ng-click="save_product()">Save</button></td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+          </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Campaigns
+      </h3>
+    </div>
+    <div class="panel-body">
+      <table datatable="ng" dt-options="dtOptionsCampaignList" dt-instance="dtInstanceCallbackCampaign" class="row-border hover">
+        <thead>
+          <tr>
+            <th>Campaigns</th>
+            <th>Profit</th>
+            <th>Revenue</th>
+            <th>AD Spend</th>
+            <th>AcoS,%</th>
+            <th>Impressions</th>
+            <th>Clicks</th>
+            <th>CTR%</th>
+            <th>Ave CPC</th>
+            <th>Orders</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in campaingsList">
+            <td><a data-ui-sref="ppc.campaigns({campaign: item.Campaign})">{{ item.Campaign }}</a></td>
+            <td>{{currency_sign}}{{ item.Profit/currency_rate_USD*currency_rate | number :2}}</td>
+            <td>{{currency_sign}}{{ item.Revenue/currency_rate_USD*currency_rate | number :2 }}</td>
+            <td>{{currency_sign}}{{ item.Cost/currency_rate_USD*currency_rate | number :2 }}</td>
+            <td >{{ item.Cost/item.Revenue*100 | number :1 }}</td>
+            <td >{{ item.Impressions | number :0 }}</td>
+            <td >{{ item.Clicks | number :0 }}</td>
+            <td >{{ item.CTR | number :2 }}</td>
+            <td title="{{ item.AvCPC | number :10 }}">{{ item.AvCPC | number :2 }}</td>
+            <td>{{ item.Orders | number :0 }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <td>Total:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+    $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+          $(this).popover('hide');
+        }
+      });
+    });
+  });
+</script>

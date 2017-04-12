@@ -1,0 +1,52 @@
+<div data-ng-show="isHaveProduct === 'no'">
+  <h3>Requested product not found</h3>
+</div>
+
+<div data-ng-show="isHaveProduct === 'yes'">
+  <h3></h3>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" data-target="#mtab1">Start</a></li>
+    <li><a data-toggle="tab" data-target="#mtab2">Keyword Tracking</a></li>
+    <li><a data-toggle="tab" data-target="#mtab3">Search Term Fields</a></li>
+    <li><a data-toggle="tab" data-target="#mtab4">A/B Split Testing</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="mtab1" class="tab-pane fade in active" ng-include="'/frontend/ppc/product/product-start.html'">
+    </div>
+    <div id="mtab2" class="tab-pane fade" ng-include="'/frontend/ppc/product/product-keywordtracking.html'">
+    </div>
+    <div id="mtab3" class="tab-pane fade" ng-include="'/frontend/ppc/product/product-searchterm.html'">
+    </div>
+    <div id="mtab4" class="tab-pane fade" ng-include="'/frontend/ppc/product/product-absplittesting.html'">
+    </div>
+  </div>
+</div>
+
+</div>
+<style type="text/css">
+  .green {
+    background-color: lightgreen;
+  }
+
+  .black {
+    background-color: white;
+  }
+
+  .yellow {
+    background-color: lightgoldenrodyellow;
+  }
+</style>
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+    $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+          $(this).popover('hide');
+        }
+      });
+    });
+  });
+</script>

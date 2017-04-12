@@ -1,0 +1,38 @@
+
+<div class="modal-header">
+  <h3>{{message}}</h3>
+</div>
+<div class="modal-body">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">SKU list</h3>
+    </div>
+    <div class="panel-body">
+
+      <table datatable="ng" dt-options="dtOptions" class="row-border hover">
+        <thead>
+        <tr>
+          <th><input type="checkbox" ng-model="checkFeature.all" ng-click="onCheckFeatureAll()"></th>
+          <th>SKU</th>
+          <th>ASIN</th>
+          <th>Image</th>
+          <th>Products name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="product in products">
+          <td><input type="checkbox" ng-click="onCheckFeatureOne()" checklist-model="checkFeature.selected" checklist-value="product"></td>
+          <td><span ><a data-ui-sref="ppc.product({id: product.id})">{{ product.SKU }}</a></span></td>
+          <td><span >{{ product.asin }}</span></td>
+          <td><img ng-src="{{ product.image_sm.replace('http://ecx.', 'https://images-na.ssl-') }}" ng-if="product.image_sm"></td>
+          <td><span ><a data-ui-sref="ppc.product({id: product.id})">{{ product["product-name"]}}</a></span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="ok()">OK</button>
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

@@ -1,0 +1,89 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-lg-4">
+        <h3 class="panel-title">
+          Keywords
+        </h3>
+        <button class="btn" data-ng-click="copyKeywords(zeroImpressionKeywords, 'ZERO_IMPRESSIONS')">
+          Copy To Clipboard
+        </button>
+      </div>
+      <div class="col-lg-5 filterlist text-right">
+        <a data-target="#filterZeroImpressions" class="btn-filter" data-toggle="collapse">
+          Filter Results
+        </a>
+        <div id="filterZeroImpressions" class="collapse">
+          <div class="rowfilter">
+            <label>Select saved model:</label>
+            <select class="sel1" data-ng-model="filterModelZeroImpressions.select">
+              <option ng-repeat="opt in filterModelsZeroImpressions" value="{{opt.id}}">
+                {{opt.name}}
+              </option>
+            </select>
+            <button ng-click="loadFilterModel(filterModelZeroImpressions.select, MODEL_NO_ZERO_IMPRESSIONS);" class="btn btn-load" data-toggle="collapse">
+              Load
+            </button>
+          </div>
+          <div class="rowfilter">
+            <label>Select match type:</label>
+            <select class="sel2" data-ng-model="filterModelZeroImpressions.match1">
+              <option value="ANY">ANY</option>
+              <option value="BROAD">BROAD</option>
+              <option value="PHRASE">PHRASE</option>
+              <option value="EXACT">EXACT</option>
+            </select>
+          </div>
+          <div class="rowfilter">
+            <label>Model name:</label>
+            <input class="inp2" data-ng-model="filterModelZeroImpressions.name">
+          </div>
+          <div class="rowfilter" align="right">
+            <button ng-click="saveFilterModel(filterModelZeroImpressions, MODEL_NO_ZERO_IMPRESSIONS);" class="btn btn-save">
+              Save
+            </button>
+            <button ng-click="clearFilterModel(filterModelZeroImpressions)" class="btn btn-clean">
+              Clear
+            </button>
+          </div>
+          <div class="rowfilter" align="right">
+            <button ng-click="loadZeroImpressionKeywords()" class="js-close-filter">Apply</button>
+            <button class="js-close-filter">Close</button>
+          </div>
+        </div>
+        <span class="date-range-picker-label">
+          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+          <span>Date Range:</span>
+        </span>
+      </div>
+      <div class="col-lg-3">
+        <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions">
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <table datatable="ng" dt-options="dtOptionsZeroImpressionsKeywordsTable" class="row-border hover" width="100%">
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th>Match Type</th>
+          <th>Campaign</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="keyword in zeroImpressionKeywords" width="100%">
+          <td>
+            <a ng-click="addKeyword(keyword.Keyword, 'ZERO_IMPRESSIONS')">
+              <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
+            </a>
+            <a ng-click="changeKeyword(keyword.Keyword)">
+              {{keyword.Keyword}}
+            </a>
+          </td>
+          <td>{{ keyword.Match1 }}</td>
+          <td>{{ keyword['Campaign Name'] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

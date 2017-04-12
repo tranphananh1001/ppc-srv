@@ -1,0 +1,11 @@
+<div class="dropdown">
+  <div class="cpbutton">
+    <span class="cpcircle" ng-class="{1:'enabled', 2: 'paused', 3 :'archived'}[status]"></span>
+    <span class="glyphicon glyphicon-option-vertical"></span>
+  </div>
+  <ul>
+    <li ng-class="{true:'cpdisabled', false:''}[staus==1]"><a ng-click="cpHandler(1)">Enable</a></li>
+    <li ng-class="{true:'cpdisabled', false:''}[staus==2]"><a ng-click="cpHandler(2)">Pause</a></li>
+    <li ng-class="{true:'cpdisabled', false:''}[staus==3]"><a ng-click="cpHandler(3)">Archive</a></li>
+  </ul>
+</div>

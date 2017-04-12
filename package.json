@@ -1,0 +1,31 @@
+{
+  "name": "PPCEntourage",
+  "version": "0.0.1",
+  "description": "PPC Entourage",
+  "keywords": [
+    "sails.js",
+    "backend",
+    "REST",
+    "API",
+    "JWT",
+    "JSON Web Token",
+    "Passport.js",
+    "frontend",
+    "angular",
+    "slush",
+    "slush-angular"
+  ],
+  "main": "",
+  "dependencies": {
+    "angularjs-datepicker": "^2.1.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "install": "git submodule update --init --recursive && cd backend && npm install && cd ../frontend && npm install",
+    "start": "(cd backend && sails-migrations migrate && LOG_QUERIES=true sails lift) & (cd frontend && gulp dist && gulp production)",
+    "dev": "(cd backend && sails-migrations migrate && LOG_QUERIES=true sails lift) & (cd frontend && gulp build-all && gulp statics)",
+    "test": "cd backend && mocha"
+  },
+  "author": "KWiT",
+  "license": "MIT"
+}

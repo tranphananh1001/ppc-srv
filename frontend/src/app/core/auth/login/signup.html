@@ -1,0 +1,157 @@
+<div ng-show="!id" class="form-login">
+  <form name="loginForm" method="post" novalidate="novalidate">
+    <h1>
+      Sign up
+    </h1>
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="step-number">1)</div>
+      </div>
+      <div class="col-sm-10">
+        <div class="step-title">
+          Enter new email and password
+        </div>
+      </div>
+      <div class="col-sm-10 col-sm-offset-2">
+        <div class="row credentials-row">
+          <div class="col-sm-6">
+            <input class="register_input" placeholder="Enter email" autofocus autocomplete="off" required="required"
+              data-focus-on="email" data-ng-model="credentials.email">
+          </div>
+          <div class="col-sm-6">
+            <input type="password" name="password" class="register_input" placeholder="Enter password" required="required"
+              data-ng-model="credentials.password">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="step-number">2)</div>
+      </div>
+      <div class="col-sm-10">
+        <div class="step-title">
+          Select Country With Main Seller Account
+          <small>(Select where you sell, not where you live)</small>
+        </div>
+      </div>
+      <div class="col-sm-10 col-sm-offset-2 country-selection-row">
+        <input type="text" id="country">
+        <input type="hidden" ng-model="country_code" name="country_code" id="country_code">
+      </div>
+      <div class="col-sm-2">
+        <div class="step-number">3)</div>
+      </div>
+      <div class="col-sm-10">
+        <!--div class="radio1">
+          <table>
+            <tbody>
+              <tr>
+                <td style="width: 40px;">
+                  <input type="radio" name="credentials.plan" value="freemium" data-ng-model="credentials.plan" class="radio_ctrl">
+                  <label style="color:black;margin-left:1px;">F</label>
+                </td>
+                <td>
+                  <label style="color: black;">
+                    (Free)<br>[1 SKU]( Free )
+                  </label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div-->
+        <div class="radio1">
+          <table>
+            <tbody>
+              <tr>
+                <td style="width: 40px;">
+                  <input type="radio" name="credentials.plan" value="level1" data-ng-model="credentials.plan" class="radio_ctrl">
+                  <label style="color:black;margin-left:1px;">S</label>
+                </td>
+                <td>
+                  <label style="color: black;">
+                    (Succe$$ful Seller)<br>[1-5 SKU’s]( 14 Day Free Trial )
+                  </label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="radio2">
+          <table>
+            <tbody>
+              <tr>
+                <td style="width: 40px;">
+                  <input type="radio" name="credentials.plan" value="level2" data-ng-model="credentials.plan" class="radio_ctrl">
+                  <label class="radio_label">A</label>
+                </td>
+                <td>
+                  <label style="color: black;">
+                    (Advanced seller)<br>[6-21 SKU’s] ( 14 Day Free Trial )
+                  </label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="radio3">
+          <table>
+            <tbody>
+              <tr>
+                <td style="width: 40px;">
+                  <input type="radio" name="credentials.plan" value="level3" data-ng-model="credentials.plan" class="radio_ctrl">
+                  <label class="radio_label">L</label>
+                </td>
+                <td>
+                  <label style="color: black;">
+                    (Leveraged seller)<br>[22 - 52 SKU’s] ( 14 Day Free Trial )
+                  </label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--div class="radio4">
+          <table>
+            <tbody>
+              <tr>
+                <td style="width: 40px;">
+                  <input type="radio" name="credentials.plan" value="level4" data-ng-model="credentials.plan" class="radio_ctrl">
+                  <label class="radio_label">E</label>
+                </td>
+                <td>
+                  <label style="color: black;">
+                    (Entrepreneurial seller)<br>[52-112 SKU’s] ( 14 Day Free Trial )
+                  </label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div-->
+        <div class="radio5">
+          <table>
+            <tbody>
+              <tr>
+                <td style="width: 40px;">
+                  <input type="radio" name="credentials.plan" value="level5" data-ng-model="credentials.plan" class="radio_ctrl">
+                  <label class="radio_label">SS</label>
+                </td>
+                <td>
+                  <label style="color: black;">
+                    (Strategic seller)<br>[112+UNLIMITED SKU’s] ( 14 Day Free Trial )
+                  </label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm-10 col-sm-offset-2 text-center">
+        <button class="signup" data-ng-click="login_signup()" data-ng-disabled="!loginForm.$valid || !credentials.plan">
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div ng-show="id">
+  <h4>Thank You! You will now be redirected to the Settings Page</h4>
+</div>

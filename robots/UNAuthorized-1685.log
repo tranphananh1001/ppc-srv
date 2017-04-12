@@ -1,0 +1,63 @@
+[Merchant] => A1O57UV3VNZ2NY
+    [MWSAuthToken] => amzn.mws.12ad8ad9-0d0d-c62b-25d4-ec0d257223a4
+    [MarketplaceIdList] => Array
+        (
+            [Id] => Array
+                (
+                    [0] => A13V1IB3VIYZZH
+                )
+
+        )
+
+    [ReportType] => _GET_FLAT_FILE_OPEN_LISTINGS_DATA_
+    [StartDate] => DateTime Object
+        (
+            [date] => 2012-04-05 00:13:25.000000
+            [timezone_type] => 3
+            [timezone] => America/Los_Angeles
+        )
+
+    [EndDate] => DateTime Object
+        (
+            [date] => 2017-04-05 00:13:25.000000
+            [timezone_type] => 3
+            [timezone] => America/Los_Angeles
+        )
+
+
+* Rebuilt URL to: https://mws-eu.amazonservices.com/
+*   Trying 54.239.39.200...
+* TCP_NODELAY set
+* Connected to mws-eu.amazonservices.com (54.239.39.200) port 443 (#0)
+* TLS 1.2 connection using TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+* Server certificate: mws-eu.amazonservices.com
+* Server certificate: Symantec Class 3 Secure Server CA - G4
+* Server certificate: VeriSign Class 3 Public Primary Certification Authority - G5
+> POST / HTTP/1.1
+Host: mws-eu.amazonservices.com
+User-Agent: PPC Entourage/0.0.1 (Language=PHP/5.6.30; Platform=Darwin/x86_64/16.5.0; MWSClientVersion=2015-06-18)
+Accept: */*
+Content-Length: 464
+Content-Type: application/x-www-form-urlencoded
+* upload completely sent off: 464 out of 464 bytes
+< HTTP/1.1 401 Unauthorized
+< Server: Server
+< Date: Wed, 05 Apr 2017 07:13:27 GMT
+< Content-Type: text/xml
+< Content-Length: 306
+< Connection: keep-alive
+< x-mws-request-id: b445e503-9842-47be-9855-df977a9bf9dd
+< x-mws-timestamp: 2017-04-05T07:13:27.035Z
+< x-mws-response-context: d+njPgJq/4pkQV20DlxWBKwDYmbfRnCXjiecXs4PQDwp/BKbjh+ewXqZcvK9c/lQmY8Qe5Sewww=
+< Vary: Accept-Encoding,User-Agent
+< 
+* Curl_http_done: called premature == 0
+* Connection #0 to host mws-eu.amazonservices.com left intact
+Caught Exception: Access to Reports.RequestReport is denied
+Response Status Code: 401
+Error Code: AccessDenied
+Error Type: Sender
+Request ID: b445e503-9842-47be-9855-df977a9bf9dd
+XML: RequestId: b445e503-9842-47be-9855-df977a9bf9dd, ResponseContext: d+njPgJq/4pkQV20DlxWBKwDYmbfRnCXjiecXs4PQDwp/BKbjh+ewXqZcvK9c/lQmY8Qe5Sewww=, Timestamp: 2017-04-05T07:13:27.035Z
+ResponseHeaderMetadata: 
+

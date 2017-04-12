@@ -1,0 +1,67 @@
+<div data-ng-show="KPI">
+  <div class="clearfix">
+    <h3 class="pull-left">{{campaignName}}</h3>
+    <div class="pull-right">
+      <img ng-src={{opImage}} style="max-height: 120px;" />
+    </div>
+  </div>
+  <ul class="nav nav-tabs single-campaign-tab-container">
+    <li class="active">
+      <a data-toggle="tab" data-target="#mtab1">Start/Sku Op</a>
+    </li>
+    <li>
+      <a data-toggle="tab" data-target="#mtab2">Keyword Optimization</a>
+    </li>
+    <li>
+      <a data-toggle="tab" data-target="#mtab4">Search Term Optimization</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div id="mtab1" class="tab-pane fade in active">
+      <div static-include="/frontend/ppc/campaign/partials/start-pane.html"></div>
+    </div>
+    <div id="mtab2" class="tab-pane fade">
+      <div static-include="/frontend/ppc/campaign/partials/keyword-pane.html"></div>
+    </div>
+    <div id="mtab4" class="tab-pane fade">
+      <div static-include="/frontend/ppc/campaign/partials/searchterm-pane.html"></div>
+    </div>
+  </div>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Negative Exact Optimization</h4>
+        </div>
+        <div class="modal-body">
+          <p>Here you can see the exact customer search terms that generated clicks and ad spend but did not lead to sales. Negative exact search terms are organized by ad spend. This way you determine the exact customer search terms that are costing you
+            the most money so you can add them as negative exact keywords in your campaign. Click on the customer search term to add that term to the selected keywords list. You can then either 1) copy those search terms to a clipboard 2) Save those search
+            terms to a list or 3) Create a new list of customer search terms
+            <br><br> To add negative exact words to your Amazon PPC campaign, go into your PPC Campaign Manager, select the appropriate campaign, Select campaign settings or the appropriate ad group. Select negative keywords. Paste the keywords and save
+            as Negative Exact.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    $('[data-toggle="popover"]').popover();
+    $('body').on('click', function(e) {
+      $('[data-toggle="popover"]').each(function() {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+          $(this).popover('hide');
+        }
+      });
+    });
+  });
+</script>
+<!-- Modal -->

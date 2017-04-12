@@ -1,0 +1,20 @@
+node_modules
+npm-debug.log
+npm-debug.log*
+
+# backend
+backend/config/local.js
+backend/node_modules
+backend/.tmp/uploads/
+
+# frontend
+frontend/node_modules
+frontend/bower_components
+frontend/config/config.json
+frontend/dist
+frontend/.tmp
+frontend/src/app/assets/pictures
+
+# robots
+robot/vendor
+robots/vendor

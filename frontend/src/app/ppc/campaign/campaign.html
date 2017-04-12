@@ -1,0 +1,133 @@
+<h2>Campaign Optimization</h2>
+<div class="campaign-op-image-container row">
+  <img src="/images/s1-min.png" class="step-image" />
+  <span class="arrow-image">
+    <img src="/images/arrow.png" />
+  </span>
+  <img src="/images/s2-min.png" class="step-image" />
+  <span class="arrow-image">
+    <img src="/images/arrow.png" />
+  </span>
+  <img src="/images/s3-min.png" class="step-image" />
+  <span class="arrow-image">
+    <img src="/images/arrow.png" />
+  </span>
+  <img src="/images/s4-min.png" class="step-image" />
+  <span class="arrow-image">
+    <img src="/images/arrow.png" />
+  </span>
+  <img src="/images/s5-min.png" class="step-image" />
+</div>
+<div data-ng-show="campaigns">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Campaign list
+        <a href="#" data-toggle="popover" title="Campaign list" data-content="A green checkmark indicates that the ACoS profit zone has been set for this campaign. A red X indicates that an ACoS profit zone has not been set for this campaign. For those campaigns that you did not set a profit zone, we will designate a universal ACoS profit zone of .1- 30%. This universal ACoS profit zone can be adjusted in the settings tab. Campaigns highlighted in Yellow indicate that you are tracking campaign results. Green indicates that tracking is complete and results are ready to be viewed.">
+          <i class="fa fa-info-circle"></i>
+        </a>
+      </h3>
+      <ul class="ul-list-1">
+        <li>A <span class="green">green</span> checkmark indicates that the ACoS profit zone has been set for this campaign.</li>
+        <li>A <span class="red">red</span> X indicates that an ACoS profit zone has not been set for this campaign. </li>
+        <li>Click on a campaign to begin the optimization process.</li>
+      </ul>
+      <div class="row" style="margin-top: -34px;">
+        <div class="col-lg-9 text-right">
+          <span class="date-range-picker-label">
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+            <span>Date Range:</span>
+          </span>
+        </div>
+        <div class="col-lg-3">
+          <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions">
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table datatable="ng" dt-options="dtOptions" dt-instance="dtInstanceCallbackCampaign" class="row-border hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Campaigns</th>
+            <th>Profit</th>
+            <th>Revenue</th>
+            <th>AD Spend</th>
+            <th>AcoS,%</th>
+            <th>CTR %</th>
+            <th>Conversion %</th>
+            <th>Impressions</th>
+            <th>Alerts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in campaigns">
+            <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+              <span class="label-success label" ng-if="item.acos1!==null">
+                <span class="glyphicon glyphicon-ok"></span>
+              </span>
+              <span class="label-danger label" ng-if="item.acos1===null">
+                <span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Please add ACoS"></span>
+              </span>
+            </td>
+            <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+              <a data-ui-sref="ppc.campaigns({id: item.CampaignId, campaign: encodeURL(item.Campaign)})">
+                {{ item.Campaign }}
+              </a>
+            </td>
+            <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+              {{currency_sign}}{{ item.Profit/currency_rate_USD*currency_rate | number :0}}
+            </td>
+            <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+              {{currency_sign}}{{ item.Revenue/currency_rate_USD*currency_rate | number :0 }}
+            </td>
+            <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+              {{currency_sign}}{{ item.Cost/currency_rate_USD*currency_rate | number :0 }}
+            </td>
+            <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+              {{ item.Cost/item.Revenue*100 | number :1 }}
+            </td>
+            <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+              {{ item.CTR * 100 | number:2 }}
+            </td>
+            <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+              {{ item.conversionRate | number:2 }}
+            </td>
+            <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'>
+              {{ item.Impressions }}
+            </td>
+            <td ng-class='{green : item.GREEN, yellow: item.YELLOW&&!item.GREEN,  black: !item.YELLOW&&!item.GREEN}'></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td>Total:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+    $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+          $(this).popover('hide');
+        }
+      });
+    });
+  });
+</script>

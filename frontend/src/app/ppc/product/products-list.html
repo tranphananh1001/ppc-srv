@@ -1,0 +1,80 @@
+<div data-ng-show="products">
+  <h3></h3>
+  <div class="text-block">
+    <h2>Listing Optimization</h2>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        SKU list
+        <a class="btn pull-right" data-ui-sref="ppc.products.update()">
+          Bulk update
+        </a>
+      </h3>
+      <ul class="ul-list-1">
+        <li>
+          A <span class="green">green</span> checkmark indicates that the profit margin has been set for this product.
+        </li>
+        <li>
+          A <span class="red">red</span> X indicates that a profit margin has not been set for this product. For those products that you did not set margins, we will designate a universal profit margin of 30%. This universal profit margin can be adjusted in the settings tab.
+        </li>
+        <li>
+          Products highlighted in yellow indicates that an a/b split test is underway.
+        </li>
+        <li>
+          Products highlighted in Green indicates that an a/b split test has been completed and a winner has been determined.
+        </li>
+      </ul>
+    </div>
+    <div class="panel-body">
+      <table datatable="ng" dt-options="dtOptions" class="row-border hover">
+        <thead>
+        <tr>
+          <th>Status</th>
+          <th>SKU</th>
+          <th>ASIN</th>
+          <th>Image</th>
+          <th>Products name</th>
+          <th>Alert</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="product in products">
+          <td ng-class='{green : product.GREEN, yellow: product.YELLOW,  black: !product.YELLOW&&!product.GREEN}'>
+          <span class="label-success label" ng-if="(product.average_selling_price!==null) && (product.amazon_FBA_fees!==null) && (product.additional_per_unit_costs!==null)
+        && (product.total_shipping_costs!==null) && (product.cost_per_unit!==null)">
+          <i class="fa fa-check" aria-hidden="true"></i></span>
+                 <i class="label-danger label" ng-if="(product.average_selling_price===null) || (product.amazon_FBA_fees===null) || (product.additional_per_unit_costs===null)
+        && (product.total_shipping_costs===null) || (product.cost_per_unit===null)">
+          <i class="fa fa-times" data-toggle="tooltip"
+                title="Please add profit margins"></i></span>
+          </td>
+          <td ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'><span ><a data-ui-sref="ppc.product({id: product.id})">{{ product.sku }}</a></span></td>
+          <td ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'><span >{{ product.asin }}</span></td>
+          <td ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'><img ng-src="{{ product.image_sm.replace('http://ecx.', 'https://images-na.ssl-') }}" ng-if="product.image_sm"></td>
+          <td ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'>
+            <span><a data-ui-sref="ppc.product({id: product.id})">{{ product["product-name"]}}</a></span>
+          </td>
+          <td ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'>
+            <span><a data-ui-sref="ppc.product({id: product.id})">{{ product.alerts}}</a></span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+    $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+          $(this).popover('hide');
+        }
+      });
+    });
+  });
+</script>

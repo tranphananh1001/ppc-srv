@@ -1,0 +1,1025 @@
+Select * from listing_reports_data where user=1223Select * from users u, product_advertising_keys p, mws m where m.user=u.id and u.id=1223 and m.country_id=p.contry_codeobject(SimpleXMLElement)#30 (2) {
+  ["OperationRequest"]=>
+  object(SimpleXMLElement)#28 (4) {
+    ["HTTPHeaders"]=>
+    object(SimpleXMLElement)#22 (1) {
+      ["Header"]=>
+      object(SimpleXMLElement)#19 (1) {
+        ["@attributes"]=>
+        array(2) {
+          ["Name"]=>
+          string(9) "UserAgent"
+          ["Value"]=>
+          string(14) "ApaiIO [2.0.0]"
+        }
+      }
+    }
+    ["RequestId"]=>
+    string(36) "59ad1e84-dfc0-49ed-bd96-359c73ef9416"
+    ["Arguments"]=>
+    object(SimpleXMLElement)#21 (1) {
+      ["Argument"]=>
+      array(9) {
+        [0]=>
+        object(SimpleXMLElement)#19 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(14) "AWSAccessKeyId"
+            ["Value"]=>
+            string(20) "AKIAJMFHX7R6WR52VITA"
+          }
+        }
+        [1]=>
+        object(SimpleXMLElement)#33 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(12) "AssociateTag"
+            ["Value"]=>
+            string(15) "ppcentourage-20"
+          }
+        }
+        [2]=>
+        object(SimpleXMLElement)#34 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(6) "ItemId"
+            ["Value"]=>
+            string(10) "B01LVZUTID"
+          }
+        }
+        [3]=>
+        object(SimpleXMLElement)#27 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(9) "Operation"
+            ["Value"]=>
+            string(10) "ItemLookup"
+          }
+        }
+        [4]=>
+        object(SimpleXMLElement)#29 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(13) "ResponseGroup"
+            ["Value"]=>
+            string(12) "Large,Images"
+          }
+        }
+        [5]=>
+        object(SimpleXMLElement)#35 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(7) "Service"
+            ["Value"]=>
+            string(19) "AWSECommerceService"
+          }
+        }
+        [6]=>
+        object(SimpleXMLElement)#36 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(9) "Timestamp"
+            ["Value"]=>
+            string(20) "2017-04-05T08:15:56Z"
+          }
+        }
+        [7]=>
+        object(SimpleXMLElement)#37 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(7) "Version"
+            ["Value"]=>
+            string(10) "2013-08-01"
+          }
+        }
+        [8]=>
+        object(SimpleXMLElement)#38 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(9) "Signature"
+            ["Value"]=>
+            string(44) "Rptd0YcyZGY+dVRyjYGqrcGMmF2SkFohPws26CK78w0="
+          }
+        }
+      }
+    }
+    ["RequestProcessingTime"]=>
+    string(18) "0.0271756120000000"
+  }
+  ["Items"]=>
+  object(SimpleXMLElement)#20 (2) {
+    ["Request"]=>
+    object(SimpleXMLElement)#21 (2) {
+      ["IsValid"]=>
+      string(4) "True"
+      ["ItemLookupRequest"]=>
+      object(SimpleXMLElement)#38 (4) {
+        ["IdType"]=>
+        string(4) "ASIN"
+        ["ItemId"]=>
+        string(10) "B01LVZUTID"
+        ["ResponseGroup"]=>
+        array(2) {
+          [0]=>
+          string(5) "Large"
+          [1]=>
+          string(6) "Images"
+        }
+        ["VariationPage"]=>
+        string(3) "All"
+      }
+    }
+    ["Item"]=>
+    object(SimpleXMLElement)#22 (16) {
+      ["ASIN"]=>
+      string(10) "B01LVZUTID"
+      ["ParentASIN"]=>
+      string(10) "B01LW7MQ9A"
+      ["DetailPageURL"]=>
+      string(199) "https://www.amazon.com/BarTrendz-Premium-Moscow-Copper-Bonus/dp/B01LVZUTID?psc=1&SubscriptionId=AKIAJMFHX7R6WR52VITA&tag=ppcentourage-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=B01LVZUTID"
+      ["ItemLinks"]=>
+      object(SimpleXMLElement)#38 (1) {
+        ["ItemLink"]=>
+        array(7) {
+          [0]=>
+          object(SimpleXMLElement)#42 (2) {
+            ["Description"]=>
+            string(17) "Technical Details"
+            ["URL"]=>
+            string(203) "https://www.amazon.com/BarTrendz-Premium-Moscow-Copper-Bonus/dp/tech-data/B01LVZUTID?SubscriptionId=AKIAJMFHX7R6WR52VITA&tag=ppcentourage-20&linkCode=xm2&camp=2025&creative=386001&creativeASIN=B01LVZUTID"
+          }
+          [1]=>
+          object(SimpleXMLElement)#43 (2) {
+            ["Description"]=>
+            string(20) "Add To Baby Registry"
+            ["URL"]=>
+            string(190) "https://www.amazon.com/gp/registry/baby/add-item.html?asin.0=B01LVZUTID&SubscriptionId=AKIAJMFHX7R6WR52VITA&tag=ppcentourage-20&linkCode=xm2&camp=2025&creative=386001&creativeASIN=B01LVZUTID"
+          }
+          [2]=>
+          object(SimpleXMLElement)#44 (2) {
+            ["Description"]=>
+            string(23) "Add To Wedding Registry"
+            ["URL"]=>
+            string(193) "https://www.amazon.com/gp/registry/wedding/add-item.html?asin.0=B01LVZUTID&SubscriptionId=AKIAJMFHX7R6WR52VITA&tag=ppcentourage-20&linkCode=xm2&camp=2025&creative=386001&creativeASIN=B01LVZUTID"
+          }
+          [3]=>
+          object(SimpleXMLElement)#45 (2) {
+            ["Description"]=>
+            string(15) "Add To Wishlist"
+            ["URL"]=>
+            string(194) "https://www.amazon.com/gp/registry/wishlist/add-item.html?asin.0=B01LVZUTID&SubscriptionId=AKIAJMFHX7R6WR52VITA&tag=ppcentourage-20&linkCode=xm2&camp=2025&creative=386001&creativeASIN=B01LVZUTID"
+          }
+          [4]=>
+          object(SimpleXMLElement)#46 (2) {
+            ["Description"]=>
+            string(13) "Tell A Friend"
+            ["URL"]=>
+            string(163) "https://www.amazon.com/gp/pdp/taf/B01LVZUTID?SubscriptionId=AKIAJMFHX7R6WR52VITA&tag=ppcentourage-20&linkCode=xm2&camp=2025&creative=386001&creativeASIN=B01LVZUTID"
+          }
+          [5]=>
+          object(SimpleXMLElement)#47 (2) {
+            ["Description"]=>
+            string(20) "All Customer Reviews"
+            ["URL"]=>
+            string(167) "https://www.amazon.com/review/product/B01LVZUTID?SubscriptionId=AKIAJMFHX7R6WR52VITA&tag=ppcentourage-20&linkCode=xm2&camp=2025&creative=386001&creativeASIN=B01LVZUTID"
+          }
+          [6]=>
+          object(SimpleXMLElement)#48 (2) {
+            ["Description"]=>
+            string(10) "All Offers"
+            ["URL"]=>
+            string(169) "https://www.amazon.com/gp/offer-listing/B01LVZUTID?SubscriptionId=AKIAJMFHX7R6WR52VITA&tag=ppcentourage-20&linkCode=xm2&camp=2025&creative=386001&creativeASIN=B01LVZUTID"
+          }
+        }
+      }
+      ["SalesRank"]=>
+      string(5) "41357"
+      ["SmallImage"]=>
+      object(SimpleXMLElement)#37 (3) {
+        ["URL"]=>
+        string(71) "https://images-na.ssl-images-amazon.com/images/I/51qVTtdTymL._SL75_.jpg"
+        ["Height"]=>
+        string(2) "69"
+        ["Width"]=>
+        string(2) "75"
+      }
+      ["MediumImage"]=>
+      object(SimpleXMLElement)#36 (3) {
+        ["URL"]=>
+        string(72) "https://images-na.ssl-images-amazon.com/images/I/51qVTtdTymL._SL160_.jpg"
+        ["Height"]=>
+        string(3) "146"
+        ["Width"]=>
+        string(3) "160"
+      }
+      ["LargeImage"]=>
+      object(SimpleXMLElement)#35 (3) {
+        ["URL"]=>
+        string(64) "https://images-na.ssl-images-amazon.com/images/I/51qVTtdTymL.jpg"
+        ["Height"]=>
+        string(3) "457"
+        ["Width"]=>
+        string(3) "500"
+      }
+      ["ImageSets"]=>
+      object(SimpleXMLElement)#29 (1) {
+        ["ImageSet"]=>
+        array(5) {
+          [0]=>
+          object(SimpleXMLElement)#48 (8) {
+            ["@attributes"]=>
+            array(1) {
+              ["Category"]=>
+              string(7) "variant"
+            }
+            ["SwatchImage"]=>
+            object(SimpleXMLElement)#43 (3) {
+              ["URL"]=>
+              string(71) "https://images-na.ssl-images-amazon.com/images/I/51UcCyS8PtL._SL30_.jpg"
+              ["Height"]=>
+              string(2) "30"
+              ["Width"]=>
+              string(2) "28"
+            }
+            ["SmallImage"]=>
+            object(SimpleXMLElement)#42 (3) {
+              ["URL"]=>
+              string(71) "https://images-na.ssl-images-amazon.com/images/I/51UcCyS8PtL._SL75_.jpg"
+              ["Height"]=>
+              string(2) "75"
+              ["Width"]=>
+              string(2) "69"
+            }
+            ["ThumbnailImage"]=>
+            object(SimpleXMLElement)#49 (3) {
+              ["URL"]=>
+              string(71) "https://images-na.ssl-images-amazon.com/images/I/51UcCyS8PtL._SL75_.jpg"
+              ["Height"]=>
+              string(2) "75"
+              ["Width"]=>
+              string(2) "69"
+            }
+            ["TinyImage"]=>
+            object(SimpleXMLElement)#50 (3) {
+              ["URL"]=>
+              string(72) "https://images-na.ssl-images-amazon.com/images/I/51UcCyS8PtL._SL110_.jpg"
+              ["Height"]=>
+              string(3) "110"
+              ["Width"]=>
+              string(3) "102"
+            }
+            ["MediumImage"]=>
+            object(SimpleXMLElement)#51 (3) {
+              ["URL"]=>
+              string(72) "https://images-na.ssl-images-amazon.com/images/I/51UcCyS8PtL._SL160_.jpg"
+              ["Height"]=>
+              string(3) "160"
+              ["Width"]=>
+              string(3) "148"
+            }
+            ["LargeImage"]=>
+            object(SimpleXMLElement)#52 (3) {
+              ["URL"]=>
+              string(64) "https://images-na.ssl-images-amazon.com/images/I/51UcCyS8PtL.jpg"
+              ["Height"]=>
+              string(3) "500"
+              ["Width"]=>
+              string(3) "463"
+            }
+            ["HiResImage"]=>
+            object(SimpleXMLElement)#53 (3) {
+              ["URL"]=>
+              string(64) "https://images-na.ssl-images-amazon.com/images/I/71irk0UI99L.jpg"
+              ["Height"]=>
+              string(4) "1619"
+              ["Width"]=>
+              string(4) "1500"
+            }
+          }
+          [1]=>
+          object(SimpleXMLElement)#47 (8) {
+            ["@attributes"]=>
+            array(1) {
+              ["Category"]=>
+              string(7) "variant"
+            }
+            ["SwatchImage"]=>
+            object(SimpleXMLElement)#53 (3) {
+              ["URL"]=>
+              string(71) "https://images-na.ssl-images-amazon.com/images/I/41E4Q8RxC4L._SL30_.jpg"
+              ["Height"]=>
+              string(2) "21"
+              ["Width"]=>
+              string(2) "30"
+            }
+            ["SmallImage"]=>
+            object(SimpleXMLElement)#52 (3) {
+              ["URL"]=>
+              string(71) "https://images-na.ssl-images-amazon.com/images/I/41E4Q8RxC4L._SL75_.jpg"
+              ["Height"]=>
+              string(2) "53"
+              ["Width"]=>
+              string(2) "75"
+            }
+            ["ThumbnailImage"]=>
+            object(SimpleXMLElement)#51 (3) {
+              ["URL"]=>
+              string(71) "https://images-na.ssl-images-amazon.com/images/I/41E4Q8RxC4L._SL75_.jpg"
+              ["Height"]=>
+              string(2) "53"
+              ["Width"]=>
+              string(2) "75"
+            }
+            ["TinyImage"]=>
+            object(SimpleXMLElement)#50 (3) {
+              ["URL"]=>
+              string(72) "https://images-na.ssl-images-amazon.com/images/I/41E4Q8RxC4L._SL110_.jpg"
+              ["Height"]=>
+              string(2) "78"
+              ["Width"]=>
+              string(3) "110"
+            }
+            ["MediumImage"]=>
+            object(SimpleXMLElement)#49 (3) {
+              ["URL"]=>
+              string(72) "https://images-na.ssl-images-amazon.com/images/I/41E4Q8RxC4L._SL160_.jpg"
+              ["Height"]=>
+              string(3) "114"
+              ["Width"]=>
+              string(3) "160"
+            }
+            ["LargeImage"]=>
+            object(SimpleXMLElement)#42 (3) {
+              ["URL"]=>
+              string(64) "https://images-na.ssl-images-amazon.com/images/I/41E4Q8RxC4L.jpg"
+              ["Height"]=>
+              string(3) "355"
+              ["Width"]=>
+              string(3) "500"
+            }
+            ["HiResImage"]=>
+            object(SimpleXMLElement)#43 (3) {
+              ["URL"]=>
+              string(64) "https://images-na.ssl-images-amazon.com/images/I/71tqYFrLPHL.jpg"
+              ["Height"]=>
+              string(4) "1250"
+              ["Width"]=>
+              string(4) "1763"
+            }
+          }
+          [2]=>
+          object(SimpleXMLElement)#46 (8) {
+            ["@attributes"]=>
+            array(1) {
+              ["Category"]=>
+              string(7) "variant"
+            }
+            ["SwatchImage"]=>
+            object(SimpleXMLElement)#43 (3) {
+              ["URL"]=>
+              string(71) "https://images-na.ssl-images-amazon.com/images/I/5108p3cWTfL._SL30_.jpg"
+              ["Height"]=>
+              string(2) "20"
+              ["Width"]=>
+              string(2) "30"
+            }
+            ["SmallImage"]=>
+            object(SimpleXMLElement)#42 (3) {
+              ["URL"]=>
+              string(71) "https://images-na.ssl-images-amazon.com/images/I/5108p3cWTfL._SL75_.jpg"
+              ["Height"]=>
+              string(2) "50"
+              ["Width"]=>
+              string(2) "75"
+            }
+            ["ThumbnailImage"]=>
+            object(SimpleXMLElement)#49 (3) {
+              ["URL"]=>
+              string(71) "https://images-na.ssl-images-amazon.com/images/I/5108p3cWTfL._SL75_.jpg"
+              ["Height"]=>
+              string(2) "50"
+              ["Width"]=>
+              string(2) "75"
+            }
+            ["TinyImage"]=>
+            object(SimpleXMLElement)#50 (3) {
+              ["URL"]=>
+              string(72) "https://images-na.ssl-images-amazon.com/images/I/5108p3cWTfL._SL110_.jpg"
+              ["Height"]=>
+              string(2) "74"
+              ["Width"]=>
+              string(3) "110"
+            }
+            ["MediumImage"]=>
+            object(SimpleXMLElement)#51 (3) {
+              ["URL"]=>
+              string(72) "https://images-na.ssl-images-amazon.com/images/I/5108p3cWTfL._SL160_.jpg"
+              ["Height"]=>
+              string(3) "107"
+              ["Width"]=>
+              string(3) "160"
+            }
+            ["LargeImage"]=>
+            object(SimpleXMLElement)#52 (3) {
+              ["URL"]=>
+              string(64) "https://images-na.ssl-images-amazon.com/images/I/5108p3cWTfL.jpg"
+              ["Height"]=>
+              string(3) "335"
+              ["Width"]=>
+              string(3) "500"
+            }
+            ["HiResImage"]=>
+            object(SimpleXMLElement)#53 (3) {
+              ["URL"]=>
+              string(64) "https://images-na.ssl-images-amazon.com/images/I/814VT2ey-rL.jpg"
+              ["Height"]=>
+              string(4) "1500"
+              ["Width"]=>
+              string(4) "2241"
+            }
+          }
+          [3]=>
+          object(SimpleXMLElement)#45 (8) {
+            ["@attributes"]=>
+            array(1) {
+              ["Category"]=>
+              string(7) "variant"
+            }
+            ["SwatchImage"]=>
+            object(SimpleXMLElement)#53 (3) {
+              ["URL"]=>
+              string(73) "https://images-na.ssl-images-amazon.com/images/I/5149a8Xus%2BL._SL30_.jpg"
+              ["Height"]=>
+              string(2) "30"
+              ["Width"]=>
+              string(2) "30"
+            }
+            ["SmallImage"]=>
+            object(SimpleXMLElement)#52 (3) {
+              ["URL"]=>
+              string(73) "https://images-na.ssl-images-amazon.com/images/I/5149a8Xus%2BL._SL75_.jpg"
+              ["Height"]=>
+              string(2) "75"
+              ["Width"]=>
+              string(2) "75"
+            }
+            ["ThumbnailImage"]=>
+            object(SimpleXMLElement)#51 (3) {
+              ["URL"]=>
+              string(73) "https://images-na.ssl-images-amazon.com/images/I/5149a8Xus%2BL._SL75_.jpg"
+              ["Height"]=>
+              string(2) "75"
+              ["Width"]=>
+              string(2) "75"
+            }
+            ["TinyImage"]=>
+            object(SimpleXMLElement)#50 (3) {
+              ["URL"]=>
+              string(74) "https://images-na.ssl-images-amazon.com/images/I/5149a8Xus%2BL._SL110_.jpg"
+              ["Height"]=>
+              string(3) "110"
+              ["Width"]=>
+              string(3) "110"
+            }
+            ["MediumImage"]=>
+            object(SimpleXMLElement)#49 (3) {
+              ["URL"]=>
+              string(74) "https://images-na.ssl-images-amazon.com/images/I/5149a8Xus%2BL._SL160_.jpg"
+              ["Height"]=>
+              string(3) "160"
+              ["Width"]=>
+              string(3) "160"
+            }
+            ["LargeImage"]=>
+            object(SimpleXMLElement)#42 (3) {
+              ["URL"]=>
+              string(66) "https://images-na.ssl-images-amazon.com/images/I/5149a8Xus%2BL.jpg"
+              ["Height"]=>
+              string(3) "500"
+              ["Width"]=>
+              string(3) "500"
+            }
+            ["HiResImage"]=>
+            object(SimpleXMLElement)#43 (3) {
+              ["URL"]=>
+              string(64) "https://images-na.ssl-images-amazon.com/images/I/71Lkg-nSSvL.jpg"
+              ["Height"]=>
+              string(4) "1024"
+              ["Width"]=>
+              string(4) "1024"
+            }
+          }
+          [4]=>
+          object(SimpleXMLElement)#44 (8) {
+            ["@attributes"]=>
+            array(1) {
+              ["Category"]=>
+              string(7) "primary"
+            }
+            ["SwatchImage"]=>
+            object(SimpleXMLElement)#43 (3) {
+              ["URL"]=>
+              string(71) "https://images-na.ssl-images-amazon.com/images/I/51qVTtdTymL._SL30_.jpg"
+              ["Height"]=>
+              string(2) "27"
+              ["Width"]=>
+              string(2) "30"
+            }
+            ["SmallImage"]=>
+            object(SimpleXMLElement)#42 (3) {
+              ["URL"]=>
+              string(71) "https://images-na.ssl-images-amazon.com/images/I/51qVTtdTymL._SL75_.jpg"
+              ["Height"]=>
+              string(2) "69"
+              ["Width"]=>
+              string(2) "75"
+            }
+            ["ThumbnailImage"]=>
+            object(SimpleXMLElement)#49 (3) {
+              ["URL"]=>
+              string(71) "https://images-na.ssl-images-amazon.com/images/I/51qVTtdTymL._SL75_.jpg"
+              ["Height"]=>
+              string(2) "69"
+              ["Width"]=>
+              string(2) "75"
+            }
+            ["TinyImage"]=>
+            object(SimpleXMLElement)#50 (3) {
+              ["URL"]=>
+              string(72) "https://images-na.ssl-images-amazon.com/images/I/51qVTtdTymL._SL110_.jpg"
+              ["Height"]=>
+              string(3) "101"
+              ["Width"]=>
+              string(3) "110"
+            }
+            ["MediumImage"]=>
+            object(SimpleXMLElement)#51 (3) {
+              ["URL"]=>
+              string(72) "https://images-na.ssl-images-amazon.com/images/I/51qVTtdTymL._SL160_.jpg"
+              ["Height"]=>
+              string(3) "146"
+              ["Width"]=>
+              string(3) "160"
+            }
+            ["LargeImage"]=>
+            object(SimpleXMLElement)#52 (3) {
+              ["URL"]=>
+              string(64) "https://images-na.ssl-images-amazon.com/images/I/51qVTtdTymL.jpg"
+              ["Height"]=>
+              string(3) "457"
+              ["Width"]=>
+              string(3) "500"
+            }
+            ["HiResImage"]=>
+            object(SimpleXMLElement)#53 (3) {
+              ["URL"]=>
+              string(64) "https://images-na.ssl-images-amazon.com/images/I/81whSE1WarL.jpg"
+              ["Height"]=>
+              string(4) "1474"
+              ["Width"]=>
+              string(4) "1613"
+            }
+          }
+        }
+      }
+      ["ItemAttributes"]=>
+      object(SimpleXMLElement)#27 (17) {
+        ["Brand"]=>
+        string(9) "BarTrendz"
+        ["Color"]=>
+        string(6) "Copper"
+        ["EAN"]=>
+        string(13) "0742574356991"
+        ["EANList"]=>
+        object(SimpleXMLElement)#44 (1) {
+          ["EANListElement"]=>
+          string(13) "0742574356991"
+        }
+        ["Feature"]=>
+        array(5) {
+          [0]=>
+          string(368) "✔ PREMIUM QUALITY MOSCOW MULE MUG SET: If you love drinking the occasional cocktail at home and enjoying some hometainment with your beloved one, then we got you covered. We proudly present you the finest copper mug set of 2 that will be your drinking buddy from on, offering you great and rich flavors every single time you feel like drinking alone or with friends."
+          [1]=>
+          string(427) "✔ HIGH QUALITY 100% SOLID COPPER MUGS: Forget all about those so called copper mugs and trust our 100% solid copper mugs to the fullest. They are made from great quality copper and aren't copper coated or lined with stainless steel, tin or nickel unlike others on the market. Prepare yourself a delicious Pina Colada or a strong Zombie without worrying about the ice melting all the time thanks to their insulated properties!"
+          [2]=>
+          string(414) "✔ ERGONOMIC HANDLES & HANDCRAFTED HAMMERED CUPS: Upon designing these mugs we tried to make them as convenient to use as possible. They are equipped with welded handles rather than riveted ones that cause uncontrollable leaks after a while. They are shaped with no sharp edge around the lip area thus facilitating the drinking experience to maximum. Their handcrafted design makes these mugs to be one of a kind."
+          [3]=>
+          string(438) "✔ MULTIPURPOSE MOSCOW MULE CUPS FOR SAFE DRINKING: BarTrendz Russian copper cups are safe to be used on a daily basis since they have no lacquer linings or chemical sealants to deter the great taste of copper. They are made in famous for its copper India! Our antique mule copper mugs are ideal for cocktails, beer, vodka, whiskey, tequila, all kinds of beverages and drinks even iced coffee, iced tea and water! Pure perfection, right?"
+          [4]=>
+          string(405) "✔ UNIQUE RUSSIAN STANDARD COPPER MUG GIFT SET OF 2 WITH 3 BONUSES: If you are looking for the greatest hammered mug set to impress family and friends at the next gathering, then our handcrafted set is the way to go. Along with the 2 solid copper cups, you will be getting a copper shot glass and 2 eBooks. One about "Healthy Living With Copper" and the other one "The Moscow Mule Guide: Drink In Style"."
+        }
+        ["Label"]=>
+        string(22) "Virtual Impact Sellers"
+        ["ListPrice"]=>
+        object(SimpleXMLElement)#45 (3) {
+          ["Amount"]=>
+          string(4) "4997"
+          ["CurrencyCode"]=>
+          string(3) "USD"
+          ["FormattedPrice"]=>
+          string(6) "$49.97"
+        }
+        ["Manufacturer"]=>
+        string(22) "Virtual Impact Sellers"
+        ["PackageDimensions"]=>
+        object(SimpleXMLElement)#46 (4) {
+          ["Height"]=>
+          string(3) "420"
+          ["Length"]=>
+          string(3) "790"
+          ["Weight"]=>
+          string(3) "105"
+          ["Width"]=>
+          string(3) "430"
+        }
+        ["PackageQuantity"]=>
+        string(1) "2"
+        ["ProductGroup"]=>
+        string(7) "Kitchen"
+        ["ProductTypeName"]=>
+        string(7) "KITCHEN"
+        ["Publisher"]=>
+        string(22) "Virtual Impact Sellers"
+        ["Studio"]=>
+        string(22) "Virtual Impact Sellers"
+        ["Title"]=>
+        string(148) "BarTrendz Premium Moscow Mule Copper Mugs Set of 2 Bonus Copper Shot Glass - Two 16 oz Copper Cups for Moscow Mules - Solid 100% Hammered Copper Mug"
+        ["UPC"]=>
+        string(12) "742574356991"
+        ["UPCList"]=>
+        object(SimpleXMLElement)#47 (1) {
+          ["UPCListElement"]=>
+          string(12) "742574356991"
+        }
+      }
+      ["OfferSummary"]=>
+      object(SimpleXMLElement)#34 (6) {
+        ["LowestNewPrice"]=>
+        object(SimpleXMLElement)#47 (3) {
+          ["Amount"]=>
+          string(4) "2162"
+          ["CurrencyCode"]=>
+          string(3) "USD"
+          ["FormattedPrice"]=>
+          string(6) "$21.62"
+        }
+        ["LowestUsedPrice"]=>
+        object(SimpleXMLElement)#46 (3) {
+          ["Amount"]=>
+          string(4) "3278"
+          ["CurrencyCode"]=>
+          string(3) "USD"
+          ["FormattedPrice"]=>
+          string(6) "$32.78"
+        }
+        ["TotalNew"]=>
+        string(1) "1"
+        ["TotalUsed"]=>
+        string(1) "1"
+        ["TotalCollectible"]=>
+        string(1) "0"
+        ["TotalRefurbished"]=>
+        string(1) "0"
+      }
+      ["Offers"]=>
+      object(SimpleXMLElement)#33 (4) {
+        ["TotalOffers"]=>
+        string(1) "1"
+        ["TotalOfferPages"]=>
+        string(1) "1"
+        ["MoreOffersUrl"]=>
+        string(169) "https://www.amazon.com/gp/offer-listing/B01LVZUTID?SubscriptionId=AKIAJMFHX7R6WR52VITA&tag=ppcentourage-20&linkCode=xm2&camp=2025&creative=386001&creativeASIN=B01LVZUTID"
+        ["Offer"]=>
+        object(SimpleXMLElement)#46 (2) {
+          ["OfferAttributes"]=>
+          object(SimpleXMLElement)#47 (1) {
+            ["Condition"]=>
+            string(3) "New"
+          }
+          ["OfferListing"]=>
+          object(SimpleXMLElement)#45 (9) {
+            ["OfferListingId"]=>
+            string(164) "mp8nxDGuPBfZc8wMA71vEfiqtoSILNDmLR5TeR0FXi4hkpj81Ud4Wa%2BIOsQ4JY6DRZ62IcON3NoLqEJMpEwXtiXAKDIvjMol1pT8eKbKuLjqp1ICOpbJHUgN4swBJwp%2Bq18pabnOK0qwCfq00OqKQAtwoASTsfKt"
+            ["Price"]=>
+            object(SimpleXMLElement)#44 (3) {
+              ["Amount"]=>
+              string(4) "4997"
+              ["CurrencyCode"]=>
+              string(3) "USD"
+              ["FormattedPrice"]=>
+              string(6) "$49.97"
+            }
+            ["SalePrice"]=>
+            object(SimpleXMLElement)#48 (3) {
+              ["Amount"]=>
+              string(4) "2162"
+              ["CurrencyCode"]=>
+              string(3) "USD"
+              ["FormattedPrice"]=>
+              string(6) "$21.62"
+            }
+            ["AmountSaved"]=>
+            object(SimpleXMLElement)#53 (3) {
+              ["Amount"]=>
+              string(4) "2835"
+              ["CurrencyCode"]=>
+              string(3) "USD"
+              ["FormattedPrice"]=>
+              string(6) "$28.35"
+            }
+            ["PercentageSaved"]=>
+            string(2) "57"
+            ["Availability"]=>
+            string(25) "Usually ships in 24 hours"
+            ["AvailabilityAttributes"]=>
+            object(SimpleXMLElement)#52 (3) {
+              ["AvailabilityType"]=>
+              string(3) "now"
+              ["MinimumHours"]=>
+              string(1) "0"
+              ["MaximumHours"]=>
+              string(1) "0"
+            }
+            ["IsEligibleForSuperSaverShipping"]=>
+            string(1) "1"
+            ["IsEligibleForPrime"]=>
+            string(1) "1"
+          }
+        }
+      }
+      ["CustomerReviews"]=>
+      object(SimpleXMLElement)#19 (2) {
+        ["IFrameURL"]=>
+        string(204) "https://www.amazon.com/reviews/iframe?akid=AKIAJMFHX7R6WR52VITA&alinkCode=xm2&asin=B01LVZUTID&atag=ppcentourage-20&exp=2017-04-06T08%3A15%3A56Z&v=2&sig=xOFGTlwbhoqZg%252FYaHi6guRQEu5QXvDEbnz4eEvK6Gd8%253D"
+        ["HasReviews"]=>
+        string(4) "true"
+      }
+      ["EditorialReviews"]=>
+      object(SimpleXMLElement)#39 (1) {
+        ["EditorialReview"]=>
+        object(SimpleXMLElement)#46 (3) {
+          ["Source"]=>
+          string(19) "Product Description"
+          ["Content"]=>
+          string(1951) "<p><b>Unsurpassed Drinking Experiences With The Most Elegant Copper Moscow Mule Mugs! </b></p><p>Are you sick and tired of drinking your lime filled Cuba Libre in plastic glasses and you need to spice things up in the kitchen? Do you worry about rusty and full of corrosion copper lined cups and looking for a truly authentic pure copper cup set? </p><p>If the answer to those questions is yes, then you should keep on reading because we have the most durable and well-crafted Moscow mule copper mugs for you! </p><p><b>Copper Cup Resurgence Now For A Healthier Lifestyle </b></p><p>Besides drinking your favorite cocktails and beverages in style, these copper mugs will highly benefit other parts of your life as well. </p><p>Did you know that drinking water from a copper mug can be unbelievable beneficial to your health? Surprised as well, right? </p><p>Copper has anti-bacterial, anti-microbial, anti-viral, and anti-inflammatory properties which can help in speeding up recovery and heal wounds as well. </p><p>On the other hand, copper is also an integral part of our diet and our bodies use it to produce new thriving cells. It helps strengthen our immune system, feel rejuvenated again whilst stimulating our brains at the same time! </p><p><b> Excellent Craftsmanship Copper Mugs For Easier & Leak Proof Experiences</b></p><p>The Moscow mule copper cups were named after an alcoholic cocktail rage back in the 1950's which is made up of vodka, ginger beer and lime juice and was traditionally served in a copper mug like ours! </p><p>The welded handles will prevent leaking on your wonderful kitchen countertops or wooden tables and the smooth roundly shaped edge along the mouth of the cup won't harm or scratch your lips! </p><p>What are you waiting for? Get your set today and embrace the copper cup drinking philosophy from this day on. </p><p><b>They Make A Great Gift Set! Scroll Up & Click Add To Cart Now While Supplies Last!</b></p>"
+          ["IsLinkSuppressed"]=>
+          string(1) "0"
+        }
+      }
+      ["SimilarProducts"]=>
+      object(SimpleXMLElement)#40 (1) {
+        ["SimilarProduct"]=>
+        array(3) {
+          [0]=>
+          object(SimpleXMLElement)#46 (2) {
+            ["ASIN"]=>
+            string(10) "B01KX52RTS"
+            ["Title"]=>
+            string(81) "American Legend Outfitters Fur Hoodie for Men - Assorted Colors - Different Sizes"
+          }
+          [1]=>
+          object(SimpleXMLElement)#45 (2) {
+            ["ASIN"]=>
+            string(10) "B0083PEZ00"
+            ["Title"]=>
+            string(105) "Wright's Copper Cream - For Cleaning and Polishing Pots, Sinks, Mugs, Hardware, Pans and More - 8 fl. Oz."
+          }
+          [2]=>
+          object(SimpleXMLElement)#47 (2) {
+            ["ASIN"]=>
+            string(10) "B0085WHBHU"
+            ["Title"]=>
+            string(122) "Deluxe Shave Well Fog-free Shower Mirror - Made in the USA - 33% larger than the Original Shave Well Fogless Shower Mirror"
+          }
+        }
+      }
+      ["BrowseNodes"]=>
+      object(SimpleXMLElement)#41 (1) {
+        ["BrowseNode"]=>
+        object(SimpleXMLElement)#47 (3) {
+          ["BrowseNodeId"]=>
+          string(11) "15645210011"
+          ["Name"]=>
+          string(16) "Moscow Mule Mugs"
+          ["Ancestors"]=>
+          object(SimpleXMLElement)#45 (1) {
+            ["BrowseNode"]=>
+            object(SimpleXMLElement)#46 (3) {
+              ["BrowseNodeId"]=>
+              string(8) "13217501"
+              ["Name"]=>
+              string(21) "Glassware & Drinkware"
+              ["Ancestors"]=>
+              object(SimpleXMLElement)#52 (1) {
+                ["BrowseNode"]=>
+                object(SimpleXMLElement)#53 (3) {
+                  ["BrowseNodeId"]=>
+                  string(8) "13162311"
+                  ["Name"]=>
+                  string(21) "Dining & Entertaining"
+                  ["Ancestors"]=>
+                  object(SimpleXMLElement)#48 (1) {
+                    ["BrowseNode"]=>
+                    object(SimpleXMLElement)#44 (3) {
+                      ["BrowseNodeId"]=>
+                      string(6) "284507"
+                      ["Name"]=>
+                      string(16) "Kitchen & Dining"
+                      ["Ancestors"]=>
+                      object(SimpleXMLElement)#51 (1) {
+                        ["BrowseNode"]=>
+                        object(SimpleXMLElement)#50 (4) {
+                          ["BrowseNodeId"]=>
+                          string(7) "1063498"
+                          ["Name"]=>
+                          string(10) "Categories"
+                          ["IsCategoryRoot"]=>
+                          string(1) "1"
+                          ["Ancestors"]=>
+                          object(SimpleXMLElement)#49 (1) {
+                            ["BrowseNode"]=>
+                            object(SimpleXMLElement)#42 (2) {
+                              ["BrowseNodeId"]=>
+                              string(7) "1055398"
+                              ["Name"]=>
+                              string(14) "Home & Kitchen"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+1223 - B01LVZUTID - BarTrendz Premium Moscow Mule Copper Mugs Set of 2 Bonus Copper Shot Glass - Two 16 oz Copper Cups for Moscow Mules - Solid 100% Hammered Copper Mug
+1223 - B01LVZUTID - https://images-na.ssl-images-amazon.com/images/I/51qVTtdTymL._SL75_.jpg
+1223 - B01LVZUTID - https://images-na.ssl-images-amazon.com/images/I/51qVTtdTymL._SL160_.jpg
+1223 - B01LVZUTID - https://images-na.ssl-images-amazon.com/images/I/51qVTtdTymL.jpg
+Select * from users u, product_advertising_keys p, mws m where m.user=u.id and u.id=1223 and m.country_id=p.contry_codeobject(SimpleXMLElement)#19 (2) {
+  ["OperationRequest"]=>
+  object(SimpleXMLElement)#30 (4) {
+    ["HTTPHeaders"]=>
+    object(SimpleXMLElement)#28 (1) {
+      ["Header"]=>
+      object(SimpleXMLElement)#22 (1) {
+        ["@attributes"]=>
+        array(2) {
+          ["Name"]=>
+          string(9) "UserAgent"
+          ["Value"]=>
+          string(14) "ApaiIO [2.0.0]"
+        }
+      }
+    }
+    ["RequestId"]=>
+    string(36) "f77901f1-8cfb-47bb-a58c-5595392c6da5"
+    ["Arguments"]=>
+    object(SimpleXMLElement)#21 (1) {
+      ["Argument"]=>
+      array(9) {
+        [0]=>
+        object(SimpleXMLElement)#22 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(14) "AWSAccessKeyId"
+            ["Value"]=>
+            string(20) "AKIAJMFHX7R6WR52VITA"
+          }
+        }
+        [1]=>
+        object(SimpleXMLElement)#18 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(12) "AssociateTag"
+            ["Value"]=>
+            string(15) "ppcentourage-20"
+          }
+        }
+        [2]=>
+        object(SimpleXMLElement)#33 (1) {
+          ["@attributes"]=>
+          array(1) {
+            ["Name"]=>
+            string(6) "ItemId"
+          }
+        }
+        [3]=>
+        object(SimpleXMLElement)#34 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(9) "Operation"
+            ["Value"]=>
+            string(10) "ItemLookup"
+          }
+        }
+        [4]=>
+        object(SimpleXMLElement)#41 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(13) "ResponseGroup"
+            ["Value"]=>
+            string(12) "Large,Images"
+          }
+        }
+        [5]=>
+        object(SimpleXMLElement)#39 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(7) "Service"
+            ["Value"]=>
+            string(19) "AWSECommerceService"
+          }
+        }
+        [6]=>
+        object(SimpleXMLElement)#27 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(9) "Timestamp"
+            ["Value"]=>
+            string(20) "2017-04-05T08:16:00Z"
+          }
+        }
+        [7]=>
+        object(SimpleXMLElement)#29 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(7) "Version"
+            ["Value"]=>
+            string(10) "2013-08-01"
+          }
+        }
+        [8]=>
+        object(SimpleXMLElement)#35 (1) {
+          ["@attributes"]=>
+          array(2) {
+            ["Name"]=>
+            string(9) "Signature"
+            ["Value"]=>
+            string(44) "Zc0U9V3jGNxHJTPUT0fy/yqoMGcjCBFKkd50aQPd2WY="
+          }
+        }
+      }
+    }
+    ["RequestProcessingTime"]=>
+    string(18) "0.0011067240000000"
+  }
+  ["Items"]=>
+  object(SimpleXMLElement)#40 (1) {
+    ["Request"]=>
+    object(SimpleXMLElement)#21 (3) {
+      ["IsValid"]=>
+      string(5) "False"
+      ["ItemLookupRequest"]=>
+      object(SimpleXMLElement)#28 (3) {
+        ["IdType"]=>
+        string(4) "ASIN"
+        ["ResponseGroup"]=>
+        array(2) {
+          [0]=>
+          string(5) "Large"
+          [1]=>
+          string(6) "Images"
+        }
+        ["VariationPage"]=>
+        string(3) "All"
+      }
+      ["Errors"]=>
+      object(SimpleXMLElement)#35 (1) {
+        ["Error"]=>
+        object(SimpleXMLElement)#29 (2) {
+          ["Code"]=>
+          string(21) "AWS.MissingParameters"
+          ["Message"]=>
+          string(80) "Your request is missing required parameters. Required parameters include ItemId."
+        }
+      }
+    }
+  }
+}
+1223 -  - 
+1223 -  - 
+1223 -  - 
+1223 -  - 

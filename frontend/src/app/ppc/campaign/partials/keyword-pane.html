@@ -1,0 +1,633 @@
+<div ng-controller="SingleCampaignKeywordController">
+  <h3>
+    <img src="./../../../images/keyword-v2.png" height="100" />
+  </h3>
+  <div class="row">
+    <div class="col-lg-6">
+      <ul class="nav nav-tabs nav-tabs2 strange keyword-op-tab-container">
+        <li class="active">
+          <a data-toggle="tab" data-target="#ktab1" ng-click="hideOptimizerTab()">
+            Profitable Keywords
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" data-target="#ktab2" ng-click="hideOptimizerTab()">
+            Non-Profitable Keywords
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" data-target="#tab-keyword-optimizer" ng-click="showOptimizerTab()">
+            Keyword Optimizer
+            <span data-toggle="popover" title="Keyword Optimizer" data-content="Keyword Optimizer allows you to trim the 'search term fat' by finding the exact unprofitable search terms connected to that keyword. This way you can perform a negative exact on the search term in an attempt to improve the overall performance of that keyword within a campaign. Column A reveals the search terms without any sales over the given time period. Column B will reveal unprofitable search terms (that have unprofitable sales) for that keyword over the given time period.">
+              <i class="fa fa-info-circle"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="ktab1" class="tab-pane fade in active">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-lg-3">
+                  <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                  &nbsp;&nbsp;New Bid
+                  <a href="#" data-toggle="popover" title="New Bid" data-content="New Bid is a tool that suggests a new bid price based on the performance of your keyword ( ACoS) compared to the ACoS profit zone you selected for this campaign. A minimum of 10 clicks is required before we suggest a new bid. Entourage will show you suggestions for increasing or decreasing your bid on keywords based upon their performance. To view the New Bid area, view your keywords by Ad Group below.">
+                    <i class="fa fa-info-circle"></i>
+                  </a>
+                </div>
+                <div class="col-lg-6 filterlist text-right">
+                  <a data-target="#topcampaigns2" class="btn-filter" data-toggle="collapse">
+                    Filter Results
+                  </a>
+                  <div id="topcampaigns2" class="collapse">
+                    <div class="rowfilter">
+                      <label>Select saved model:</label>
+                      <select class="sel1" data-ng-model="model2.select">
+                        <option ng-repeat="opt in modeloptions2" value="{{opt.id}}">{{opt.name}}</option>
+                      </select>
+                      <button ng-click="modelload(2,model2.select);" class="btn btn-load" data-toggle="collapse">
+                        Load
+                      </button>
+                    </div>
+                    <div class="rowfilter">
+                      <label>Profit:</label>
+                      <input id="model2.profitfrom" data-ng-model="model2.profitfrom"><span>to</span>
+                      <input id="model2.profitto" data-ng-model="model2.profitto">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Gross Revenue:</label>
+                      <input id="model2.revenuefrom" data-ng-model="model2.revenuefrom">
+                      <span>to</span>
+                      <input id="model2.revenueto" data-ng-model="model2.revenueto">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Ad Spend:</label>
+                      <input id="model2.adspendfrom" data-ng-model="model2.adspendfrom">
+                      <span>to</span>
+                      <input id="model2.adspendto" data-ng-model="model2.adspendto">
+                    </div>
+                    <div class="rowfilter">
+                      <label>AcOs:</label>
+                      <input data-ng-model="model2.acosfrom">
+                      <span>to</span>
+                      <input data-ng-model="model2.acosto">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Impressions:</label>
+                      <input data-ng-model="model2.impressionsfrom">
+                      <span>to</span>
+                      <input data-ng-model="model2.impressionsto">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Clicks:</label>
+                      <input data-ng-model="model2.clicksfrom">
+                      <span>to</span>
+                      <input data-ng-model="model2.clicksto"><br>
+                    </div>
+                    <div class="rowfilter">
+                      <label>CTR%:</label>
+                      <input data-ng-model="model2.ctrfrom">
+                      <span>to</span>
+                      <input data-ng-model="model2.ctrto">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Ave Cost Per Click:</label>
+                      <input data-ng-model="model2.avecpcfrom">
+                      <span>to</span>
+                      <input data-ng-model="model2.avecpcto">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Orders:</label>
+                      <input data-ng-model="model2.ordersFrom">
+                      <span>to</span>
+                      <input data-ng-model="model2.ordersTo">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Conversion %:</label>
+                      <input data-ng-model="model2.conversionRateFrom">
+                      <span>to</span>
+                      <input data-ng-model="model2.conversionRateTo">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Select match type:</label>
+                      <select class="sel2" data-ng-model="model2.match1">
+                        <option value="ANY">ANY</option>
+                        <option value="BROAD">BROAD</option>
+                        <option value="PHRASE">PHRASE</option>
+                        <option value="EXACT">EXACT</option>
+                      </select>
+                    </div>
+                    <div class="rowfilter">
+                      <label>Model name:</label>
+                      <input data-ng-model="model2.name">
+                    </div>
+                    <div class="rowfilter text-right">
+                      <button ng-click="modelsave(2,model2);" class="btn btn-save">Save</button>
+                      <button ng-click="modelclear(2);" class="btn btn-clear">Clear</button>
+                    </div>
+                    <div class="rowfilter text-right">
+                      <button ng-click="ApplyModel(2,model2);" class="js-close-filter">Apply</button>
+                      <button class="js-close-filter">Close</button>
+                    </div>
+                  </div>
+                  <span class="date-range-picker-label">
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <span>Date Range:</span>
+                  </span>
+                </div>
+                <div class="col-lg-3">
+                  <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions">
+                </div>
+              </div>
+            </div>
+            <div class="panel-body" style="padding:0px">
+              <ul class="nav nav-tabs nav-tabs1">
+                <li ng-class="{active: currentAdGroup1 == null}">
+                  <a data-ng-click="adgroup1(null)" data-toggle="tab" href="#">
+                    All
+                  </a>
+                </li>
+                <li ng-repeat="adg in unique" ng-class="{active: currentAdGroup1 == adg.AdGroup}">
+                  <a data-ng-click="adgroup1(adg.AdGroup)" data-toggle="tab" href="#">
+                    {{adg.AdGroup}}
+                  </a>
+                </li>
+              </ul>
+              <div >
+                <table datatable="ng" dt-options="dtOptions_key_pro" dt-instance="dtInstanceCallbackKeyPro" class="row-border hover" width="100%">
+                  <thead>
+                    <tr>
+                      <th>
+                        <input type="checkbox" ng-model="checkFeature.all.keyword" ng-click="onCheckFeatureAll('keyword')">
+                      </th>
+                      <th>
+                        Keyword
+                      </th>
+                      <th>
+                        <span ng-if="currentAdGroup1 != null">Match</span>
+                      </th>
+                      <th>Profit</th>
+                      <th>Rev</th>
+                      <th>Spend</th>
+                      <th>AcoS,%</th>
+                      <th>Impress.</th>
+                      <th>Clicks</th>
+                      <th>Ave CPC</th>
+                      <th>
+                        <a ng-if="currentAdGroup1 != null">New Bid</a>
+                      </th>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="keyword in keywords" width="100%">
+                      <td>
+                        <input type="checkbox" ng-click="onCheckFeatureOne('keyword')" checklist-model="checkFeature.selected.keyword" checklist-value="keyword">
+                      </td>
+                      <td>
+                        <a ng-click="addsearch1(keyword.Keyword)">
+                          <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
+                        </a>
+                        <a ng-click="changestats(keyword.Keyword)">
+                          {{keyword.Keyword}}
+                        </a>
+                      </td>
+                      <td>
+                        <span ng-if="currentAdGroup1 != null">{{ keyword.Match1}}</span>
+                      </td>
+                      <td>
+                        {{currency_sign}}{{ (keyword.Revenue*keyword.Profit-keyword.Cost)/currency_rate_USD*currency_rate | number :2}}
+                      </td>
+                      <td>{{currency_sign}}{{ keyword.Revenue/currency_rate_USD*currency_rate | number :2 }}</td>
+                      <td>{{currency_sign}}{{ keyword.Cost/currency_rate_USD*currency_rate | number :2 }}</td>
+                      <td>{{ keyword.Cost/keyword.Revenue*100 | number :1 }}</td>
+                      <td>{{ keyword.Impressions | number :0 }}</td>
+                      <td>{{ keyword.Clicks | number :0 }}</td>
+                      <td>{{ keyword.AvCPC | number :2 }}</td>
+                      <td style="color:#00c000">
+                        <span ng-if="currentAdGroup1 != null">
+                          {{ keyword.newbid}}
+                      </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <td>Total:</td>
+                    <td></td>
+                    <td><span ng-if="currentAdGroup1 != null"></span></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="ktab2" class="tab-pane fade">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-lg-3">
+                  <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                  &nbsp;&nbsp;New Bid
+                  <a href="#" data-toggle="popover" title="Non-Profitable Keywords"
+                    data-content="New Bid is a tool that suggests a new bid price based on the performance of your keyword ( ACoS) compared to the ACoS profit zone you selected for this campaign. A minimum of 10 clicks is required before we suggest a new bid. Entourage will show you suggestions for increasing or decreasing your bid on keywords based upon their performance. To view the New Bid area, view your keywords by Ad Group below.">
+                    <i class="fa fa-info-circle"></i>
+                  </a>
+                </div>
+                <div class="col-lg-6 filterlist text-right">
+                  <a data-target="#topcampaigns1" class="btn-filter" data-toggle="collapse">
+                    Filter Results
+                  </a>
+                  <div id="topcampaigns1" class="collapse">
+                    <div class="rowfilter">
+                      <label>Select saved model:</label>
+                      <select class="sel1" data-ng-model="model1.select">
+                        <option ng-repeat="opt in modeloptions1" value="{{opt.id}}">{{opt.name}}</option>
+                      </select>
+                      <button ng-click="modelload(1,model1.select);" class="btn btn-load" data-toggle="collapse">
+                        Load
+                      </button>
+                    </div>
+                    <div class="rowfilter">
+                      <label>Profit:</label>
+                      <input id="model1.profitfrom" data-ng-model="model1.profitfrom">
+                      <span>to</span><input
+                      id="model1.profitto" data-ng-model="model1.profitto">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Gross Revenue:</label>
+                      <input id="model1.revenuefrom" data-ng-model="model1.revenuefrom">
+                      <span>to</span>
+                      <input id="model1.revenueto" data-ng-model="model1.revenueto">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Ad Spend:</label>
+                      <input id="model1.adspendfrom" data-ng-model="model1.adspendfrom">
+                      <span>to</span>
+                      <input id="model1.adspendto" data-ng-model="model1.adspendto">
+                    </div>
+                    <div class="rowfilter">
+                      <label>AcOs:</label>
+                      <input data-ng-model="model1.acosfrom">
+                      <span>to</span>
+                      <input data-ng-model="model1.acosto">
+                    </div>
+                    <div class="rowfilter"><label>Impressions:</label> <input
+                      data-ng-model="model1.impressionsfrom"><span>to</span><input
+                      data-ng-model="model1.impressionsto"></div>
+                    <div class="rowfilter">
+                      <label>Clicks:</label>  <input data-ng-model="model1.clicksfrom"><span>to</span><input data-ng-model="model1.clicksto"><br>
+                    </div>
+                    <div class="rowfilter">
+                      <label>CTR%:</label>
+                      <input data-ng-model="model1.ctrfrom">
+                      <span>to</span>
+                      <input data-ng-model="model1.ctrto">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Ave Cost Per Click:</label>
+                      <input data-ng-model="model1.avecpcfrom">
+                      <span>to</span>
+                      <input data-ng-model="model1.avecpcto">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Orders:</label>
+                      <input data-ng-model="model1.ordersFrom">
+                      <span>to</span>
+                      <input data-ng-model="model1.ordersTo">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Conversion %:</label>
+                      <input data-ng-model="model1.conversionRateFrom">
+                      <span>to</span>
+                      <input data-ng-model="model1.conversionRateTo">
+                    </div>
+                    <div class="rowfilter">
+                      <label>Select match type:</label>
+                      <select class="sel2" data-ng-model="model1.match1">
+                        <option value="ANY">ANY</option>
+                        <option value="BROAD">BROAD</option>
+                        <option value="PHRASE">PHRASE</option>
+                        <option value="EXACT">EXACT</option>
+                      </select>
+                    </div>
+                    <div class="rowfilter">
+                      <label>Model name:</label>
+                      <input data-ng-model="model1.name">
+                    </div>
+                    <div class="rowfilter text-right">
+                      <button ng-click="modelsave(1,model1);" class="btn btn-save">Save</button>
+                      <button ng-click="modelclear(1);" class="btn btn-clear">Clear</button>
+                    </div>
+                    <div class="rowfilter text-right">
+                      <button ng-click="ApplyModel(1,model1);" class="js-close-filter">Apply</button>
+                      <button class="js-close-filter">Close</button>
+                    </div>
+                  </div>
+                  <span class="date-range-picker-label">
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <span>Date Range:</span>
+                  </span>
+                </div>
+                <div class="col-lg-3">
+                  <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions">
+                </div>
+              </div>
+            </div>
+            <div class="panel-body" style="padding:0px">
+              <ul class="nav nav-tabs nav-tabs2">
+                <li ng-class="{active: currentAdGroup2 == null}">
+                  <a data-ng-click="adgroup2(null)" data-toggle="tab" href="#">All</a>
+                </li>
+                <li ng-repeat="adg in unique" ng-class="{active: currentAdGroup2 == adg.AdGroup}">
+                  <a data-ng-click="adgroup2(adg.AdGroup)" data-toggle="tab" href="#">{{adg.AdGroup}}</a>
+                </li>
+              </ul>
+              <div>
+                <table datatable="ng" dt-options="dtOptions_key_unpro" dt-instance="dtInstanceCallbackKeyUnPro" class="row-border hover" width="100%">
+                  <thead>
+                    <tr width="100%">
+                      <th><input type="checkbox" ng-model="checkFeature.all.badkeyword" ng-click="onCheckFeatureAll('badkeyword')"></th>
+                      <th>Keyword</th>
+                      <th><span ng-if="currentAdGroup2 != null">Match&nbsp;</span></th>
+                      <th>Profit&nbsp;</th>
+                      <th>Rev</th>
+                      <th>Spend</th>
+                      <th>AcoS,%&nbsp;&nbsp;&nbsp;</th>
+                      <th>Impress.&nbsp;&nbsp;&nbsp;</th>
+                      <th>Clicks&nbsp;&nbsp;&nbsp;</th>
+                      <th>Ave CPC&nbsp;&nbsp;&nbsp;</th>
+                      <th>
+                        <a ng-if="currentAdGroup2 != null">New Bid&nbsp;&nbsp;</a>
+                      </th>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="keyword in badkeywords" width="100%">
+                      <td style="width:20px;">
+                        <input type="checkbox" ng-click="onCheckFeatureOne('badkeyword')" checklist-model="checkFeature.selected.badkeyword" checklist-value="keyword">
+                      </td>
+                      <td>
+                        <a ng-click="addsearch1(keyword.Keyword)">
+                          <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
+                        </a>
+                        <a ng-click="changestats(keyword.Keyword)">
+                          {{keyword.Keyword}}
+                        </a>
+                      </td>
+                      <td>
+                        <span ng-if="currentAdGroup2 != null">{{ keyword.Match1}}</span>
+                      </td>
+                      <td>
+                        {{currency_sign}}{{ (keyword.Revenue*keyword.Profit-keyword.Cost)/currency_rate_USD*currency_rate | number :2}}
+                      </td>
+                      <td>
+                        {{currency_sign}}{{ keyword.Revenue/currency_rate_USD*currency_rate | number :2 }}
+                      </td>
+                      <td>
+                        {{currency_sign}}{{ keyword.Cost/currency_rate_USD*currency_rate | number :2 }}
+                      </td>
+                      <td>
+                        {{ keyword.Cost/keyword.Revenue*100 | number :1 }}
+                      </td>
+                      <td>
+                        {{ keyword.Impressions | number :0 }}
+                      </td>
+                      <td>
+                        {{ keyword.Clicks | number :0 }}
+                      </td>
+                      <td title="{{ keyword.AvCPC | number :10 }}">{{ keyword.AvCPC | number :2 }}</td>
+                      <td style="color:#00c000">
+                        <span ng-if="currentAdGroup2 != null">
+                          {{ keyword.newbid }}
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td>Total:</td>
+                      <td></td>
+                      <td><span ng-if="currentAdGroup2 != null"></span></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="tab-keyword-optimizer" class="tab-pane fade">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-lg-6 text-right">
+                  <span class="date-range-picker-label">
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <span>Date Range:</span>
+                  </span>
+                </div>
+                <div class="col-lg-6">
+                  <input date-range-picker class="form-control date-picker" type="text" ng-model="dateRangeForOptimizer" options="dateRangeOptionsForOptimizer">
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <ul class="nav nav-tabs nav-tabs2">
+                <li ng-class="{active: selectedAdgroupForOptimizer == null}">
+                  <a data-ng-click="selectAdgroupForOptimizer()" data-toggle="tab" href="#">All</a>
+                </li>
+                <li ng-repeat="adgroup in optimizerAdgroups" ng-class="{active: selectedAdgroupForOptimizer == adgroup.AdGroup}">
+                  <a data-ng-click="selectAdgroupForOptimizer(adgroup.AdGroup)" data-toggle="tab" href="#">{{adgroup.AdGroup}}</a>
+                </li>
+              </ul>
+              <div style="background-color: #fff; padding: 16px; text-align: right;">
+                Click On Keyword To Optimize.
+              </div>
+              <div>
+                <table id="table-keyword-optimizer" datatable="ng" dt-options="dtOptionsOptimizer" dt-instance="dtInstanceCallbackOptimizer" class="row-border hover" width="100%">
+                  <thead>
+                    <tr width="100%">
+                      <th>Keyword</th>
+                      <th>Match</th>
+                      <th>Profit&nbsp;</th>
+                      <th>Rev</th>
+                      <th>Spend</th>
+                      <th>AcoS,%&nbsp;&nbsp;&nbsp;</th>
+                      <th>Impress.&nbsp;&nbsp;&nbsp;</th>
+                      <th>Clicks&nbsp;&nbsp;&nbsp;</th>
+                      <th>Ave CPC&nbsp;&nbsp;&nbsp;</th>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="keyword in optimizerKeywords">
+                      <td>
+                        <a ng-click="showRelatedUnprofitableTerms(keyword.Keyword)">
+                          {{ keyword.Keyword }}
+                        </a>
+                      </td>
+                      <td>
+                        {{ keyword.Match1 }}
+                      </td>
+                      <td>
+                        {{currency_sign}}{{ (keyword.Revenue*keyword.Profit - keyword.Cost) / currency_rate_USD * currency_rate | number :2}}
+                      </td>
+                      <td>
+                        {{currency_sign}}{{ keyword.Revenue / currency_rate_USD * currency_rate | number :2 }}
+                      </td>
+                      <td>
+                        {{currency_sign}}{{ keyword.Cost / currency_rate_USD * currency_rate | number :2 }}
+                      </td>
+                      <td>
+                        {{ keyword.Cost / keyword.Revenue * 100 | number :1 }}
+                      </td>
+                      <td>
+                        {{ keyword.Impressions | number :0 }}
+                      </td>
+                      <td>
+                        {{ keyword.Clicks | number :0 }}
+                      </td>
+                      <td title="{{ keyword.AvCPC | number :10 }}">
+                        {{ keyword.AvCPC | number :2 }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div ng-if="!isOptimizerTabVisible">
+        <ul class="nav nav-tabs nav-tabs2">
+          <li class="active">
+            <a data-toggle="tab" href="#">
+              Charts
+            </a>
+          </li>
+        </ul>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+              &nbsp;&nbsp;Keyword chart : {{selectedKeyword}}
+            </h3>
+          </div>
+          <div class="panel-body">
+            <nvd3 options="options1" data="data1"></nvd3>
+          </div>
+        </div>
+      </div>
+      <div ng-if="isOptimizerTabVisible">
+        <div class="panel panel-default" style="padding-top: 54px;">
+          <div class="panel-body" style="background-color: #fff;">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 ng-if="selectedKeywordForOptimizer">
+                  Keyword: <strong>{{ selectedKeywordForOptimizer }}</strong>
+                </h5>
+              </div>
+              <div class="col-lg-6">
+                <h5>Search Terms without Sales</h5>
+                <table datatable="ng" dt-options="dtOptionsTermsWithoutSales" dt-instance="dtInstanceCallbackTermsWithoutSales" class="row-border hover" width="100%">
+                  <thead>
+                    <tr>
+                      <th>
+                        <input type="checkbox" ng-model="checkFeature.all.terms_without_sales" ng-click="onCheckAllTermsWithoutSales(checkFeature.all.terms_without_sales)">
+                      </th>
+                      <th>Search Term</th>
+                      <th>Clicks</th>
+                      <th>Ad Spend</th>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="term in relatedTermsWithoutSales">
+                      <td style="width: 20px;">
+                        <input type="checkbox" ng-click="onCheckTermsWithoutSales()" checklist-model="checkFeature.selected.terms_without_sales" checklist-value="term">
+                      </td>
+                      <td>
+                        <a ng-click="addRelatedTermWithoutSalesToClipboard(term.term)">
+                          <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
+                        </a>
+                        {{ term.term }}
+                      </td>
+                      <td>
+                        {{ term.clicks }}
+                      </td>
+                      <td>
+                        {{ currency_sign }}{{ term.cost / currency_rate_USD * currency_rate | number :2 }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-lg-6">
+                <h5>Unprofitable Search Terms (Based on AcoS)</h5>
+                <table datatable="ng" dt-options="dtOptionsRelatedTerms" dt-instance="dtInstanceCallbackRelatedTerms" class="row-border hover" width="100%">
+                  <thead>
+                    <tr>
+                      <th>
+                        <input type="checkbox" ng-model="checkFeature.all.unprofitable_terms" ng-click="onCheckAllUnprofitableTerms(checkFeature.all.unprofitable_terms)">
+                      </th>
+                      <th>Search Term</th>
+                      <th>AcoS,%</th>
+                      <th>Ad Spend</th>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="term in relatedUnprofitableTerms">
+                      <td style="width: 20px;">
+                        <input type="checkbox" ng-click="onCheckUnprofitableTerms()" checklist-model="checkFeature.selected.unprofitable_terms" checklist-value="term">
+                      </td>
+                      <td>
+                        <a ng-click="addRelatedUnprofitableTermToClipboard(term.term)">
+                          <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
+                        </a>
+                        {{ term.term }}
+                      </td>
+                      <td>
+                        {{ (term.sales ? term.cost / term.sales * 100 : 0) | number :1 }}
+                      </td>
+                      <td>
+                        {{ currency_sign }}{{ term.cost / currency_rate_USD * currency_rate | number :2 }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+            &nbsp;&nbsp;Selected keywords
+            <button clipboard class="btn" text="copiedkeywords1" on-copied="success()" on-error="fail(err)">
+              Copy to clipboard
+            </button>
+          </h3>
+          <div class="panel-body">
+            <textarea ng-model="copiedkeywords1" class="form-control" rows="10"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

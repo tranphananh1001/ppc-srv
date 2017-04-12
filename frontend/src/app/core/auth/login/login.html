@@ -1,0 +1,35 @@
+<div class="form-login">
+    <form name="loginForm" method="post" novalidate="novalidate">
+        <h2 class="title">Please login</h2>
+        <br>
+        <div class="form-group"
+             data-show-errors
+        >
+            <table width="100%"><tr><td>
+            <input type="text" name="username" class="form-control register_input" placeholder="Enter username or email" autofocus autocomplete="off" required="required" style="width:90%;" data-focus-on="username"
+                data-ng-model="credentials.identifier"/></td>
+
+            <td align="right"><input type="password" name="password" class="form-control register_input" placeholder="Enter password" required="required" style="width:90%"  data-ng-model="credentials.password"/></tr>
+        </table>
+        </div>
+
+        <br>
+        <div align="center">
+            <button class="signup"
+                data-ng-click="login()"
+                data-ng-disabled="!loginForm.$valid"
+            >Login</button>
+        </div>
+    </form>
+    <div class="row" align="center">
+        <br>
+        <a ng-click="forgot()">Forgot password?</a>
+        &nbsp;&nbsp;&nbsp;
+        <a ng-click="signup()">Sign up</a>
+    </div>
+  <!--
+    <button class="btn btn-primary btn-block"
+            data-ng-click="signup()"
+             >Sign Up</button>
+             !-->
+</div>

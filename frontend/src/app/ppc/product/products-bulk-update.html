@@ -1,0 +1,67 @@
+<div data-ng-show="products">
+  <h3></h3>
+  <div class="text-block">
+    <h2>SKU Profit Margin Bulk Update</h2>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        SKU list
+        <button class="btn btn-load pull-right" data-ng-click="onSaveAll()">Save</button>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <table datatable="ng" dt-options="dtOptions" class="row-border hover">
+        <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Image</th>
+          <td>Cost Per Unit</td>
+          <td>Total Shipping Costs</td>
+          <td>Additional Per Unit Costs</td>
+          <td>Amazon FBA Fees</td>
+          <td>Average Selling Price</td>
+          <td>Profit Margins</td>
+          <td>Profit Margins %</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="product in products">
+          <td ng-class="{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}">
+            <span><a data-ui-sref="ppc.product({id: product.id})" title="{{ product['product-name'] }}">{{ product.sku }}</a></span>
+          </td>
+          <td ng-class="{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}">
+            <img ng-src="{{ product.image_sm.replace('http://ecx.', 'https://images-na.ssl-') }}" ng-if="product.image_sm">
+          </td>
+          <td ng-class="{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}"><input type="text" ng-blur="onSave(product)" class="form-control" required="required" data-ng-model="product.cost_per_unit" /></td>
+          <td ng-class="{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}"><input type="text" ng-blur="onSave(product)" class="form-control" required="required" data-ng-model="product.total_shipping_costs" /></td>
+          <td ng-class="{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}"><input type="text" ng-blur="onSave(product)" class="form-control" required="required" data-ng-model="product.additional_per_unit_costs" /></td>
+          <td ng-class="{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}"><input type="text" ng-blur="onSave(product)" class="form-control" required="required" data-ng-model="product.amazon_FBA_fees" /></td>
+          <td ng-class="{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}"><input type="text" ng-blur="onSave(product)" class="form-control" required="required" data-ng-model="product.average_selling_price" /></td>
+          <td ng-class="{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}">
+            {{product.average_selling_price-product.amazon_FBA_fees-product.additional_per_unit_costs-product.total_shipping_costs-product.cost_per_unit | number: 2}}
+          </td>
+          <td ng-class="{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}">
+            {{(product.average_selling_price-product.amazon_FBA_fees-product.additional_per_unit_costs-product.total_shipping_costs-product.cost_per_unit)/product.average_selling_price*100 | number: 2}}%
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-load pull-right" data-ng-click="onSaveAll()">Save</button>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+    $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+          $(this).popover('hide');
+        }
+      });
+    });
+  });
+</script>

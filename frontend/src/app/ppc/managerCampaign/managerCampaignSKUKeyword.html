@@ -1,0 +1,241 @@
+<div>
+  <h3></h3>
+  <ol class="breadcrumb">
+    <li><a data-ng-click="goManagerCampaign()">All Campaigns</a></li>
+    <li><a href="#">Campaign: {{campaignName}}</a></li>
+  </ol>
+  <h1>Ad Group: {{adGroupName}}</h1>
+  <div class="panel panel-default" data-ng-show="searchtermFlag">
+    <div class="panel-heading">
+      <h3 class="">
+        <button class="btn" data-ng-click="goHome()">Done</button>
+      </h3>
+    </div>
+    <h3 class="panel-title">PPC Slectected searchtearm</h3>
+    <div class="panel-body">
+      <table class="table table-bordered" style="width: 50% !important; margin-bottom: 24px !important; background: #fff;" >
+        <thead>
+          <tr>
+            <th></th>
+            <th>Search Term bid</th>
+            <th>Match</th>
+            <th><button class="btn">Add all</button></th>
+          </tr>
+        </thead>
+        <tbody data-ng-repeat="item in searchTermSelected">
+          <tr>
+            <td>{{ item.Keyword }}</td>
+            <td></td>
+            <td>
+              <select class="selectpicker">
+                <option>Broad</option>
+                <option>Phrase</option>
+                <option>Exact</option>
+              </select>
+            </td>
+            <td><button class="btn" data-ng-click="AddKeyword(item)">Add</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          
+        </tfoot>
+      </table>
+
+      <table datatable="ng" dt-options="dtOptions" dt-instance="dtInstanceCallbackCampaign" class="row-border hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>Key word</th>
+            <th>Match type</th>
+            <th>Status</th>
+            <th>Suggested bid</th>
+            <th>Keyword bid</th>
+            <th>Spend</th>
+            <th>Sales</th>
+            <th>ACoS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in adGroups">
+            <td></td>
+            <td></td>
+            <td>
+              <a>{{ item.Keyword }}</a>
+            </td>
+            <td>
+              {{ item["Match Type"] }}
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ item.Spend | currency }}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <div class="panel panel-default" data-ng-show="keywordFlag">
+    <div class="panel-heading">
+      <h3 class="">
+        <button class="btn" data-ng-click="goHome()">Done</button>
+      </h3>
+    </div>
+    <h3 class="panel-title">PPC Slectected keyword</h3>
+    <div class="panel-body">
+      <table class="table table-bordered" style="width: 50% !important; margin-bottom: 24px !important; background: #fff;">
+        <thead>
+          <tr>
+            <th>Keywords</th>
+            <th>Match</th>
+            <th><button class="btn">Add all</button></th>
+          </tr>
+        </thead>
+        <tbody data-ng-repeat="item in keywordsList track by $index">
+          <tr>
+            <td>{{ item }}</td>
+            <td>
+              <select class="selectpicker">
+                <option>Broad</option>
+                <option>Phrase</option>
+                <option>Exact</option>
+              </select>
+            </td>
+            <td><button class="btn" data-ng-click="AddKeyword(item)">Add</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          
+        </tfoot>
+      </table>
+
+      <table datatable="ng" dt-options="dtOptions" dt-instance="dtInstanceCallbackCampaign" class="row-border hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>Key word</th>
+            <th>Match type</th>
+            <th>Status</th>
+            <th>Suggested bid</th>
+            <th>Keyword bid</th>
+            <th>Spend</th>
+            <th>Sales</th>
+            <th>ACoS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in adGroups">
+            <td></td>
+            <td></td>
+            <td>
+              <a>{{ item.Keyword }}</a>
+            </td>
+            <td>
+              {{ item["Match Type"] }}
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ item.Spend | currency }}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <div class="panel panel-default" data-ng-show="matchTypeFlag">
+    <div class="panel-heading">
+      <h3 class="">
+        <button class="btn" data-ng-click="goHome()">Done</button>
+      </h3>
+    </div>
+    <h3 class="panel-title">PPC Slectected match type</h3>
+    <div class="panel-body">
+      <table class="table table-bordered" style="width: 50% !important; margin-bottom: 24px !important; background: #fff;">
+        <thead>
+          <tr>
+            <th>Keywords</th>
+            <th>Match</th>
+            <th><button class="btn">Add all</button></th>
+          </tr>
+        </thead>
+        <tbody data-ng-repeat="item in copiedkeywords track by $index">
+          <tr>
+            <td>{{ item }}</td>
+            <select class="selectpicker">
+              <option>Broad</option>
+              <option>Phrase</option>
+              <option>Exact</option>
+            </select>
+            <td><button class="btn" data-ng-click="AddKeyword(item)">Add</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          
+        </tfoot>
+      </table>
+
+      <table datatable="ng" dt-options="dtOptions" dt-instance="dtInstanceCallbackCampaign" class="row-border hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>Key word</th>
+            <th>Match type</th>
+            <th>Status</th>
+            <th>Suggested bid</th>
+            <th>Keyword bid</th>
+            <th>Spend</th>
+            <th>Sales</th>
+            <th>ACoS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in adGroups">
+            <td></td>
+            <td></td>
+            <td>
+              <a>{{ item.Keyword }}</a>
+            </td>
+            <td>
+              {{ item["Match Type"] }}
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ item.Spend | currency }}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+    $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+          $(this).popover('hide');
+        }
+      });
+    });
+  });
+</script>

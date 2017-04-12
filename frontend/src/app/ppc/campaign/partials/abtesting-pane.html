@@ -1,0 +1,55 @@
+<div id="mtab5" class="tab-pane fade">
+  <div class="text-box">
+    <div class="pull-right">
+      <a href="#" rel="modal:open" class="moreinfo" title="A/B Split Testing info" data-content="<p><strong>The profit experiment module allows you to see the direct impact that changes to your Amazon campaigns have on your bottom line.</strong> Most importantly, this module will allow you to see how a campaign change impacted your conversions, impressions and profit.</p>
+
+          <p>Modifications to your campaign such as image changes, title change, price change, bullet point change, summary change, back end keyword change, coupon changes can all be tested so that a winner can be found.
+
+          <p><strong>Before you start, make sure that you upload the latest reports to get accurate information.</strong></p>
+          <ol>
+            <li>Click on add. </li>
+            <li>Create a name for you test, for example: Product A Title Change test. </li>
+            <li>Select the test time frame, we recommend a minimum of two weeks for a more accurate test. </li>
+            <li>Select the type of test you will be creating. As you can see… you can test a variety of changes to your campaigns. Let’s choose title for example. </li>
+            <ul>
+            <li>The A value will be the title that was used in the past. </li>
+            <li>The B value will be the title that you are testing out in the future. </li>
+            </ul>
+            <li>Click save  <br>
+            The data under A will be from the past 14 days, 21 days, or 28 days, depending on the length of the test you selected. </li>
+            <li>Now go ahead and make the change within your Amazon campaigns. </li>
+          </ol>
+
+          <p>Check back here routinely to see if a winner has been determined.</p>">
+        Instructions
+        <i class="fa fa-info-circle"></i>
+        </a>
+    </div>
+    <img src="/images/split.jpg" alt="" />
+    <br>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">A/B Split Testings</h3>
+    </div>
+    <div class="panel-body">
+      <table datatable="ng" dt-options="dtOptions" dt-instance="dtInstance" class="row-border hover" width="100%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date started</th>
+            <th>Date finished</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="campaign in abtest" width="100%">
+            <td ng-class='{green : campaign.GREEN, yellow: campaign.YELLOW&&!campaign.GREEN,  black: campaign.clicked}'><a data-toggle="tab" href="#mtab6" ng-click="test_show(campaign.id)">{{ campaign.name }}</a></td>
+            <td ng-class='{green : campaign.GREEN, yellow: campaign.YELLOW&&!campaign.GREEN,  black: campaign.clicked}'>{{campaign.from_date | asDate | date:'shortDate'}}</td>
+            <td ng-class='{green : campaign.GREEN, yellow: campaign.YELLOW&&!campaign.GREEN,  black: campaign.clicked}'>{{campaign.to_date | asDate | date:'shortDate'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <a data-toggle="tab" class="btn btn-load" href="#mtab6" ng-click="add_test()">Add</a>
+  </div>
+</div>

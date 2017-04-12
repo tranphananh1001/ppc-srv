@@ -1,0 +1,109 @@
+<div class="row" data-ng-controller="productSearchTermController">
+  <div class="text-box">
+    <div class="pull-right">
+      <a href="#" rel="modal:open" class="moreinfo" title="Search Term Optimization info"
+         data-content="<p>Step 1) Log into your amazon seller account, copy each search term ﬁeld into our generator using the same order that you have on Amazon OR Start without any backend search terms in the ﬁeld above. Remember to click SAVE.</p>
+    <p>Step 2) Click Generate and wait 1-2 minutes. Below there will be a list of individual words that were generated from your proﬁtable keywords and customer search terms. The list is based on three factors 1) They are proven to be proﬁtable based on history of your PPC campaigns within a range of .1- 30% ACoS. 2) They are ordered by popularity ( highest number of sales in that proﬁtable range are ﬁrst).  3) They are not already in your search term ﬁeld that you saved in step 1. You can ﬁne tune the list by removing numbers and special characters, also removing popularity of 1 ( One time sale words) and removing individual words from your title.</p>
+    <p>Step 3) By clicking add, these individual words will begin to ﬁll in the search term ﬁelds to the left. If you already have search terms in your ﬁelds, our system will place the most popular words in the upper most ﬁelds ﬁrst but only AFTER your current search terms. Once a ﬁeld gets to 1000 characters, it will start to ﬁll in the ﬁeld below</p>
+    <p>4) Finally, once you are happy with the order, CLICK SAVE. Now the next time you come back the list will be saved and you can click to see if any new popular search terms have been added since you last checked. Remember to add these keywords back into Amazon as our system is not directly linked to your seller central account. </p>">
+        Instructions
+        <i class="fa fa-info-circle"></i>
+      </a>
+    </div>
+    <img src="/images/search.jpg" alt="" style="margin-top:15px;"/>
+    <br>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Products information</h3>
+    </div>
+    <div class="panel-body panel-body2">
+      <div class="row">
+        <div class="col-lg-2">
+          <img  style="width: 70%;" ng-src="{{product.image_sm}}">
+        </div>
+        <div class="col-lg-10">
+            {{product["product-name"]}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1>Step 1</h1>
+        <h3 class="panel-title">
+          <div class="col-lg-6">Backend keywords</div>
+          <div class="col-lg-6" align="right"><button class="btn btn-primary" data-ng-click="update_backend()">Save</button></div>
+        </h3>
+        <div class="panel-body">
+          <label>
+            #1 (max 1000 chars)
+            <button clipboard text="product.backend_keywords1" on-copied="success()" on-error="fail(err)" class="btn ng-isolate-scope">
+              Copy to clipboard
+            </button>
+          </label>
+          <textarea ng-model="product.backend_keywords1" class="form-control" rows="4"></textarea>
+          <label>#2 (max 1000 chars) <button clipboard text="product.backend_keywords2" on-copied="success()" on-error="fail(err)" class="btn ng-isolate-scope">Copy to clipboard
+          </button></label>
+          <textarea ng-model="product.backend_keywords2" class="form-control" rows="4"></textarea>
+          <label>#3 (max 1000 chars) <button clipboard text="product.backend_keywords3" on-copied="success()" on-error="fail(err)" class="btn ng-isolate-scope">Copy to clipboard
+          </button></label>
+          <textarea ng-model="product.backend_keywords3" class="form-control" rows="4"></textarea>
+          <label>#4 (max 1000 chars) <button clipboard text="product.backend_keywords4" on-copied="success()" on-error="fail(err)" class="btn ng-isolate-scope">Copy to clipboard
+          </button></label>
+          <textarea ng-model="product.backend_keywords4" class="form-control" rows="4"></textarea>
+          <label>
+            #5 (max 1000 chars)
+            <button clipboard text="product.backend_keywords5" on-copied="success()" on-error="fail(err)" class="btn ng-isolate-scope">
+              Copy to clipboard
+            </button>
+          </label>
+          <textarea ng-model="product.backend_keywords5" class="form-control" rows="4"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-body panel-body2">
+          <h1>STEP 2</h1>
+          <h3><button class="btn-load btn-primary" data-ng-click="loadData()">Generate</button></h3>
+      </div>
+    </div>
+    <div data-ng-show="backend">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Suggested keywords&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn-primary" data-ng-click="removenumbers()">
+              Remove numbers
+            </button>
+            <button class="btn-primary" data-ng-click="removepopularity()">
+              Remove popularity of 1
+            </button>
+          </h3>
+          <div class="panel-body">
+            <table datatable="ng" dt-options="dtOptionsBackend" class="row-border hover" width="100%">
+              <thead>
+                <tr width="100%">
+                  <th>Word</th>
+                  <th>Popularity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="keyword in backend" width="100%">
+                  <td><a>{{keyword[0]}}</a></td>
+                  <td>{{ keyword[1] | number :0 }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1>STEP 3</h1>
+          <button class="btn btn-primary" data-ng-click="add_backend()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

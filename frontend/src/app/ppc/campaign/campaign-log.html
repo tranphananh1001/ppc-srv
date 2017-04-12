@@ -1,0 +1,193 @@
+<div class="panel panel-default" data-ng-controller="CampaignLogController">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <a href="#" data-toggle="popover" title="Campaign Logs"
+                                    data-content="Stay organized and log any changes that you have made to your campaigns here.
+
+By checking “Track Campaign Updates” our system will let you see the before and after affects that those changes had to your campaign.  You will be able to see the effects clearly in the chart above by looking at `tracking results`.  Additionally, wait 30 days and click on the log below.  You will be able to see clearly how the changes impacted your campaign by seeing campaign metrics for 30 days prior to the changes ( A) compared with 30 days after ( B). For most accurate results, wait 35 days so that all data is in.">
+        <i class="fa fa-info-circle"></i>
+      </a>
+      &nbsp;&nbsp;Campaign Logs
+    </h3>
+    <br>
+  </div>
+  <div class="row">
+    <div class="col-md-6" style="width:38%;">
+      <p class="input-group">
+        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="'2001-06-22'" max-date="'2029-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+        <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
+    <div class="col-lg-6" align="right">
+        <button class="btn-primary" ng-disabled="item.contents == ''" ng-click="addLog()">Add Log</button>
+    <button class="btn-primary" ng-disabled="item.contents == ''" ng-click="addLog(true)">Add and Track</button>
+      </div>
+  </div>
+  <div class="panel-body panel-body2">
+    <div class="row">
+      <div class="col-lg-9">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-9">
+        <div text-angular ng-model="item.contents" ta-toolbar="[['bold','italics', 'underline', 'strikeThrough'], ['ul', 'ol']]" style="width:90%">
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top:10px;">
+      <table class="table dataTable">
+        <tr ng-repeat="log in campaignLogs" ng-hide="$index >= showCount">
+          <td style="width:30px;">
+            <input type="checkbox" ng-model="log.state" ng-click="chkSelect(log.state, log.id)">
+          </td>
+          <td ng-if="!log.state" ng-click="logResult(log.id, log.state)" ng-bind-html="log.contents"></td>
+          <td ng-if="log.state" ng-click="logResult(log.id, log.state)" ng-bind-html="log.contents" style="color:blue;text-decoration:underline;"></td>
+          <td style="width:120px;">{{log.createdAt | date:'yyyy-MM-dd'}}</td>
+        </tr>
+      </table>
+      <div ng-show="logdetail" class="panel-body">
+        <div class="row">
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h5 align="center">Profit</h5>
+                  <h5 align="left">A:&nbsp;{{currency_sign}}{{upprofita/currency_rate_USD*currency_rate| number : 2}}</h5>
+                  <h5 align="left" style="margin-bottom:0px;">B:&nbsp;{{currency_sign}}{{upprofitb/currency_rate_USD*currency_rate| number : 2}}</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:0px;">___________</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:2px;">
+                    <span ng-show="upprofitb-upprofita>=0">+{{currency_sign}}{{upprofitb-upprofita| number : 2}}</span>
+                    <span ng-show="upprofitb-upprofita<0">-{{currency_sign}}{{upprofita-upprofitb| number : 2}}</span>
+                  </h5>
+                </div>
+              </div>
+              <div class="warp-but" style="border:solid;">
+                <div class="vartacalmidl">
+                  <h5 align="center">Impressions</h5>
+                  <h5 align="left">A:&nbsp;{{upimpressionsa | number : 0}}</h5>
+                  <h5 align="left" style="margin-bottom:0px;">B:&nbsp;{{upimpressionsb | number : 0}}</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:0px;">___________</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:2px;">
+                    <span ng-show="upimpressionsb-upimpressionsa>0">+</span>{{upimpressionsb-upimpressionsa| number : 0}}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item green">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h5 align="center">Gross<span>&nbsp;</span>Revenue</h5>
+                  <h5 align="left">A:&nbsp;{{currency_sign}}{{uprevenuea/currency_rate_USD*currency_rate | number : 2}}</h5>
+                  <h5 align="left" style="margin-bottom:0px;">B:&nbsp;{{currency_sign}}{{uprevenueb/currency_rate_USD*currency_rate | number : 2}}</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:0px;">___________</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:2px;">
+                    <span ng-show="uprevenueb-uprevenuea>=0">+{{currency_sign}}{{uprevenueb-uprevenuea| number : 2}}</span>
+                    <span ng-show="uprevenueb-uprevenuea<0">-{{currency_sign}}{{uprevenuea-uprevenueb| number : 2}}</span>
+                  </h5>
+                </div>
+              </div>
+              <div class="warp-but" style="border:solid;">
+                <div class="vartacalmidl">
+                  <h5 align="center">Orders</h5>
+                  <h5 align="left">A:&nbsp;{{upordersa | number : 0}}</h5>
+                  <h5 align="left" style="margin-bottom:0px;">B:&nbsp;{{upordersb | number : 0}}</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:0px;">___________</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:2px;">
+                    <span ng-show="upordersb-upordersa>0">+</span>{{upordersb-upordersa| number : 0}}
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item blue">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h5 align="center">AcoS<span>&nbsp;</span>(%)</h5>
+                  <h5 align="left">A:&nbsp;{{upacosa | number : 1}}</h5>
+                  <h5 align="left" style="margin-bottom:0px;">B:&nbsp;{{upacosb | number : 1}}</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:0px;">___________</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:2px;">
+                    <span ng-show="upacosb-upacosa>=0">+{{upacosb-upacosa| number : 1}}&nbsp;%</span>
+                    <span ng-show="upacosb-upacosa<0">-{{upacosa-upacosb| number : 1}}&nbsp;%</span>
+                    <span>&nbsp;</span>
+                  </h5>
+                </div>
+              </div>
+              <div class="warp-but" style="border:solid;">
+                <div class="vartacalmidl" style="min-width:100%;">
+                  <h5 align="center">Clicks<span>&nbsp;/&nbsp;</span>CTR%</h5>
+                  <h5 align="left">A:&nbsp;{{upclicksa | number : 0}}/{{upctra | number:2}}%</h5>
+                  <h5 align="left" style="margin-bottom:0px;">B:&nbsp;{{upclicksb | number : 0}}/{{upctrb | number:2}}%</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:0px;">___________</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:2px;">
+                    <span ng-show="upclicksb-upclicksa>0">+</span>{{upclicksb-upclicksa| number : 0}}/<span ng-show="upctrb-upctra>0">+</span>{{upctrb-upctra| number : 2}}%
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3" align="center">
+            <div class="cifri-item red">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h5 align="center">Ad<span>&nbsp;</span>Spend</h5>
+                  <h5 align="left">A:&nbsp;{{currency_sign}}{{upcosta/currency_rate_USD*currency_rate | number : 2}}</h5>
+                  <h5 align="left" style="margin-bottom:0px;">B:&nbsp;{{currency_sign}}{{upcostb/currency_rate_USD*currency_rate | number : 2}}</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:0px;">___________</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:2px;">
+                    <span ng-show="upcostb-upcosta>=0">+{{currency_sign}}{{upcostb-upcosta| number : 2}}</span>
+                    <span ng-show="upcostb-upcosta<0">-{{currency_sign}}{{upcosta-upcostb| number : 2}}</span>
+                  </h5>
+                </div>
+              </div>
+              <div class="warp-but" style="border:solid;">
+                <div class="vartacalmidl">
+                  <h5 align="center">Conversion(%)</h5>
+                  <h5 align="left">A:&nbsp;{{upcra | number : 2}}</h5>
+                  <h5 align="left" style="margin-bottom:0px;">B:&nbsp;{{upcrb | number : 2}}</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:0px;">___________</h5>
+                  <h5 align="center" style="margin-bottom:0px;margin-top:2px;">
+                    <span ng-show="upcrb-upcra>0">+</span>{{upcrb-upcra| number : 2}}<span>&nbsp;</span>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-show="showCount < campaignLogs.length" class="row" align="center">
+      <button ng-click="chgTrack()" class="abtn" style="width:180px;">Track Campaign Updates</button>&nbsp;&nbsp;
+      <button ng-click="showMore()" class="abtn" style="text-align:center;">See more...</button>&nbsp;
+      <button ng-click="delLog()" class="abtn" style="text-align:center;">Delete</button>
+    </div>
+    <div ng-show="showCount >= campaignLogs.length && campaignLogs.length>0" class="row" align="center">
+      <button ng-click="chgTrack()" class="abtn" style="width:180px;">Track Campaign Updates</button>&nbsp;
+      <button ng-click="delLog()" class="abtn" style="text-align:center;">Delete</button>
+    </div>
+    <div class="row" ng-show="campaignLogs.length > 10 && showCount >= campaignLogs.length" ng-click="showLess()" style="text-align:center;" align="center">
+      <button ng-click="chgTrack()" class="abtn" style="width:180px;">Track Campaign Updates</button>&nbsp;&nbsp;
+      <button ng-click="showMore()" class="abtn" style="text-align:center;">See less...</button>&nbsp;
+      <button ng-click="delLog()" class="abtn" style="text-align:center;">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+    $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+          $(this).popover('hide');
+        }
+      });
+    });
+  });
+</script>

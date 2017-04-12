@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a101acc3-83a3-4d93-9978-5653579f84f9" name="PPCScope" url="http://138.201.121.240">
+        <fileTransfer host="138.201.121.240" port="22" rootFolder="/home/PPCE/PPCScope" accessType="SFTP" password="dff0df98dfecdf9cdff2dfcddfc9dfc7dfe2dfcddfc0dffedff2dfc4" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

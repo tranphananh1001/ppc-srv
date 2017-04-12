@@ -1,0 +1,60 @@
+{
+  "name": "frontend",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "start": "gulp watch",
+    "test": "gulp test",
+    "postinstall": "./node_modules/bower/bin/bower install"
+  },
+  "keywords": [
+    "slush, angular, slush-angular"
+  ],
+  "dependencies": {
+    "bower": "*",
+    "connect-history-api-fallback": "*",
+    "d3-funnel": "^0.7.5",
+    "gulp-replace-task": "^0.11.0",
+    "gulp-scss-lint": "^0.3.9",
+    "ng-file-upload": "^12.0.4"
+  },
+  "devDependencies": {
+    "event-stream": "*",
+    "gulp": "*",
+    "gulp-angular-filesort": "*",
+    "gulp-cached": "*",
+    "gulp-clean": "*",
+    "gulp-concat": "*",
+    "gulp-csslint": "*",
+    "gulp-embedlr": "*",
+    "gulp-filter": "*",
+    "gulp-header": "*",
+    "gulp-htmlmin": "*",
+    "gulp-inject": "*",
+    "gulp-jshint": "*",
+    "gulp-karma": "*",
+    "gulp-livereload": "*",
+    "gulp-load-plugins": "*",
+    "gulp-minify-css": "*",
+    "gulp-ng-annotate": "*",
+    "gulp-ng-html2js": "*",
+    "gulp-rename": "*",
+    "gulp-replace-task": "*",
+    "gulp-sass": "*",
+    "gulp-scss-lint": "*",
+    "gulp-serve": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "*",
+    "jshint": "*",
+    "jshint-stylish": "*",
+    "karma": "*",
+    "karma-chai": "*",
+    "karma-chrome-launcher": "*",
+    "karma-mocha": "*",
+    "lazypipe": "*",
+    "main-bower-files": "*",
+    "sort-stream": "*",
+    "streamqueue": "*",
+    "tiny-lr": "*"
+  }
+}

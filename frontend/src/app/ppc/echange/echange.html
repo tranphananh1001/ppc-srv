@@ -1,0 +1,17 @@
+<div class="form-login">
+    <form name="chgForm" method="post" novalidate="novalidate" style="width:70%;">
+        <h2 class="title">Change Email</h2>
+        <br><br>
+        <div class="form-group" data-show-errors>
+             <input type="text" name="email" class="register_input" placeholder="Enter new email" required="required" data-ng-model="email" />
+        </div>
+
+        <div class="form-group" data-show-errors>
+            <input type="password" name="curpwd" class="register_input" placeholder="Enter current password" required="required" data-ng-model="curpwd" />
+        </div>
+        <br>
+        <div align="center">
+            <button class="signup" data-ng-click="save()">Save</button>
+        </div>
+    </form>
+</div>

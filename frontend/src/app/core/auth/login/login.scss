@@ -1,0 +1,201 @@
+.form-login {
+  margin: 0 auto;
+  max-width: 512px;
+  padding: 16px;
+
+  h1 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .step-number,
+  .step-title {
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .step-number {
+    text-align: right;
+  }
+
+  .step-title small {
+    display: block;
+    font-size: 16px;
+  }
+
+  .credentials-row,
+  .country-selection-row {
+    margin-bottom: 16px;
+  }
+
+  .country-select {
+    width: 100%;
+
+    #country {
+      width: 100%;
+      height: 36px;
+    }
+  }
+
+  .title {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .checkbox {
+    font-weight: normal;
+
+    input {
+      float: none;
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  .form-control {
+    text-align: left;
+
+    &:focus {
+      z-index: 2;
+    }
+  }
+
+  .username {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .password {
+    border-radius: 0;
+  }
+
+  .btn {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .register_input {
+    display: block;
+    width: 100%;
+    height: 38px;
+    margin-top: 2px;
+    font-weight: 500;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #d8d8d8;
+  }
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #c5c5c5;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: pink;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: pink;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: pink;
+}
+  .register_input:focus {
+    border-color: rgba(0,0,0,.3);
+    outline: 0;
+  }
+  .radio_ctrl{
+    margin-top:4px;margin-left:3px;
+  }
+  .radio_label{
+    color:black;margin-left:1px;
+  }
+  .radio1{
+    height:50px;width: 100%;border-radius:3px;
+    border:rgba(34,177,76,.7) 2px solid;box-sizing:
+     border-box;padding: 2px;margin-bottom: 10px;background: #ffffff;
+     color: #FFF;
+    font-weight: bold;font-size: 12pt;transition: background .4s;cursor: pointer;
+    min-height:50px;height:auto;
+  }
+  .radio1:hover{
+    background:rgba(34,177,76,.7);
+  }
+  .radio2{
+    height:50px;width: 100%;border-radius:3px;
+    border:rgba(205,220,57,.7) 2px solid;box-sizing:
+     border-box;padding: 2px;margin-bottom: 10px;background: #ffffff;
+     color: #FFF;
+    font-weight: bold;font-size: 12pt;transition: background .4s;cursor: pointer;
+    min-height:50px;height:auto;
+  }
+  .radio2:hover{
+    background:rgba(205,220,57,.7);
+  }
+  .radio3{
+    height:50px;width: 100%;border-radius:3px;
+    border:rgba(254,202,40,.7) 2px solid;box-sizing:
+     border-box;padding: 2px;margin-bottom: 10px;background: #ffffff;
+     color: #FFF;
+    font-weight: bold;font-size: 12pt;transition: background .4s;cursor: pointer;
+    min-height:50px;height:auto;
+  }
+  .radio3:hover{
+    background:rgba(254,202,40,.7);
+  }
+  .radio4{
+    height:50px;width: 100%;border-radius:3px;
+    border:rgba(255,168,39,.7) 2px solid;box-sizing:
+     border-box;padding: 2px;margin-bottom: 10px;background: #ffffff;
+     color: #FFF;
+    font-weight: bold;font-size: 12pt;transition: background .4s;cursor: pointer;
+    min-height:50px;height:auto;
+  }
+  .radio4:hover{
+    background:rgba(255,168,39,.7) ;
+  }
+  .radio5{
+    height:50px;width: 100%;border-radius:3px;
+    border:rgba(255,86,34,.7) 2px solid;box-sizing:
+     border-box;padding: 2px;margin-bottom: 10px;background: #ffffff;
+     color: #FFF;
+    font-weight: bold;font-size: 12pt;transition: background .4s;cursor: pointer;
+    min-height:50px;height:auto;
+  }
+  .radio5:hover{
+    background:rgba(255,86,34,.7);
+  }
+  .signup{
+    border-radius: 999rem;
+    border: 0;
+    bottom: 0;
+    letter-spacing: .6;
+    font-size: 1.25rem;
+    background: rgba(33,150,243,.7);
+    color: #fff;
+    fill: #fff;
+    width:100px;
+    height:40px;
+    margin-top: 16px;
+  }
+  .signup:hover{
+    background: rgba(33,130,210,.7);
+  }
+}
+.abtn{
+    border-radius: 0rem;
+    border: 0;
+    bottom: 0;
+    letter-spacing: .6;
+    font-size: 1.25rem;
+    background: rgba(33,150,243,.7);
+    color: #fff;
+    fill: #fff;
+    width:100px;
+    height:30px;
+  }
+  .abtn:hover{
+    background: rgba(33,130,210,.7);
+  }

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html data-ng-app="frontend">
+    <head>
+        <meta charset="utf-8"/>
+        <title>PPC Entourage</title>
+
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+                n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+                document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+            fbq('init', '1568710966765215');
+            fbq('track', "PageView");
+        </script>
+        <noscript>
+          <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1568710966765215&ev=PageView&noscript=1" />
+        </noscript>
+        <!-- End Facebook Pixel Code -->
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-87358845-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+
+        <script type="text/javascript">
+            var learnq = learnq || [];
+
+            learnq.push(['account', 'rZdgv4']);
+
+            learnq.push(['identify', {
+              // TODO: Change the line below to be the current user's unique ID.
+              '$id': '123',
+              // TODO: Change the line below to be the current user's email.
+              '$email': 'john.smith@example.com',
+              // TODO: Change the line below to be the current user's first name.
+              '$first_name': 'John',
+              // TODO: Change the line below to be the current user's last name.
+              '$last_name': 'Smith',
+              // TODO: Change the line below to be when the current user signed up.
+              'Created At': 1470680827
+
+              // TODO: If you want to track a user's plan, uncomment the line below and change it to the current user's plan.
+              // , 'Plan' : 'Basic Plan'
+            }]);
+
+            (function () {
+              var b = document.createElement('script');
+              b.type = 'text/javascript';
+              b.async = true;
+              b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+              var a = document.getElementsByTagName('script')[0];
+              a.parentNode.insertBefore(b, a);
+            })();
+        </script>
+
+        <!-- Start of ppcentourage Zendesk Widget script -->
+        <script>/*<![CDATA[*/
+        window.zEmbed || function (e, t) {
+          var n, o, d, i, s, a = [], r = document.createElement("iframe");
+          window.zEmbed = function () {
+            a.push(arguments)
+          }, window.zE = window.zE || window.zEmbed, r.src = "javascript:false", r.title = "", r.role = "presentation", (r.frameElement || r).style.cssText = "display: none", d = document.getElementsByTagName("script"), d = d[d.length - 1], d.parentNode.insertBefore(r, d), i = r.contentWindow, s = i.document;
+          try {
+            o = s
+          } catch (e) {
+            n = document.domain, r.src = 'javascript:var d=document.open();d.domain="' + n + '";void(0);', o = s
+          }
+          o.open()._l = function () {
+            var o = this.createElement("script");
+            n && (this.domain = n), o.id = "js-iframe-async", o.src = e, this.t = +new Date, this.zendeskHost = t, this.zEQueue = a, this.body.appendChild(o)
+          }, o.write('<body onload="document._l();">'), o.close()
+        }("https://assets.zendesk.com/embeddable_framework/main.js", "ppcentourage.zendesk.com");
+        /*]]>*/</script>
+        <!-- End of ppcentourage Zendesk Widget script -->
+
+        <!-- inject:vendor:css -->
+        <!-- endinject -->
+
+        <!-- inject:css -->
+        <!-- endinject -->
+
+        <link rel="stylesheet" href="//cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" href="//cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css">
+    </head>
+    <body data-ng-cloak class="ng-cloak">
+        <div data-ui-view="header"></div>
+
+        <div id="container" class="container main-container">
+            <div data-ui-view="pageNavigation"></div>
+            <div data-ui-view="content"></div>
+        </div>
+
+        <div data-ui-view="footer"></div>
+
+        <script>
+            (function onLoad() {
+                var io;
+
+                Object.defineProperty(window, 'io', {
+                    get: function get() {
+                        return io;
+                    },
+                    set: function set(value) {
+                        var sails;
+
+                        io = value;
+
+                        Object.defineProperty(io, 'sails', {
+                            get: function get() {
+                                return sails;
+                            },
+                            set: function set(value) {
+                                sails = value;
+
+                                sails.url = '@@backendUrl';
+                            }
+                        });
+                    }
+                });
+            })();
+        </script>
+
+        <!-- inject:vendor:js -->
+        <!-- endinject -->
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+        <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+        <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+        <!-- inject:js -->
+
+
+        <!-- endinject -->
+    </body>
+</html>

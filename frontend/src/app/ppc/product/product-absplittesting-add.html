@@ -1,0 +1,658 @@
+<div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;&nbsp;Products information
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-2">
+              <img style="width: 70%;" ng-src="{{product.image_sm}}">
+            </div>
+            <div class="col-lg-10">
+              {{product["product-name"]}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-lg-6">
+              <h3 class="panel-title">
+                <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                &nbsp;&nbsp;Products Statistics
+              </h3>
+            </div>
+            <div class="col-lg-3 text-right">
+              <span class="date-range-picker-label">
+                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <span>Date Range:</span>
+              </span>
+            </div>
+            <div class="col-lg-3">
+              <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions">
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2>{{currency_sign}}{{upprofit/currency_rate_USD*currency_rate| number : 2}}</h2>
+                    Profit
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2> {{upimpressions | number : 0}}</h2>
+                    Impressions
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" align="center">
+            <div class="cifri-item green">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{uprevenue/currency_rate_USD*currency_rate | number : 2}}</h2>
+                  Gross Revenue
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2>{{upctr | number : 2}}</h2>
+                  CTR (%)
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item blue">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2> {{upacos | number : 1}}</h2>
+                    AcoS (%)
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2> {{upclicks | number : 0}}</h2>
+                    Clicks
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item red">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2>{{currency_sign}}{{upcost/currency_rate_USD*currency_rate | number : 2}}</h2>
+                    Ad Spend
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2> {{upcr | number : 2}}</h2>
+                    CR (%)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-lg-6">
+              <h3 class="panel-title">
+                Charts
+                <a href="#" data-toggle="popover" title="Charts"
+                  data-content="You can click on each component to add or subtract it from the chart. Profit margins can be set for each product below. If you don’t have a profit margin set for a product, we will designate a universal profit margin of  30%. This universal profit margin can be adjusted in the settings tab. Use these charts to track important information about the profitability and visibility of your product over time.">
+                  <i class="fa fa-info-circle"></i>
+                </a>
+              </h3>
+            </div>
+            <div class="col-lg-3 text-right">
+              <span class="date-range-picker-label">
+                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <span>Date Range:</span>
+              </span>
+            </div>
+            <div class="col-lg-3">
+              <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions">
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="cahrt-bg">
+          <nvd3 options="chartOptions" data="dataChart"></nvd3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+            &nbsp;&nbsp;A/B Split Testing
+          </h3>
+        </div>
+        <div class="panel-body">
+          <label>Test name</label>
+          <input data-ng-show="!show.sav" type="text" ng-model="abtests.name" class="form-control" rows="1">
+          <h3 data-ng-show="show.sav">{{abtests.name}}</h3>
+          <div data-ng-show="!show.sav"><label>Test time frame</label>
+            <div class="row">
+              <div class="col-lg-2"><input type="radio" ng-model="abtests.before_timeframe" value="14"
+                                           ng-checked="true"> 14 days
+              </div>
+              <div class="col-lg-2"><input type="radio" ng-model="abtests.before_timeframe" value="21"> 21 days
+              </div>
+              <div class="col-lg-2"><input type="radio" ng-model="abtests.before_timeframe" value="28"> 28 days
+              </div>
+              <div class="col-lg-6">
+                <div class="row">
+                  <div class="col-lg-3"><input type="radio" ng-model="abtests.before_timeframe" value="0"> custom
+                  </div>
+                  <div class="col-lg-9" align="left"><input type="text" ng-model="abtests.before_timeframe1"> days
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;Testing
+            Time Frame
+          </h3>
+        </div>
+        <div class="panel-body">
+          <h1 ng-if="abtests.before_timeframe<0">Test completed</h1>
+          <h1 ng-if="abtests.before_timeframe>=0">Days left: {{abtests.before_timeframe}}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6" data-ng-show="show.sav">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;Statistics A
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2>{{currency_sign}}{{before_upprofit/currency_rate_USD*currency_rate| number : 2}}</h2>
+                    Profit
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2> {{before_upimpressions | number : 0}}</h2>
+                    Impressions
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" align="center">
+            <div class="cifri-item green">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{before_uprevenue/currency_rate_USD*currency_rate | number : 2}}</h2>
+                  Gross Revenue
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2>{{before_upctr | number : 2}}</h2>
+                  CTR (%)
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item blue">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2> {{before_upacos | number : 1}}</h2>
+                    AcoS (%)
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2> {{before_upclicks | number : 0}}</h2>
+                    Clicks
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item red">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2>{{currency_sign}}{{before_upcost/currency_rate_USD*currency_rate | number : 2}}</h2>
+                    Ad Spend
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2> {{before_upcr | number : 2}}</h2>
+                    CR (%)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6" data-ng-show="show.sav">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;Statistics B
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2>{{currency_sign}}{{after_upprofit/currency_rate_USD*currency_rate| number : 2}}</h2>
+                    Profit
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2> {{after_upimpressions | number : 0}}</h2>
+                    Impressions
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" align="center">
+            <div class="cifri-item green">
+              <div class="warp-top">
+                <div class="vartacalmidl">
+                  <h2>{{currency_sign}}{{after_uprevenue/currency_rate_USD*currency_rate | number : 2}}</h2>
+                  Gross Revenue
+                </div>
+              </div>
+              <div class="warp-but">
+                <div class="vartacalmidl">
+                  <h2>{{after_upctr | number : 2}}</h2>
+                  CTR (%)
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item blue">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2> {{after_upacos | number : 1}}</h2>
+                    AcoS (%)
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2> {{after_upclicks | number : 0}}</h2>
+                    Clicks
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" align="center">
+              <div class="cifri-item red">
+                <div class="warp-top">
+                  <div class="vartacalmidl">
+                    <h2>{{currency_sign}}{{after_upcost/currency_rate_USD*currency_rate | number : 2}}</h2>
+                    Ad Spend
+                  </div>
+                </div>
+                <div class="warp-but">
+                  <div class="vartacalmidl">
+                    <h2> {{after_conversion | number : 2}}</h2>
+                    CR (%)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;A
+            values</h3>
+        </div>
+        <div class="panel-body">
+          <h3></h3>
+          <div>
+            <select data-ng-show="!show.sav" name="category-group" id="categoryGroupA" class="form-control"
+                    ng-options="category.name for category in categories"
+                    ng-model="itemSelected"
+                    ng-change="onCategoryChange(itemSelected)">
+
+            </select>
+            <label data-ng-show="abtests.before_title&&(show.ti||show.sav)">Title</label>
+            <textarea data-ng-show="show.ti" ng-model="abtests.before_title" class="form-control"
+                      rows="1"></textarea>
+            <span data-ng-show="abtests.before_title&&show.sav">{{abtests.before_title}}</span><br
+            data-ng-show="abtests.before_title&&show.sav">
+            <label data-ng-show="abtests.before_summary&&(show.su||show.sav)">Summary</label>
+            <textarea data-ng-show="show.su" ng-model="abtests.before_summary" class="form-control"
+                      rows="10"></textarea>
+            <span data-ng-show="abtests.before_summary&&show.sav"> {{abtests.before_summary}}</span><br
+            data-ng-show="abtests.before_summary&&show.sav">
+            <br data-ng-show="abtests.before_summary&&(show.ph||show.sav)">
+            <label data-ng-show="abtests.before_photo1&&(show.ph||show.sav)">Photo #1</label>
+            <input data-ng-show="show.ph" type="file"
+                   onchange="angular.element(this).scope().uploadFile('before_photo1', this.files)">
+            <img data-ng-show="abtests.before_photo1&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.before_photo1}}">
+            <br data-ng-show="abtests.before_photo1&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.before_photo2&&(show.ph||show.sav)">Photo #2</label>
+            <input data-ng-show="show.ph" type="file"
+                   onchange="angular.element(this).scope().uploadFile('before_photo2', this.files)">
+            <img data-ng-show="abtests.before_photo2&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.before_photo2}}">
+            <br data-ng-show="abtests.before_photo2&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.before_photo3&&(show.ph||show.sav)">Photo #3</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.before_photo3"
+                   onchange="angular.element(this).scope().uploadFile('before_photo3',this.files)">
+            <img data-ng-show="abtests.before_photo3&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.before_photo3}}">
+            <br data-ng-show="abtests.before_photo3&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.before_photo4&&(show.ph||show.sav)">Photo #4</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.before_photo4"
+                   onchange="angular.element(this).scope().uploadFile('before_photo4',this.files)">
+            <img data-ng-show="abtests.before_photo4&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.before_photo4}}">
+            <br data-ng-show="abtests.before_photo4&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.before_photo5&&(show.ph||show.sav)">Photo #5</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.before_photo5"
+                   onchange="angular.element(this).scope().uploadFile('before_photo5',this.files)">
+            <img data-ng-show="abtests.before_photo5&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.before_photo5}}">
+            <br data-ng-show="abtests.before_photo5&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.before_photo6&&(show.ph||show.sav)">Photo #6</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.before_photo6"
+                   onchange="angular.element(this).scope().uploadFile('before_photo6',this.files)">
+            <img data-ng-show="abtests.before_photo6&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.before_photo6}}">
+            <br data-ng-show="abtests.before_photo6&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.before_photo7&&(show.ph||show.sav)">Photo #7</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.before_photo7"
+                   onchange="angular.element(this).scope().uploadFile('before_photo7',this.files)">
+            <img data-ng-show="abtests.before_photo7&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.before_photo7}}">
+            <br data-ng-show="abtests.before_photo7&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.before_photo8&&(show.ph||show.sav)">Photo #8</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.before_photo8"
+                   onchange="angular.element(this).scope().uploadFile('before_photo8',this.files)">
+            <img data-ng-show="abtests.before_photo8&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.before_photo8}}">
+            <br data-ng-show="abtests.before_photo8&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.before_photo9&&(show.ph||show.sav)">Photo #9</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.before_photo9"
+                   onchange="angular.element(this).scope().uploadFile('before_photo9',this.files)">
+            <img data-ng-show="abtests.before_photo9&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.before_photo9}}">
+            <br data-ng-show="abtests.before_photo9&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.before_bullet1&&(show.bu||show.sav)">Bullet #1 </label>
+            <textarea data-ng-show="show.bu" ng-model="abtests.before_bullet1" class="form-control"
+                      rows="2"></textarea>
+            <span data-ng-show="abtests.before_bullet1&&show.sav"> {{abtests.before_bullet1}}</span><br
+            data-ng-show="abtests.before_bullet1&&show.sav">
+            <label data-ng-show="abtests.before_bullet2&&(show.bu||show.sav)">Bullet #2 </label>
+            <textarea data-ng-show="show.bu" ng-model="abtests.before_bullet2" class="form-control"
+                      rows="2"></textarea>
+            <span data-ng-show="abtests.before_bullet2&&show.sav"> {{abtests.before_bullet2}}</span><br
+            data-ng-show="abtests.before_bullet2&&show.sav">
+            <label data-ng-show="abtests.before_bullet3&&(show.bu||show.sav)">Bullet #3 </label>
+            <textarea data-ng-show="show.bu" ng-model="abtests.before_bullet3" class="form-control"
+                      rows="2"></textarea>
+            <span data-ng-show="abtests.before_bullet3&&show.sav"> {{abtests.before_bullet3}}</span><br
+            data-ng-show="abtests.before_bullet3&&show.sav">
+            <label data-ng-show="abtests.before_bullet4&&(show.bu||show.sav)">Bullet #4 </label>
+            <textarea data-ng-show="show.bu" ng-model="abtests.before_bullet4" class="form-control"
+                      rows="2"></textarea>
+            <span data-ng-show="abtests.before_bullet4&&show.sav"> {{abtests.before_bullet4}}</span><br
+            data-ng-show="abtests.before_bullet4&&show.sav">
+            <label data-ng-show="abtests.before_bullet5&&(show.bu||show.sav)">Bullet #5 </label>
+            <textarea data-ng-show="show.bu" ng-model="abtests.before_bullet5" class="form-control"
+                      rows="2"></textarea>
+            <span data-ng-show="abtests.before_bullet5&&show.sav"> {{abtests.before_bullet5}}</span><br
+            data-ng-show="abtests.before_bullet5&&show.sav">
+            <label data-ng-show="abtests.before_backend1&&(show.ba||show.sav)">Backend #1 (max 1000 chars)</label>
+            <textarea data-ng-show="show.ba" ng-model="abtests.before_backend1" class="form-control"
+                      rows="4"></textarea>
+            <span data-ng-show="abtests.before_backend1&&show.sav"> {{abtests.before_backend1}}</span><br
+            data-ng-show="abtests.before_backend1&&show.sav">
+            <label data-ng-show="abtests.before_backend2&&(show.ba||show.sav)">Backend #2 (max 1000 chars)</label>
+            <textarea data-ng-show="show.ba" ng-model="abtests.before_backend2" class="form-control"
+                      rows="4"></textarea>
+            <span data-ng-show="abtests.before_backend2&&show.sav"> {{abtests.before_backend2}}</span><br
+            data-ng-show="abtests.before_backend2&&show.sav">
+            <label data-ng-show="abtests.before_backend3&&(show.ba||show.sav)">Backend #3 (max 1000 chars)</label>
+            <textarea data-ng-show="show.ba" ng-model="abtests.before_backend3" class="form-control"
+                      rows="4"></textarea>
+            <span data-ng-show="abtests.before_backend3&&show.sav"> {{abtests.before_backend3}}</span><br
+            data-ng-show="abtests.before_backend3&&show.sav">
+            <label data-ng-show="abtests.before_backend4&&(show.ba||show.sav)">Backend #4 (max 1000 chars)</label>
+            <textarea data-ng-show="show.ba" ng-model="abtests.before_backend4" class="form-control"
+                      rows="4"></textarea>
+            <span data-ng-show="abtests.before_backend4&&show.sav"> {{abtests.before_backend4}}</span><br
+            data-ng-show="abtests.before_backend4&&show.sav">
+            <label data-ng-show="abtests.before_backend5&&(show.ba||show.sav)">Backend #5 (max 1000 chars)</label>
+            <textarea data-ng-show="show.ba" ng-model="abtests.before_backend5" class="form-control"
+                      rows="4"></textarea>
+            <span data-ng-show="abtests.before_backend5&&show.sav">{{abtests.before_backend5}}</span><br
+            data-ng-show="abtests.before_backend5&&show.sav">
+            <label data-ng-show="abtests.before_price&&(show.pr||show.sav)">Price</label>
+            <input data-ng-show="show.pr" type="text" ng-model="abtests.before_price" class="form-control"
+                   rows="4">
+            <span data-ng-show="abtests.before_price&&show.sav"> {{abtests.before_price}}</span><br
+            data-ng-show="abtests.before_price&&show.sav">
+            <label data-ng-show="abtests.before_discount&&(show.di||show.sav)">Sale price</label>
+            <input data-ng-show="show.di" type="text" ng-model="abtests.before_discount" class="form-control"
+                   rows="4">
+            <span data-ng-show="abtests.before_discount&&show.sav"> {{abtests.before_discount}}</span><br
+            data-ng-show="abtests.before_discount&&show.sav">
+            <label data-ng-show="abtests.before_coupon&&(show.co||show.sav)">Coupon</label>
+            <input data-ng-show="show.co" type="text" ng-model="abtests.before_coupon" class="form-control"
+                   rows="4">
+            <span data-ng-show="abtests.before_coupon&&show.sav"> {{abtests.before_coupon}}</span><br
+            data-ng-show="abtests.before_coupon&&show.sav">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;B
+            values</h3>
+        </div>
+        <div class="panel-body">
+          <h3></h3>
+          <div>
+            <select data-ng-show="!show.sav" name="category-group" id="categoryGroupB" class="form-control"
+                    ng-options="category.name for category in categories"
+                    ng-model="itemSelected"
+                    ng-change="onCategoryChange(itemSelected)">
+
+            </select>
+            <label data-ng-show="abtests.after_title&&(show.ti||show.sav)">Title</label>
+            <textarea data-ng-show="show.ti" ng-model="abtests.after_title" class="form-control"
+                      rows="1"></textarea>
+            <span data-ng-show="abtests.after_title&&show.sav">{{abtests.after_title}}</span><br
+            data-ng-show="abtests.after_title&&show.sav">
+            <label data-ng-show="abtests.after_summary&&(show.su||show.sav)">Summary</label>
+            <textarea data-ng-show="show.su" ng-model="abtests.after_summary" class="form-control"
+                      rows="10"></textarea>
+            <span data-ng-show="abtests.after_summary&&show.sav"> {{abtests.after_summary}}</span><br
+            data-ng-show="abtests.after_summary&&show.sav">
+            <br data-ng-show="abtests.after_summary&&(show.ph||show.sav)">
+            <label data-ng-show="abtests.after_photo1&&(show.ph||show.sav)">Photo #1</label>
+            <input data-ng-show="show.ph" type="file"
+                   onchange="angular.element(this).scope().uploadFile('after_photo1', this.files)">
+            <img data-ng-show="abtests.after_photo1&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.after_photo1}}">
+            <br data-ng-show="abtests.after_photo1&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.after_photo2&&(show.ph||show.sav)">Photo #2</label>
+            <input data-ng-show="show.ph" type="file"
+                   onchange="angular.element(this).scope().uploadFile('after_photo2', this.files)">
+            <img data-ng-show="abtests.after_photo2&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.after_photo2}}">
+            <br data-ng-show="abtests.after_photo2&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.after_photo3&&(show.ph||show.sav)">Photo #3</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.after_photo3"
+                   onchange="angular.element(this).scope().uploadFile('after_photo3',this.files)">
+            <img data-ng-show="abtests.after_photo3&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.after_photo3}}">
+            <br data-ng-show="abtests.after_photo3&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.after_photo4&&(show.ph||show.sav)">Photo #4</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.after_photo4"
+                   onchange="angular.element(this).scope().uploadFile('after_photo4',this.files)">
+            <img data-ng-show="abtests.after_photo4&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.after_photo4}}">
+            <br data-ng-show="abtests.after_photo4&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.after_photo5&&(show.ph||show.sav)">Photo #5</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.after_photo5"
+                   onchange="angular.element(this).scope().uploadFile('after_photo5',this.files)">
+            <img data-ng-show="abtests.after_photo5&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.after_photo5}}">
+            <br data-ng-show="abtests.after_photo5&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.after_photo6&&(show.ph||show.sav)">Photo #6</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.after_photo6"
+                   onchange="angular.element(this).scope().uploadFile('after_photo6',this.files)">
+            <img data-ng-show="abtests.after_photo6&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.after_photo6}}">
+            <br data-ng-show="abtests.after_photo6&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.after_photo7&&(show.ph||show.sav)">Photo #7</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.after_photo7"
+                   onchange="angular.element(this).scope().uploadFile('after_photo7',this.files)">
+            <img data-ng-show="abtests.after_photo7&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.after_photo7}}">
+            <br data-ng-show="abtests.after_photo7&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.after_photo8&&(show.ph||show.sav)">Photo #8</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.after_photo8"
+                   onchange="angular.element(this).scope().uploadFile('after_photo8',this.files)">
+            <img data-ng-show="abtests.after_photo8&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.after_photo8}}">
+            <br data-ng-show="abtests.after_photo8&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.after_photo9&&(show.ph||show.sav)">Photo #9</label>
+            <input data-ng-show="show.ph" type="file" ng-model="abtests.after_photo9"
+                   onchange="angular.element(this).scope().uploadFile('after_photo9',this.files)">
+            <img data-ng-show="abtests.after_photo9&&(show.ph||show.sav)" style="width:100%;max-width:200px;"
+                 ng-src="/assets/pictures/{{abtests.after_photo9}}">
+            <br data-ng-show="abtests.after_photo9&&(show.ph||show.sav)"><label
+            data-ng-show="abtests.after_bullet1&&(show.bu||show.sav)">Bullet #1 </label>
+            <textarea data-ng-show="show.bu" ng-model="abtests.after_bullet1" class="form-control"
+                      rows="2"></textarea>
+            <span data-ng-show="abtests.after_bullet1&&show.sav"> {{abtests.after_bullet1}}</span><br
+            data-ng-show="abtests.after_bullet1&&show.sav">
+            <label data-ng-show="abtests.after_bullet2&&(show.bu||show.sav)">Bullet #2 </label>
+            <textarea data-ng-show="show.bu" ng-model="abtests.after_bullet2" class="form-control"
+                      rows="2"></textarea>
+            <span data-ng-show="abtests.after_bullet2&&show.sav"> {{abtests.after_bullet2}}</span><br
+            data-ng-show="abtests.after_bullet2&&show.sav">
+            <label data-ng-show="abtests.after_bullet3&&(show.bu||show.sav)">Bullet #3 </label>
+            <textarea data-ng-show="show.bu" ng-model="abtests.after_bullet3" class="form-control"
+                      rows="2"></textarea>
+            <span data-ng-show="abtests.after_bullet3&&show.sav"> {{abtests.after_bullet3}}</span><br
+            data-ng-show="abtests.after_bullet3&&show.sav">
+            <label data-ng-show="abtests.after_bullet4&&(show.bu||show.sav)">Bullet #4 </label>
+            <textarea data-ng-show="show.bu" ng-model="abtests.after_bullet4" class="form-control"
+                      rows="2"></textarea>
+            <span data-ng-show="abtests.after_bullet4&&show.sav"> {{abtests.after_bullet4}}</span><br
+            data-ng-show="abtests.after_bullet4&&show.sav">
+            <label data-ng-show="abtests.after_bullet5&&(show.bu||show.sav)">Bullet #5 </label>
+            <textarea data-ng-show="show.bu" ng-model="abtests.after_bullet5" class="form-control"
+                      rows="2"></textarea>
+            <span data-ng-show="abtests.after_bullet5&&show.sav"> {{abtests.after_bullet5}}</span><br
+            data-ng-show="abtests.after_bullet5&&show.sav">
+            <label data-ng-show="abtests.after_backend1&&(show.ba||show.sav)">Backend #1 (max 1000 chars)</label>
+            <textarea data-ng-show="show.ba" ng-model="abtests.after_backend1" class="form-control"
+                      rows="4"></textarea>
+            <span data-ng-show="abtests.after_backend1&&show.sav"> {{abtests.after_backend1}}</span><br
+            data-ng-show="abtests.after_backend1&&show.sav">
+            <label data-ng-show="abtests.after_backend2&&(show.ba||show.sav)">Backend #2 (max 1000 chars)</label>
+            <textarea data-ng-show="show.ba" ng-model="abtests.after_backend2" class="form-control"
+                      rows="4"></textarea>
+            <span data-ng-show="abtests.after_backend2&&show.sav"> {{abtests.after_backend2}}</span><br
+            data-ng-show="abtests.after_backend2&&show.sav">
+            <label data-ng-show="abtests.after_backend3&&(show.ba||show.sav)">Backend #3 (max 1000 chars)</label>
+            <textarea data-ng-show="show.ba" ng-model="abtests.after_backend3" class="form-control"
+                      rows="4"></textarea>
+            <span data-ng-show="abtests.after_backend3&&show.sav"> {{abtests.after_backend3}}</span><br
+            data-ng-show="abtests.after_backend3&&show.sav">
+            <label data-ng-show="abtests.after_backend4&&(show.ba||show.sav)">Backend #4 (max 1000 chars)</label>
+            <textarea data-ng-show="show.ba" ng-model="abtests.after_backend4" class="form-control"
+                      rows="4"></textarea>
+            <span data-ng-show="abtests.after_backend4&&show.sav"> {{abtests.after_backend4}}</span><br
+            data-ng-show="abtests.after_backend4&&show.sav">
+            <label data-ng-show="abtests.after_backend5&&(show.ba||show.sav)">Backend #5 (max 1000 chars)</label>
+            <textarea data-ng-show="show.ba" ng-model="abtests.after_backend5" class="form-control"
+                      rows="4"></textarea>
+            <span data-ng-show="abtests.after_backend5&&show.sav">{{abtests.after_backend5}}</span><br
+            data-ng-show="abtests.after_backend5&&show.sav">
+            <label data-ng-show="abtests.after_price&&(show.pr||show.sav)">Price</label>
+            <input data-ng-show="show.pr" type="text" ng-model="abtests.after_price" class="form-control"
+                   rows="4">
+            <span data-ng-show="abtests.after_price&&show.sav"> {{abtests.after_price}}</span><br
+            data-ng-show="abtests.after_price&&show.sav">
+            <label data-ng-show="abtests.after_discount&&(show.di||show.sav)">Sale price</label>
+            <input data-ng-show="show.di" type="text" ng-model="abtests.after_discount" class="form-control"
+                   rows="4">
+            <span data-ng-show="abtests.after_discount&&show.sav"> {{abtests.after_discount}}</span><br
+            data-ng-show="abtests.after_discount&&show.sav">
+            <label data-ng-show="abtests.after_coupon&&(show.co||show.sav)">Coupon</label>
+            <input data-ng-show="show.co" type="text" ng-model="abtests.after_coupon" class="form-control"
+                   rows="4">
+            <span data-ng-show="abtests.after_coupon&&show.sav"> {{abtests.after_coupon}}</span><br
+            data-ng-show="abtests.after_coupon&&show.sav">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h3></h3>
+  <button data-ng-show="!show.sav" class="btn btn-large btn-info" data-ng-click="save_test()">
+    Save
+  </button>
+  <a class="btn btn-load btn-info" data-ng-click="onBack()">Back</a>
+  </div>
+</div>

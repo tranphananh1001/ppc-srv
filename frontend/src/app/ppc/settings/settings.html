@@ -1,0 +1,270 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3>Settings</h3>
+    <h3 ng-show="status" align="center" style="background-color:#BBB1A5; color:white;">
+      Your account is now limited. Please update payment details in the profile menu above to reactivate your account.
+    </h3>
+  </div>
+</div>
+<div ng-show="countries2.length" align="center">
+  <h4 class="text-muted">Add An Additional Account In Any Country</h4>
+  <input type="text" id="country2">
+  <input type="hidden" ng-model="country2_code" name="country2_code" id="country2_code"/>
+  <button class="btn btn-primary" ng-click="AddCountry()">
+    Add new Account
+  </button>
+  <div id="country_select" ng-show="innerH&&addnew!=1">
+    <div class="radio">
+      <label>
+        <input type="radio" name="credentials.plan" data-ng-model="credentials.plan"
+          value="intlevel6">Unlimited SKU’s - 29.99$
+      </label>
+    </div>
+    <button class="btn btn-primary "
+            data-ng-click="new_plan_signup(credentials.plan)"
+            data-ng-disabled="!credentials.plan"
+    >
+      Sign Up
+    </button>
+  </div>
+  <div id="country_select1" ng-show="innerH&&addnew==1">
+    <div class="radio">
+      <label>
+        <input type="radio" name="credentials.plan" data-ng-model="credentials.plan"
+          value="{{us_tariffs[0].name}}">{{us_tariffs[0].desc}}
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="credentials.plan" data-ng-model="credentials.plan"
+          value="{{us_tariffs[1].name}}">{{us_tariffs[1].desc}}
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="credentials.plan" data-ng-model="credentials.plan"
+          value="{{us_tariffs[2].name}}">{{us_tariffs[2].desc}}
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="credentials.plan" data-ng-model="credentials.plan"
+          value="{{us_tariffs[3].name}}">{{us_tariffs[3].desc}}
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="credentials.plan" data-ng-model="credentials.plan"
+          value="{{us_tariffs[4].name}}">{{us_tariffs[4].desc}}
+      </label>
+    </div>
+    <button class="btn btn-primary "
+            data-ng-click="new_plan_signup(credentials.plan)"
+            data-ng-disabled="!credentials.plan"
+    >
+      Sign Up
+    </button>
+  </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="settings">
+            <div class="panel-heading">
+                <h3 style="text-align:center;">
+                  Follow the 3 Step Process Below
+                </h3>
+                <h3 class="panel-title">
+                  Country of integration : <img ng-src="./assets/icons/png/{{settingsall.country_id}}.png" /> {{settingsall.country_id}}
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                  <div class="col-lg-3">
+                        <h4 class="text-muted">STEP 1. MWS Integration</h4>
+                        <div>
+                          Step 1) Click on the blue button below to retrieve Seller ID/MWS info and to grant PPC Entourage access. Then enter the MWS information below and click Save.
+                        </div>
+                        <a href="http://ppcsignup.pagedemo.co" target="_blank" class="btn btn-start-here">
+                          Important - Retrieve ID/Token and Grant Permission
+                        </a>
+                        <div>
+                            <label class="control-label">Amazon SellerID</label>
+                            <input type="text" class="form-control" required="required" id="sellerID{{settingsall.index}}" placeholder="Amazon SellerID" data-ng-model="settingsall.SellerID" />
+                        </div>
+                        <div>
+                            <label class="control-label">Amazon MWSAuthorizationToken</label>
+                            <input type="text" class="form-control" required="required" id="MWSAuthToken{{settingsall.index}}" placeholder="Amazon MWSAuthorizationToken" data-ng-model="settingsall.MWSAuthToken" />
+                        </div>
+                        <div ng-show="settingsall.MWScheck">
+                          <h4 class="text-muted">Error:</h4>
+                          {{settingsall.MWScheck}}
+                        </div>
+                        <br>
+                        <button class="btn btn-load" ng-click="SaveSellerAccount(settingsall, products[settingsall.user])">
+                          Save
+                        </button>
+                        <h4 class="text-muted">Universal values</h4>
+                        <div style="margin-top: 10px;">
+                            <label class="control-label">Universal Profit Margin, %&nbsp;&nbsp;<a href="#" data-custom-toggle="popover" data-toggle="popover" title="Universal Profit Margin, %" data-container="body" data-content="Used to determine profit margins ONLY for those SKU’s where a profit margin has not been set.  To set profit margin on an individual SKU, go to Listing Optimization and enter the margin for that SKU."><i class="fa fa-info-circle"></i></a></label>
+                            <input type="text" class="form-control" required="required" name="title" placeholder="Universal Profit Margin" data-ng-model="settingsall.average_profit" />
+                        </div>
+                        <div>
+                            <label class="control-label">Universal ACOS Profit Zone, %&nbsp;&nbsp;<a href="#" data-custom-toggle="popover" data-toggle="popover" title="Universal ACOS Profit Zone, %" data-container="body" data-content="Used to determine your ACOS profit zone ( ACOS Profit zone will determine profitable/non profitable SKU’s, keywords, search terms and negative words within a campaign). To set ACOS profit zones on an individual campaign, go to Campaign Optimization, select the campaign and enter the ACOS profit zone % for that campaign. To learn more about ACOS profit zone, click on the quick start guide."><i class="fa fa-info-circle"></i></a></label>
+                            <input type="text" class="form-control" required="required" name="title" placeholder="Universal ACOS Profit Zone" data-ng-model="settingsall.average_acos" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div ng-show="settingsall.token">
+                        <h4 class="text-muted">STEP 2. Amazon Token</h4>
+                        Step 2) Click on GET TOKEN<br><br>
+                        <p data-ng-show="settingsall.code">Present</p>
+                        <a data-ng-show="!settingsall.code" ng-click="confirmGetToken()">GET TOKEN</a>
+                        <p data-ng-show="token_status">{{token_status}}</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-6" ng-show="settingsall.productFetched&&settingsall.firsttime==0&&settingsall.user>0&&!settingsall.products[0].id&&settingsall.code&&settingsall.max_sku>-1">
+                      <h4 class="text-muted">STEP 3. Get SKU's. Click on button below</h4>
+                      <button class="btn btn-primary" ng-click="getSKUs(settingsall)"
+                            ng-show="settingsall.productFetched&&settingsall.firsttime==0&&settingsall.user>0&&!settingsall.products[0].id&&settingsall.code&&settingsall.max_sku>-1">
+                            Get SKU's
+                      </button>
+                    <br>
+                    Click on the button above and your SKUs will be fetched. Depending on volume, SKUs can take anywhere
+                    from 10-24 hours to populate. Once they arrive, select the SKUs you wish to analyze.  If you have an
+                    UNLIMITED account you do not need to select SKU’s once they are fetched. You may close your browser
+                    if you wish.  We will notify you via email once your SKUs have arrived.
+                  </div>
+
+                  <div class="col-lg-6" ng-show="settingsall.firsttime==1">
+                    <h4 class="text-muted">STEP 3. Get SKU's. </h4>
+                    Your SKU’s are being fetched. Depending on volume, SKUs can take anywhere from 10-24 hours to
+                    populate. Once they arrive, select the SKUs you wish to analyze.  If you have an UNLIMITED account
+                    you do not need to select SKU’s once they are fetched. You may close your browser if you wish.  We
+                    will notify you via email once your SKUs have arrived.
+                  </div>
+
+                  <div class="col-lg-6" ng-show="(settingsall.firsttime==2||reselected==settingsall.user)&&settingsall.max_sku>0">
+                    <h4 class="text-muted">
+                      STEP 3. Select SKU's - you have total {{checked[settingsall.user]}} of {{limit[settingsall.user]}} and click SAVE
+                    </h4>
+                    <table datatable="ng" dt-options="dtOptions" class="row-border hover">
+                      <thead>
+                      <tr>
+                        <th>Status</th>
+                        <th>SKU</th>
+                        <th>ASIN</th>
+                        <th>Image</th>
+                        <th>Products name</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr ng-repeat="product in products[settingsall.user]">
+                        <td><input type="checkbox" ng-model="product.winner"
+                                   ng-change="checkChanged(product, settingsall.user)"
+                                   ng-checked="product.winner"
+                          ng-disabled="!product.winner && checked[settingsall.user]==limit[settingsall.user]"/>
+                        </td>
+                        <td
+                          ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'>
+                          <span><a data-ui-sref="ppc.product({id: product.id})">{{ product.sku }}</a></span></td>
+                        <td
+                          ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'>
+                          <span>{{ product.asin }}</span></td>
+                        <td
+                          ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'>
+                          <img ng-src="{{ product.image_sm }}" ng-if="product.image_sm"></td>
+                        <td
+                          ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'>
+                          <span><a data-ui-sref="ppc.product({id: product.id})">{{ product["product-name"]}}</a></span>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-lg-6" ng-show="settingsall.products[0].id>0&&!products[settingsall.user][0].id>0">
+                    <h4 class="text-muted">STEP 3. Selected SKU's</h4>
+                    <p>
+                      To Upgrade Plan or Reselect SKU’s, Scroll down to the bottom of your SKU’s and select the
+                      appropriate action. For a SKU to become available in Entourage, it must be associated with an active ppc campaign that has a sale at least one week old.
+                    </p>
+                    <table datatable="ng" dt-options="dtOptions" class="row-border hover">
+                      <thead>
+                      <tr>
+                        <th ng-show="settingsall.firsttime == 2 && settingsall.max_sku > 0">
+                          <input type="checkbox" ng-model="selectedSKU[0]" ng-click="selectSKU(0)">
+                        </th>
+                        <th>SKU</th>
+                        <th>ASIN</th>
+                        <th>Image</th>
+                        <th>Products name</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr ng-repeat="product in settingsall.products | filter: filterProducts(settingsall.max_sku)">
+                        <td ng-show="settingsall.firsttime==2&&settingsall.max_sku>0"><input type="checkbox" ng-click="selectSKU(product.id)" ng-model="selectedSKU[product.id]" ng-checked="selectedSKU[product.id]"/></td>
+                        <td
+                          ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'>
+                          <span><a data-ui-sref="ppc.product({id: product.id})">{{ product.sku }}</a></span></td>
+                        <td
+                          ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'>
+                          <span>{{ product.asin }}</span></td>
+                        <td
+                          ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'>
+                          <img ng-src="{{setImageSm(product.image_sm)}}" ng-if="product.image_sm"></td>
+                        <td
+                          ng-class='{green : product.GREEN, yellow: product.YELLOW&&!item.GREEN,  black: !product.YELLOW&&!product.GREEN}'>
+                          <span><a data-ui-sref="ppc.product({id: product.id})">{{ product["product-name"]}}</a></span>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                    <div align="right">
+                      <button class="btn btn-load" ng-click="SaveSellerAccount(settingsall, products[settingsall.user])">
+                            Save
+                      </button>
+                      <button class="btn btn-load" ng-click="reselect(settingsall)"
+                              ng-show="settingsall.products[0].id&&settingsall.max_sku>0">
+                        Reselect
+                      </button>
+                      <button class="btn btn-primary" ng-click="change_plan(settingsall)"
+                              ng-show="settingsall.products[0].id">
+                        Change plan
+                      </button>
+                      <div id="change_plan" ng-show="change_plan_sel==1">
+                        <div class="radio">
+                          <label><input type="radio" name="settingsall.plan_id" data-ng-model="settingsall.plan_id"
+                                        value="{{change_tariffs[0].name}}">{{change_tariffs[0].desc}}</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="settingsall.plan_id" data-ng-model="settingsall.plan_id"
+                                        value="{{change_tariffs[1].name}}">{{change_tariffs[1].desc}}</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="settingsall.plan_id" data-ng-model="settingsall.plan_id"
+                                        value="{{change_tariffs[2].name}}">{{change_tariffs[2].desc}}</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="settingsall.plan_id" data-ng-model="settingsall.plan_id"
+                                        value="{{change_tariffs[3].name}}">{{change_tariffs[3].desc}}</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="settingsall.plan_id" data-ng-model="settingsall.plan_id"
+                                        value="{{change_tariffs[4].name}}">{{change_tariffs[4].desc}}</label>
+                        </div>
+                        <button class="btn btn-primary"
+                                data-ng-click="update_subscription(settingsall)"
+                        >Change plan
+                        </button>
+                      </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="bottom-images">
+  <img src="/images/settings-images.png" alt="Settings Images">
+</div>

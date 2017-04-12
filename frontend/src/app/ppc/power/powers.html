@@ -1,0 +1,78 @@
+<div data-ng-show="!searchterms">
+  <h3></h3>
+</div>
+<div data-ng-show="searchterms">
+  <h3></h3>
+  <ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#mtab1">Seed Campaigns</a></li>
+    <li class="active"><a data-toggle="tab" href="#mtab2">PPC Expansion</a></li>
+  </ul>
+  <div id="mtab2" class="tab-pane fade in active">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <div class="row">
+                <div class="col-lg-6">
+                  <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;Positive
+                  Exact Search Terms.<br>
+                  <small>ACOS Profit Zone is between 0.1% and <input ng-model="acoszone" type="text">%
+                    <button data-ng-click="setacos()">Set</button>
+                    |
+                    <button data-ng-click="copyall()">Copy all</button>
+                  </small>
+                </div>
+                <div class="col-lg-3 text-right">
+                  <span class="date-range-picker-label">
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <span>Date Range:</span>
+                  </span>
+                </div>
+                <div class="col-lg-3">
+                  <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions">
+                </div>
+              </div>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <table datatable="ng" dt-options="dtOptions2" class="row-border hover" width="100%">
+              <thead>
+                <tr>
+                  <th>Search term</th>
+                  <th>Ad spend</th>
+                  <th>ACoS, %</th>
+                  <th>Gross revenue</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="keyword in searchterms" width="100%">
+                  <td><a ng-click="addsearch(keyword.Search)">{{keyword.Search}}</a></td>
+                  <td>{{ keyword.Cost | number :2 }}</td>
+                  <td>{{ keyword.acos | number :2}}</td>
+                  <td>{{ keyword.Revenue | number :2 }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;Selected
+              keywords
+              <small>
+                <button clipboard text="copiedkeywords" on-copied="success()" on-error="fail(err)">Copy to clipboard
+                </button>
+              </small>
+            </h3>
+            <div class="panel-body">
+              <textarea ng-model="copiedkeywords" class="form-control" rows="20"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

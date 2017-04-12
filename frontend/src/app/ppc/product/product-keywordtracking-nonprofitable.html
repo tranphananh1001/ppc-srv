@@ -1,0 +1,161 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-lg-4">
+        <h3 class="panel-title">
+          Non-Profitable Keywords
+        </h3>
+        <button class="btn" data-ng-click="copyKeywords(nonProfitableKeywords, 'NON_PROFITABLE')">
+          Copy To Clipboard
+        </button>
+      </div>
+      <div class="col-lg-5 filterlist text-right">
+        <a data-target="#topcampaigns1" class="btn-filter" data-toggle="collapse">
+          Filter Results
+        </a>
+        <div id="topcampaigns1" class="collapse">
+          <div class="rowfilter">
+            <label>Select saved model:</label>
+            <select class="sel1" data-ng-model="filterModelNonProfitableSearchTerms.select">
+              <option ng-repeat="opt in filterModelsProfitableSearchTerms" value="{{opt.id}}">{{opt.name}}</option>
+            </select>
+            <button ng-click="loadFilterModel(filterModelNonProfitableSearchTerms.select, MODEL_NO_NONPROFITABLE);" class="btn btn-load" data-toggle="collapse">
+              Load
+            </button>
+          </div>
+          <div class="rowfilter">
+            <label>Profit:</label>
+            <input id="filterModelNonProfitableSearchTerms.profitfrom" data-ng-model="filterModelNonProfitableSearchTerms.profitfrom">
+            <span>to</span>
+            <input id="filterModelNonProfitableSearchTerms.profitto" data-ng-model="filterModelNonProfitableSearchTerms.profitto">
+          </div>
+          <div class="rowfilter">
+            <label>Gross Revenue:</label>
+            <input id="filterModelNonProfitableSearchTerms.revenuefrom" data-ng-model="filterModelNonProfitableSearchTerms.revenuefrom">
+            <span>to</span>
+            <input id="filterModelNonProfitableSearchTerms.revenueto" data-ng-model="filterModelNonProfitableSearchTerms.revenueto">
+          </div>
+          <div class="rowfilter">
+            <label>Ad Spend:</label>
+            <input id="filterModelNonProfitableSearchTerms.adspendfrom" data-ng-model="filterModelNonProfitableSearchTerms.adspendfrom">
+            <span>to</span>
+            <input id="filterModelNonProfitableSearchTerms.adspendto" data-ng-model="filterModelNonProfitableSearchTerms.adspendto">
+          </div>
+          <div class="rowfilter">
+            <label>AcOs:</label>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.acosfrom">
+            <span>to</span>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.acosto">
+          </div>
+          <div class="rowfilter">
+            <label>Impressions:</label>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.impressionsfrom">
+            <span>to</span>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.impressionsto">
+          </div>
+          <div class="rowfilter">
+            <label>Clicks:</label>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.clicksfrom">
+            <span>to</span>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.clicksto"><br>
+          </div>
+          <div class="rowfilter">
+            <label>CTR%:</label>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.ctrfrom">
+            <span>to</span>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.ctrto">
+          </div>
+          <div class="rowfilter">
+            <label>Ave Cost Per Click:</label>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.avecpcfrom">
+            <span>to</span><input data-ng-model="filterModelNonProfitableSearchTerms.avecpcto">
+          </div>
+          <div class="rowfilter">
+            <label>Orders:</label>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.ordersFrom">
+            <span>to</span>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.ordersTo">
+          </div>
+          <div class="rowfilter">
+            <label>Conversion %:</label>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.conversionRateFrom">
+            <span>to</span>
+            <input data-ng-model="filterModelNonProfitableSearchTerms.conversionRateTo">
+          </div>
+          <div class="rowfilter">
+            <label>Select match type:</label>
+            <select class="sel2" data-ng-model="filterModelNonProfitableSearchTerms.match1">
+              <option value="ANY">ANY</option>
+              <option value="BROAD">BROAD</option>
+              <option value="PHRASE">PHRASE</option>
+              <option value="EXACT">EXACT</option>
+            </select>
+          </div>
+          <div class="rowfilter">
+            <label>Model name:</label>
+            <input class="inp2" data-ng-model="filterModelNonProfitableSearchTerms.name">
+          </div>
+          <div class="rowfilter" align="right">
+            <button ng-click="saveFilterModel(filterModelNonProfitableSearchTerms, MODEL_NO_NONPROFITABLE)" class="btn btn-save">Save</button>
+            <button ng-click="clearFilterModel(filterModelNonProfitableSearchTerms);" class="btn btn-clean">Clear</button>
+          </div>
+          <div class="rowfilter" align="right">
+            <button ng-click="loadNonProfitableKeywords()" class="js-close-filter">Apply</button>
+            <button class="js-close-filter">Close</button>
+          </div>
+        </div>
+        <span class="date-range-picker-label">
+          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+          <span>Date Range:</span>
+        </span>
+      </div>
+      <div class="col-lg-3">
+        <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options="dateRangeOptions">
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <table datatable="ng" dt-options="dtOptionsNonProfitableKeywordsTable" dt-instance="dtInstanceCallbackNonProfitable" class="row-border hover">
+      <thead>
+      <tr>
+        <th>Keyword</th>
+        <th>Match</th>
+        <th>Profit</th>
+        <th>Rev</th>
+        <th>Spend</th>
+        <th>AcoS,%&nbsp;&nbsp;</th>
+        <th>Impress.&nbsp;&nbsp;</th>
+        <th>Clicks&nbsp;&nbsp;</th>
+        <th>Ave CPC&nbsp;</th>
+      </thead>
+      <tbody>
+      <tr ng-repeat="keyword in nonProfitableKeywords">
+        <td><a ng-click="addKeyword(keyword.Keyword, 'NON_PROFITABLE')"><span class="glyphicon glyphicon-save-file"
+                                                           aria-hidden="true"></span></a><a
+          ng-click="changeKeyword(keyword.Keyword)">{{keyword.Keyword}}</a></td>
+        <td>{{ keyword.Match1 }}</td>
+        <td>{{currency_sign}}{{
+          (keyword.Revenue*keyword.Profit-keyword.Cost)/currency_rate_USD*currency_rate | number :2}}
+        </td>
+        <td>{{currency_sign}}{{ keyword.Revenue/currency_rate_USD*currency_rate | number :2 }}</td>
+        <td>{{currency_sign}}{{ keyword.Cost/currency_rate_USD*currency_rate | number :2 }}</td>
+        <td >{{ keyword.Cost/keyword.Revenue*100 | number :1 }}</td>
+        <td >{{ keyword.Impressions | number :0 }}</td>
+        <td >{{ keyword.Clicks | number :0 }}</td>
+        <td >{{ keyword.AvCPC | number :2 }}</td>
+      </tr>
+      </tbody>
+      <tfoot>
+        <td>Total:</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tfoot>
+    </table>
+  </div>
+</div>
