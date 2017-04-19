@@ -1,18 +1,11 @@
 <?php
-
-// pa
-$time_gb_start = time();
-// end pa
-
 chdir("/srv/robots/");
-    $link = mysql_connect('127.0.0.1', 'root', '');
-    // $link = mysql_connect('127.0.0.1', 'root', '1234567890');
-    if (!$link) {
+      $link = mysql_connect('127.0.0.1', 'root', '');
+   if (!$link) {
        die('Could not connect: ' . mysql_error());
-    }
+   }
 
     mysql_select_db('test', $link) or die('Could not select database.');
-    // mysql_select_db('ppc_robot_test', $link) or die('Could not select database.');
 
 
 
@@ -22,13 +15,12 @@ use ApaiIO\Operations\Lookup;
 use ApaiIO\Configuration\GenericConfiguration;
 use ApaiIO\ApaiIO;
 
-/**
- * Write log error robot
- */
 //pa
-if( !function_exists('writeLogRobot') ) {
-    function writeLogRobot ($subFolder='',$script='SCRIPT',$msg='', $fileSuffix='', $newFile=false){
-        $folder = __DIR__ . '/logs/' . $subFolder;
+if( !function_exists('writeLogSku') ) {
+    function writeLogSku ($msg='', $fileSuffix='', $newFile=false){
+        $script = 'insert_listing_reports_data_image_productname';
+        
+        $folder = __DIR__ . '/logs/get_skus_error/';
         
         if ( !file_exists($folder) ) {
             mkdir($folder);
@@ -54,16 +46,6 @@ if( !function_exists('writeLogRobot') ) {
         }
     }
 }
-
-
-if (isset($argv[1])) {
-    $userLog = $argv[1];
-} else {
-    $userLog = 0;
-}
-
-writeLogRobot('log_lookup/','all_lookup','User: '.$userLog.' START', 'start');
-
 // end pa
 
 $conf = new GenericConfiguration();
@@ -91,19 +73,19 @@ $request = new \ApaiIO\Request\GuzzleRequest($client);
 
 
 $add_data='';
-if ($argv[1]) $add_data=' where user='.$argv[1];
+if ($argv[1]) $add_data=' where user='.$argv[1]. ' and ( `product-name`="" or image_sm="" or image_med="" or image_big="") ';
 
-	            // echo "Select * from listing_reports_data".$add_data;
-            $grm = mysql_query("Select * from listing_reports_data".$add_data);
+echo "Select * from listing_reports_data".$add_data;
+$grm = mysql_query("Select * from listing_reports_data".$add_data);
 
 
 while ($r11 = mysql_fetch_array($grm)) {
     sleep (1);
     // echo "Select * from users u, product_advertising_keys p, mws m where m.user=u.id and u.id=".$r11["user"]." and m.country_id=p.contry_code";
-                $grm1 = mysql_query("Select * from user u, product_advertising_keys p, mws m where m.user=u.id and u.id=".$r11["user"]." and m.country_id=p.country_code");
-    				$r12 = mysql_fetch_array($grm1);
-    				//if ($r11["country_id"]!=='us') continue;
-    				$conf
+        $grm1 = mysql_query("Select * from user u, product_advertising_keys p, mws m where m.user=u.id and u.id=".$r11["user"]." and m.country_id=p.country_code");
+    	$r12 = mysql_fetch_array($grm1);
+		//if ($r11["country_id"]!=='us') continue;
+		$conf
         ->setCountry($m11[$r12["country_id"]])
         ->setAccessKey($r12["key"])
         ->setSecretKey($r12["secret"])
@@ -145,7 +127,7 @@ while ($r11 = mysql_fetch_array($grm)) {
     	'image_big' => $image_big
     ];
     if ( empty($product) || empty($image_sm) || empty($image_med) || empty($image_big) ) {
-        writeLogRobot('log_lookup/','lookup','User: '.$userLog.' ERROR empty result API : '.json_encode($data_log), $userLog);
+    	writeLogSku(json_encode($data_log), $r11["user"]);
     }
 
 
@@ -153,9 +135,5 @@ while ($r11 = mysql_fetch_array($grm)) {
 
 
 }
-
-// pa
-writeLogRobot('log_lookup/','all_lookup','User: '.$userLog.' END, TOTAL TIME: '.(time()-$time_gb_start).' s ', 'end');
-// end pa
 
 ?>
